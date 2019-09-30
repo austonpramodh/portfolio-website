@@ -1,5 +1,6 @@
 import { createStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
+import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries";
 
 const Styles = (theme: Theme) =>
     createStyles({
@@ -9,10 +10,11 @@ const Styles = (theme: Theme) =>
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            [`@media (min-width: ${700}px)`]: {
-                // flexDirection: "row-reverse",
+            [theme.breakpoints.up("md")]: {
+                flexDirection: "row",
             },
         },
+        containerMediaQueries: { ...MainContainerMediaQueries(theme).root },
         imageContainer: {
             height: "auto",
             width: "90%",
@@ -34,7 +36,6 @@ const Styles = (theme: Theme) =>
             borderRadius: 4,
             margin: "4px 8px",
         },
-        skillSpan: {},
         skillList: {
             margin: "16px 0px",
             padding: 0,

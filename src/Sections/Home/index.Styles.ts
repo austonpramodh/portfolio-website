@@ -1,5 +1,6 @@
 import { createStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
+import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries";
 
 const Styles = (theme: Theme) =>
     createStyles({
@@ -9,10 +10,11 @@ const Styles = (theme: Theme) =>
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            [`@media (min-width: ${700}px)`]: {
+            [theme.breakpoints.up("md")]: {
                 flexDirection: "row-reverse",
             },
         },
+        containerMediaQueries: { ...MainContainerMediaQueries(theme).root },
         avatar: {
             height: 240,
             width: 240,
@@ -22,12 +24,12 @@ const Styles = (theme: Theme) =>
             border: "20px solid rgba(0, 0, 0, 0.9)",
             borderRadius: "50%",
             margin: "8px",
-            [`@media (min-width: ${700}px)`]: {
+            [theme.breakpoints.up("md")]: {
                 marginLeft: "6rem",
             },
         },
         promo: {
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.main,
             borderTopRightRadius: 20,
             borderTopLeftRadius: 20,
             borderBottomRightRadius: 20,

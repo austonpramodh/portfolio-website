@@ -4,6 +4,7 @@ interface IContent {
     };
     AboutMeSection: {
         skills: string[];
+        cvDownloadurl: string;
     };
 }
 

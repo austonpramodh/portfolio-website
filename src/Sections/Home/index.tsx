@@ -18,7 +18,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
 
     return (
-        <div className={classes.container}>
+        <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar} src={profilePic}></Avatar>
             </div>

@@ -11,7 +11,7 @@ import Styles from "./index.Styles";
 const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const { skills } = AboutMeSection;
     return (
-        <div className={classes.container}>
+        <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.imageContainer}>
                 <Image style={{ background: "transparent" }} src={AboutMeImage} aspectRatio={16 / 9} />
             </div>
@@ -31,7 +31,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         </li>
                     ))}
                 </ul>
-                <a className={classes.cvDownloadButton}>
+                <a href={AboutMeSection.cvDownloadurl} className={classes.cvDownloadButton}>
                     <Typography className={classes.cvDownloadText}>Download CV</Typography>
                     <DownloadIcon className={classes.downloadIcon} />
                 </a>

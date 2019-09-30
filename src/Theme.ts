@@ -1,10 +1,9 @@
 import { createMuiTheme } from "@material-ui/core";
+import { pink } from "@material-ui/core/colors";
 
 const CustomTheme = createMuiTheme({
     palette: {
-        primary: {
-            main: "#0bceaf",
-        },
+        primary: pink,
         text: { primary: "#ffffff", secondary: "#00000" },
         background: {
             default: "#100e17",

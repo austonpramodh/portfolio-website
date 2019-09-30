@@ -6,6 +6,7 @@ const Content: IContent = {
     },
     AboutMeSection: {
         skills: ["Javascript", "nodeJs", "React", "React Native", "CSS"],
+        cvDownloadurl: "#",
     },
 };
 
