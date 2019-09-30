@@ -50,22 +50,22 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     </ListItem>
                 </List>
                 <List className={classes.linksList}>
-                    <ListItem>
+                    <ListItem className={classes.linksListItem}>
                         <a href={Links.github} className={classes.LinksListItemIcon}>
                             <GithubBoxIcon />
                         </a>
                     </ListItem>
-                    <ListItem>
+                    <ListItem className={classes.linksListItem}>
                         <a href={Links.gitlab} className={classes.LinksListItemIcon}>
                             <GitlabIcon />
                         </a>
                     </ListItem>
-                    <ListItem>
+                    <ListItem className={classes.linksListItem}>
                         <a href={Links.facebook} className={classes.LinksListItemIcon}>
                             <FacebookIcon />
                         </a>
                     </ListItem>
-                    <ListItem>
+                    <ListItem className={classes.linksListItem}>
                         <a href={Links.linkedIn} className={classes.LinksListItemIcon}>
                             <LinkedinIcon />
                         </a>

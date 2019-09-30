@@ -3,7 +3,7 @@ import { createMuiTheme } from "@material-ui/core";
 const CustomTheme = createMuiTheme({
     palette: {
         primary: {
-            main: "#fff",
+            main: "#0bceaf",
         },
         text: { primary: "#ffffff", secondary: "#00000" },
         background: {
@@ -12,7 +12,7 @@ const CustomTheme = createMuiTheme({
         },
     },
     typography: {
-        allVariants: { color: "#ffffff", fontFamily: `"roboto", sans-serif` },
+        allVariants: { color: "#ffffff", fontFamily: `"roboto", sans-serif`, textAlign: "center" },
         h1: { fontWeight: "bold", lineHeight: 1.2 },
         h2: { fontSize: "2rem", fontWeight: "bold", lineHeight: 1.2 },
         h3: { fontWeight: "bold", lineHeight: 1.2 },

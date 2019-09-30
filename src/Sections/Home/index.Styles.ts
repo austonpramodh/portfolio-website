@@ -59,6 +59,10 @@ const Styles = (theme: Theme) =>
         linksList: {
             display: "flex",
             flexDirection: "row",
+            justifyContent: "center",
+        },
+        linksListItem: {
+            width: "unset",
         },
         LinksListItemIcon: {
             display: "flex",
