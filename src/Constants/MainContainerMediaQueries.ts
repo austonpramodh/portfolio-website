@@ -4,9 +4,12 @@ const MainContainerMediaQueries = (theme: Theme) => {
     return createStyles({
         root: {
             margin: "auto",
-            padding: theme.spacing(1),
-            [theme.breakpoints.up("xs")]: {
+            marginTop: "120px",
+            marginBottom: "120px",
+            [theme.breakpoints.down("xs")]: {
                 width: "auto",
+                paddingRight: `${theme.spacing(2)}px`,
+                paddingLeft: `${theme.spacing(2)}px`,
             },
             [theme.breakpoints.up("sm")]: {
                 width: `${theme.breakpoints.width("sm") - 30}px`,

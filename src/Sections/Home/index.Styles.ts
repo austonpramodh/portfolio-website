@@ -10,6 +10,8 @@ const Styles = (theme: Theme) =>
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            marginTop: "0px !important",
+            marginBottom: "0px !important",
             [theme.breakpoints.up("md")]: {
                 flexDirection: "row-reverse",
             },

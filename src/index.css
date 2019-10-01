@@ -3,3 +3,7 @@ a {
     color: inherit;
     display: flex;
 }
+
+html {
+    font-size: 14px;
+}

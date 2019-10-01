@@ -5,11 +5,11 @@ import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries
 const Styles = (theme: Theme) =>
     createStyles({
         container: {
-            height: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            marginTop: "0px !important",
             [theme.breakpoints.up("md")]: {
                 flexDirection: "row",
             },
