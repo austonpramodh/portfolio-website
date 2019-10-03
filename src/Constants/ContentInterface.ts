@@ -6,6 +6,16 @@ interface Service {
     name: string;
     description: string;
 }
+
+export interface Skill {
+    name: string;
+    percentage: number;
+}
+
+interface Skills {
+    technicalSkills: Skill[];
+    professionalSkills: Skill[];
+}
 interface IContent {
     HomeSection: {
         name: string;
@@ -15,6 +25,7 @@ interface IContent {
         cvDownloadurl: string;
     };
     Services: Service[];
+    Skills: Skills;
 }
 
 export default IContent;

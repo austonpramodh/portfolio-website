@@ -53,10 +53,25 @@ const Content: IContent = {
             IconColor: "#2796e2",
         },
     ],
+    Skills: {
+        professionalSkills: [
+            { name: "Communications", percentage: 80 },
+            { name: "Team Work", percentage: 80 },
+            { name: "Project Mangement", percentage: 80 },
+            { name: "Creativity", percentage: 80 },
+        ],
+        technicalSkills: [
+            { name: "Javascript", percentage: 90 },
+            { name: "PHP", percentage: 50 },
+            { name: "Tyescript", percentage: 60 },
+            { name: "express", percentage: 90 },
+        ],
+    },
 };
 
 export const HomeSection = Content.HomeSection;
 export const AboutMeSection = Content.AboutMeSection;
 export const ServicesSection = Content.Services;
+export const SkillsSection = Content.Skills;
 
 export default Content;
