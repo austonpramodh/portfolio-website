@@ -45,6 +45,7 @@ const Styles = (theme: Theme) =>
         servicesContainer: {
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             [theme.breakpoints.up("md")]: {
                 flexDirection: "row",
                 flexWrap: "wrap",
