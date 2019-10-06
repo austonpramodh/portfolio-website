@@ -1,7 +1,8 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
-import { Typography, Paper } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { ServicesSection } from "../../Constants/Content";
+import MahaCards from "../../Components/MahaCards";
 import Styles from "./index.Styles";
 
 const Service: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
@@ -11,15 +12,7 @@ const Service: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 What i do
             </Typography>
             <div className={classes.servicesContainer}>
-                {ServicesSection.map(({ Icon, name, description, IconColor }, index) => (
-                    <Paper key={`service${index}`} className={classes.paper}>
-                        <Icon className={classes.icon} style={{ color: IconColor }} />
-                        <Typography className={classes.subHeader} variant="h3">
-                            {name}
-                        </Typography>
-                        <Typography className={classes.description}>{description}</Typography>
-                    </Paper>
-                ))}
+                <MahaCards Cards={ServicesSection} />
             </div>
         </div>
     );
