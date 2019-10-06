@@ -60,22 +60,6 @@ const Styles = (theme: Theme) =>
             fontWeight: 600,
             lineHeight: "54px",
         },
-        linksList: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-        },
-        linksListItem: {
-            width: "unset",
-        },
-        LinksListItemIcon: {
-            display: "flex",
-            transition: "all 0.3s ease-in",
-            "&:hover": {
-                backgroundColor: "white",
-                color: theme.palette.background.default,
-            },
-        },
         ContactsListHovered: {},
     });
 

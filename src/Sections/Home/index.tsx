@@ -1,17 +1,9 @@
 import React, { Fragment } from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography, Avatar, List, ListItem, useMediaQuery, Theme } from "@material-ui/core";
-import {
-    GithubBox as GithubBoxIcon,
-    Gitlab as GitlabIcon,
-    Phone as PhoneIcon,
-    Email as EmailIcon,
-    MapMarker as MapMarkerIcon,
-    Facebook as FacebookIcon,
-    Linkedin as LinkedinIcon,
-} from "mdi-material-ui";
+import { Phone as PhoneIcon, Email as EmailIcon, MapMarker as MapMarkerIcon } from "mdi-material-ui";
 import profilePic from "../../Assets/profilePic.jpg";
-import Links from "../../Constants/Links";
+import ContactLinks from "../../Components/ContactLinks";
 import Styles from "./index.Styles";
 
 const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
@@ -49,28 +41,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         <MapMarkerIcon className={classes.listItemIcon} /> {"Navalur, Chennai, India"}
                     </ListItem>
                 </List>
-                <List className={classes.linksList}>
-                    <ListItem className={classes.linksListItem}>
-                        <a href={Links.github} className={classes.LinksListItemIcon}>
-                            <GithubBoxIcon />
-                        </a>
-                    </ListItem>
-                    <ListItem className={classes.linksListItem}>
-                        <a href={Links.gitlab} className={classes.LinksListItemIcon}>
-                            <GitlabIcon />
-                        </a>
-                    </ListItem>
-                    <ListItem className={classes.linksListItem}>
-                        <a href={Links.facebook} className={classes.LinksListItemIcon}>
-                            <FacebookIcon />
-                        </a>
-                    </ListItem>
-                    <ListItem className={classes.linksListItem}>
-                        <a href={Links.linkedIn} className={classes.LinksListItemIcon}>
-                            <LinkedinIcon />
-                        </a>
-                    </ListItem>
-                </List>
+                <ContactLinks />
             </div>
         </div>
     );
