@@ -23,6 +23,13 @@ interface Education {
     highlightedSubText: string;
     description: string;
 }
+
+interface WorkExperiences {
+    name: string;
+    highlightedName: string;
+    highlightedSubText: string;
+    listItems: string[];
+}
 interface IContent {
     HomeSection: {
         name: string;
@@ -35,6 +42,10 @@ interface IContent {
     Skills: Skills;
     Experiences: {
         education: Education[];
+        workExperiences: {
+            listHeader: string;
+            listItems: WorkExperiences[];
+        };
     };
 }
 

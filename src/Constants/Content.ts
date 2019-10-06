@@ -67,6 +67,29 @@ const Content: IContent = {
                 highlightedSubText: "2005-2008",
             },
         ],
+        workExperiences: {
+            listHeader: "Responsibility",
+            listItems: [
+                {
+                    name: "UI/UX Designer",
+                    highlightedName: "IronSketch",
+                    highlightedSubText: "2005-2008",
+                    listItems: ["Validate CSS", "Project Management"],
+                },
+                {
+                    name: "UI/UX Designer",
+                    highlightedName: "IronSketch",
+                    highlightedSubText: "2005-2008",
+                    listItems: ["Validate CSS", "Project Management"],
+                },
+                {
+                    name: "UI/UX Designer",
+                    highlightedName: "IronSketch",
+                    highlightedSubText: "2005-2008",
+                    listItems: ["Validate CSS", "Project Management"],
+                },
+            ],
+        },
     },
 };
 

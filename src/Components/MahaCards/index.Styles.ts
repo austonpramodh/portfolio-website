@@ -40,6 +40,29 @@ const Styles = (theme: Theme) =>
         highlightedHeader: {
             color: theme.palette.primary.main,
         },
+        listHeader: {
+            fontWeight: "bold",
+            textAlign: "left",
+            fontSize: "0.85rem",
+        },
+        list: {
+            textAlign: "left",
+            marginTop: 0,
+        },
+        listItem: {
+            display: "flex",
+            alignItems: "center",
+            "&::before": {
+                fontSize: 1,
+                content: `"a"`,
+                height: "0.75rem",
+                width: "0.75rem",
+                color: "transparent",
+                backgroundColor: "white",
+                borderRadius: "50%",
+                marginRight: theme.spacing(1),
+            },
+        },
     });
 
 export default Styles;

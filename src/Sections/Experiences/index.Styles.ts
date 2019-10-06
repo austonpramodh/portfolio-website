@@ -11,7 +11,7 @@ const Styles = (theme: Theme) =>
             flexDirection: "column",
             marginTop: "0px !important",
             [theme.breakpoints.up("md")]: {
-                // flexDirection: "row",
+                flexDirection: "row",
             },
         },
         containerMediaQueries: { ...MainContainerMediaQueries(theme).root },
@@ -20,6 +20,14 @@ const Styles = (theme: Theme) =>
         },
         educationCards: {
             width: "100%",
+        },
+        sections: {
+            width: "100%",
+            [theme.breakpoints.up("md")]: {
+                marginRight: theme.spacing(1),
+                marginLeft: theme.spacing(1),
+                marginBottom: "auto",
+            },
         },
     });
 
