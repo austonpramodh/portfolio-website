@@ -16,6 +16,13 @@ interface Skills {
     technicalSkills: Skill[];
     professionalSkills: Skill[];
 }
+
+interface Education {
+    name: string;
+    highlightedName: string;
+    highlightedSubText: string;
+    description: string;
+}
 interface IContent {
     HomeSection: {
         name: string;
@@ -26,6 +33,9 @@ interface IContent {
     };
     Services: Service[];
     Skills: Skills;
+    Experiences: {
+        education: Education[];
+    };
 }
 
 export default IContent;

@@ -6,6 +6,7 @@ import Home from "./Sections/Home";
 import AboutMe from "./Sections/AboutMe";
 import Service from "./Sections/Service";
 import Skills from "./Sections/Skills";
+import Experiences from "./Sections/Experiences";
 
 const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
@@ -15,6 +16,7 @@ const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             <AboutMe />
             <Service />
             <Skills />
+            <Experiences />
         </div>
     );
 };

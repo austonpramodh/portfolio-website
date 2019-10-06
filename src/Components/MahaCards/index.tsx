@@ -17,17 +17,25 @@ interface MahaCard {
 
 interface IProps {
     Cards: MahaCard[];
+    paperClass?: string;
 }
 
-const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, Cards }) => {
+const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, Cards, paperClass }) => {
     return (
         <React.Fragment>
-            {Cards.map(({ Icon, name, description, IconColor }, index) => (
-                <Paper key={`service${index}`} className={classes.paper}>
+            {Cards.map(({ Icon, name, description, IconColor, highlightedName, highlightedSubText }, index) => (
+                <Paper key={`service${index}`} className={`${classes.paper} ${paperClass}`}>
                     {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
-                    <Typography className={classes.subHeader} variant="h3">
-                        {name}
-                    </Typography>
+                    <div className={classes.headersSection}>
+                        <Typography className={classes.header} variant={highlightedName ? "h4" : "h3"}>
+                            {name}&nbsp;<span className={classes.highlightedHeader}>{highlightedName}</span>
+                        </Typography>
+                    </div>
+                    {highlightedSubText && (
+                        <Typography color={"primary"} className={classes.subHeader}>
+                            {highlightedSubText}
+                        </Typography>
+                    )}
                     <Typography className={classes.description}>{description}</Typography>
                 </Paper>
             ))}

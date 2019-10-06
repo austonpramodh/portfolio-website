@@ -22,12 +22,23 @@ const Styles = (theme: Theme) =>
             marginBottom: theme.spacing(2.5),
         },
         subHeader: {
-            textAlign: "left",
-            marginBottom: theme.spacing(2),
+            display: "flex",
+            marginBottom: theme.spacing(1),
+            fontWeight: "bold",
         },
         description: {
             textAlign: "left",
             marginBottom: "1rem",
+        },
+        header: {
+            textAlign: "left",
+        },
+        headersSection: {
+            display: "flex",
+            marginBottom: theme.spacing(2),
+        },
+        highlightedHeader: {
+            color: theme.palette.primary.main,
         },
     });
 
