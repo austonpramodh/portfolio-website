@@ -1,10 +1,10 @@
 import React from "react";
 import { WithStyles } from "@material-ui/styles/withStyles";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
+import MahaPaper from "../MahaPaper";
 import Styles from "./index.Styles";
 
 interface MahaCard {
@@ -28,7 +28,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, Card
         <React.Fragment>
             {Cards.map(
                 ({ Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems }, index) => (
-                    <Paper key={`service${index}`} className={`${classes.paper} ${paperClass}`}>
+                    <MahaPaper key={`service${index}`} className={paperClass}>
                         {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
                         <div className={classes.headersSection}>
                             <Typography className={classes.header} variant={highlightedName ? "h4" : "h3"}>
@@ -51,7 +51,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, Card
                                 ))}
                             </ul>
                         )}
-                    </Paper>
+                    </MahaPaper>
                 ),
             )}
         </React.Fragment>
