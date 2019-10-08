@@ -1,8 +1,24 @@
-import { Bullseye, Xml, Ungroup } from "mdi-material-ui";
+import {
+    Bullseye,
+    Xml,
+    Ungroup,
+    // GithubBox as GithubBoxIcon,
+    // Gitlab as GitlabIcon,
+    Phone as PhoneIcon,
+    Email as EmailIcon,
+    MapMarker as MapMarkerIcon,
+    // Facebook as FacebookIcon,
+    // Linkedin as LinkedinIcon,
+} from "mdi-material-ui";
 import IContent from "./ContentInterface";
 
 const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 laoreet dolore magna aliquam erat volutpat.`;
+const BasicInfo = {
+    number: "+91 8095600003",
+    email: "austonpramodh@gmail.com",
+    address: "Navalur,Chennai",
+};
 
 const Content: IContent = {
     HomeSection: {
@@ -91,6 +107,13 @@ const Content: IContent = {
             ],
         },
     },
+    Contact: {
+        ContactsCard: [
+            { Icon: EmailIcon, content: BasicInfo.email, heading: "Email" },
+            { Icon: PhoneIcon, content: BasicInfo.number, heading: "Phone" },
+            { Icon: MapMarkerIcon, content: "Navalur, Chennai", heading: "Address" },
+        ],
+    },
 };
 
 export const HomeSection = Content.HomeSection;
@@ -98,5 +121,6 @@ export const AboutMeSection = Content.AboutMeSection;
 export const ServicesSection = Content.Services;
 export const SkillsSection = Content.Skills;
 export const ExperiencesSection = Content.Experiences;
+export const ContactsSection = Content.Contact;
 
 export default Content;
