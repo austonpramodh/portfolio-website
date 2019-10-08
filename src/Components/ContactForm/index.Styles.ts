@@ -19,7 +19,10 @@ const Styles = (theme: Theme) =>
         errorText: {
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1),
-            height: "1.3rem",
+            height: "2.6rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
         },
     });
 
