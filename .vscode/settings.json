@@ -19,5 +19,7 @@
         { "language": "typescript", "autoFix": true },
         { "language": "typescriptreact", "autoFix": true }
     ],
-    "eslint.enable": true
+    "eslint.enable": true,
+    "typescript.tsserver.log": "verbose",
+    "terminal.integrated.rendererType": "dom"
 }

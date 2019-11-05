@@ -2,21 +2,20 @@ import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { CssBaseline } from "@material-ui/core";
 import Styles from "./App.Styles";
-import Home from "./Sections/Home";
-import AboutMe from "./Sections/AboutMe";
-import Service from "./Sections/Service";
-import Skills from "./Sections/Skills";
-import Experiences from "./Sections/Experiences";
+import Sections from "./Sections";
+import NavBar from "./Components/NavBar";
 
 const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <div className={classes.container}>
             <CssBaseline />
-            <Home />
-            <AboutMe />
-            <Service />
-            <Skills />
-            <Experiences />
+            <NavBar />
+
+            {Sections.map(({ id, Component }) => (
+                <section key={id} id={id}>
+                    <Component />
+                </section>
+            ))}
         </div>
     );
 };
