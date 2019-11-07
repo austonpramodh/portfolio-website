@@ -18,10 +18,10 @@ const Styles = (theme: Theme) =>
         imageContainer: {
             height: "auto",
             width: "90%",
-            margin: "8px",
+            margin: theme.spacing(1),
         },
         contentContainer: {
-            padding: "8px",
+            padding: theme.spacing(1),
             maxWidth: "90%",
             display: "flex",
             flexDirection: "column",
@@ -30,14 +30,14 @@ const Styles = (theme: Theme) =>
             padding: 4,
         },
         skillListItem: {
-            padding: "4px 10px",
+            padding: `${theme.spacing(0.5)}px ${theme.spacing(1)}px`,
             width: "auto",
             border: `1px solid ${theme.palette.primary.main}`,
-            borderRadius: 4,
-            margin: "4px 8px",
+            borderRadius: theme.spacing(0.5),
+            margin: `${theme.spacing(0.5)}px ${theme.spacing(1)}px`,
         },
         skillList: {
-            margin: "16px 0px",
+            margin: `${theme.spacing(2)}px 0px`,
             padding: 0,
             listStyleType: "none",
             listStyleImage: "none",
@@ -48,12 +48,12 @@ const Styles = (theme: Theme) =>
         cvDownloadButton: {
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.text.primary,
-            padding: "8px 30px",
+            padding: `${theme.spacing(1)}px ${theme.spacing(4)}px`,
             borderRadius: 20,
             margin: "auto",
         },
         downloadIcon: {
-            marginLeft: "4px",
+            marginLeft: theme.spacing(0.5),
         },
         cvDownloadText: {
             fontWeight: "bold",

@@ -26,7 +26,15 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         return (
                             <ListItem
                                 key={content}
-                                className={mobileOnlyClickable ? (isMobile ? classes.listItem : "") : classes.listItem}
+                                className={
+                                    link
+                                        ? mobileOnlyClickable
+                                            ? isMobile
+                                                ? classes.listItem
+                                                : ""
+                                            : classes.listItem
+                                        : " "
+                                }
                             >
                                 <a href={mobileOnlyClickable ? (isMobile ? link : undefined) : link}>
                                     <Icon className={classes.listItemIcon} /> {content}

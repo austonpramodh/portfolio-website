@@ -15,11 +15,11 @@ import IContent, { IContact, ISocialLink } from "./ContentInterface";
 const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 laoreet dolore magna aliquam erat volutpat.`;
 const BasicInfo = {
-    name: "boza",
+    name: "Auston Pramodh Barboza",
     number: "+91 8095600003",
     email: "austonpramodh@gmail.com",
     address: "Navalur, Chennai",
-    position: "gineer",
+    position: "Software Engineer",
 };
 
 const ContactsList: IContact[] = [
