@@ -22,18 +22,18 @@ const BasicInfo = {
 
 const Content: IContent = {
     HomeSection: {
-        name: "Auston Barboza",
+        name: "Aswathy Mohan",
     },
     AboutMeSection: {
-        skills: ["Javascript", "nodeJs", "React", "React Native", "CSS"],
+        skills: ["Dotnet", "Docker", "Craftsmen"],
         cvDownloadurl: "#",
     },
     Services: [
         {
             Icon: Bullseye,
             description: temporaryDescription,
-            name: "UI Design",
-            IconColor: "#9774fa",
+            name: "Crafts Design",
+            IconColor: "rgb(255,0,0)",
         },
         {
             Icon: Xml,
@@ -87,10 +87,10 @@ const Content: IContent = {
             listHeader: "Responsibility",
             listItems: [
                 {
-                    name: "UI/UX Designer",
-                    highlightedName: "IronSketch",
-                    highlightedSubText: "2005-2008",
-                    listItems: ["Validate CSS", "Project Management"],
+                    name: "Dotnet Developer at",
+                    highlightedName: "CES",
+                    highlightedSubText: "2019-Present",
+                    listItems: ["Backend Engineer", "Bottle Maker"],
                 },
                 {
                     name: "UI/UX Designer",

@@ -13,13 +13,15 @@
         "@types/yup": "^0.26.24",
         "emailjs-com": "^2.4.0",
         "formik": "^1.5.8",
+        "@types/react-scrollspy": "^3.3.1",
         "material-ui-image": "^3.2.1",
         "mdi-material-ui": "^6.7.0",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "react-scripts": "3.1.2",
-        "typescript": "3.6.3",
-        "yup": "^0.27.0"
+        "yup": "^0.27.0",
+        "react-scrollspy": "^3.4.0",
+        "typescript": "3.6.3"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^1.13.0",

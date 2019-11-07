@@ -12,6 +12,7 @@ const CustomTheme = createMuiTheme({
         text: { primary: "#ffffff", secondary: "#00000" },
         background: {
             default: "#100e17",
+            // default: indigo[900],
             paper: "#212529",
             // default: "#0000FF",
         },
