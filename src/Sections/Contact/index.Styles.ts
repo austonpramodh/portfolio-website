@@ -9,7 +9,6 @@ const Styles = (theme: Theme) =>
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginTop: "0px !important",
             marginBottom: `${theme.spacing(1)}px !important`,
         },
         containerMediaQueries: { ...MainContainerMediaQueries(theme).root },

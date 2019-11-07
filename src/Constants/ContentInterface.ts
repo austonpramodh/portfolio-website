@@ -56,6 +56,7 @@ interface IContent {
         socialLinks: ISocialLink[];
     };
     AboutMeSection: {
+        description: string;
         skills: string[];
         cvDownloadurl: string;
     };

@@ -54,6 +54,8 @@ const Content: IContent = {
     AboutMeSection: {
         skills: ["Dotnet", "Docker", "Craftsmen"],
         cvDownloadurl: "#",
+        description: `Hello, I’m a Patrick, web-developer based on Paris. I have rich experience in web site design &
+        building and customization. Also I am good at`,
     },
     Services: [
         {

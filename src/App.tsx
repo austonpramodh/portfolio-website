@@ -11,7 +11,7 @@ const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             <CssBaseline />
             <NavBar Sections={Sections} />
             {Sections.map(({ id, Component }) => (
-                <section key={id} id={id}>
+                <section key={id} id={id} className={classes.sectionContainer}>
                     <Component />
                 </section>
             ))}

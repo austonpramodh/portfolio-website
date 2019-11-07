@@ -19,10 +19,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <Typography className={classes.texts} variant="h2">
                     About Me
                 </Typography>
-                <Typography className={classes.texts}>
-                    Hello, I’m a Patrick, web-developer based on Paris. I have rich experience in web site design &
-                    building and customization. Also I am good at
-                </Typography>
+                <Typography className={classes.texts}>{AboutMeSection.description}</Typography>
 
                 <ul className={classes.skillList}>
                     {skills.map(skill => (

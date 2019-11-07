@@ -6,6 +6,9 @@ const Styles = () =>
         container: {
             height: "100vh",
         },
+        sectionContainer: {
+            display: "flex",
+        },
     });
 
 export default Styles;
