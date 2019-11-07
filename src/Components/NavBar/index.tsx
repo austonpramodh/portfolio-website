@@ -6,7 +6,7 @@ import { Menu as MenuIcon } from "mdi-material-ui";
 import { SectionsInterface } from "../../Sections";
 import Styles from "./index.Styles";
 
-const position = 128;
+const position = 64;
 
 interface INavBar extends WithStyles<typeof Styles> {
     Sections: SectionsInterface;

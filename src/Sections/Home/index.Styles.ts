@@ -5,7 +5,6 @@ import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries
 const Styles = (theme: Theme) =>
     createStyles({
         container: {
-            height: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -13,6 +12,7 @@ const Styles = (theme: Theme) =>
             marginTop: "0px !important",
             marginBottom: "0px !important",
             [theme.breakpoints.up("md")]: {
+                height: "100vh",
                 flexDirection: "row-reverse",
             },
         },
