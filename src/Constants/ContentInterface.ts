@@ -32,14 +32,28 @@ interface WorkExperiences {
     listItems: string[];
 }
 
-interface ContactCard {
+export interface IContact {
     Icon: Icon;
     heading: string;
     content: string;
+    link?: string;
+    mobileOnlyClickable?: boolean;
+}
+
+export interface ISocialLink {
+    Icon: Icon;
+    name: string;
+    link: string;
 }
 interface IContent {
     HomeSection: {
         name: string;
+        position: string;
+        email: string;
+        mobile: string;
+        location: string;
+        contactsList: IContact[];
+        socialLinks: ISocialLink[];
     };
     AboutMeSection: {
         skills: string[];
@@ -55,7 +69,7 @@ interface IContent {
         };
     };
     Contact: {
-        ContactsCard: ContactCard[];
+        ContactsCard: IContact[];
     };
 }
 

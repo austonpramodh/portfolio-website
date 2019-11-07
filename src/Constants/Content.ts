@@ -2,27 +2,54 @@ import {
     Bullseye,
     Xml,
     Ungroup,
-    // GithubBox as GithubBoxIcon,
-    // Gitlab as GitlabIcon,
     Phone as PhoneIcon,
     Email as EmailIcon,
     MapMarker as MapMarkerIcon,
-    // Facebook as FacebookIcon,
-    // Linkedin as LinkedinIcon,
+    GithubBox as GithubBoxIcon,
+    Gitlab as GitlabIcon,
+    Facebook as FacebookIcon,
+    Linkedin as LinkedinIcon,
 } from "mdi-material-ui";
-import IContent from "./ContentInterface";
+import IContent, { IContact, ISocialLink } from "./ContentInterface";
 
 const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 laoreet dolore magna aliquam erat volutpat.`;
 const BasicInfo = {
+    name: "boza",
     number: "+91 8095600003",
     email: "austonpramodh@gmail.com",
-    address: "Navalur,Chennai",
+    address: "Navalur, Chennai",
+    position: "gineer",
 };
+
+const ContactsList: IContact[] = [
+    { Icon: EmailIcon, content: BasicInfo.email, heading: "Email", link: "mailto:austonpramodh@gmail.com" },
+    {
+        Icon: PhoneIcon,
+        content: BasicInfo.number,
+        heading: "Phone",
+        link: "callto:+918095600003",
+        mobileOnlyClickable: true,
+    },
+    { Icon: MapMarkerIcon, content: BasicInfo.address, heading: "Address" },
+];
+
+const SocialLinks: ISocialLink[] = [
+    { Icon: GithubBoxIcon, link: "https://www.github.com/austonpramodh", name: "Github" },
+    { Icon: GitlabIcon, link: "https://www.gitlab.com/austonpramodh", name: "GitLab" },
+    { Icon: FacebookIcon, link: "https://fb.me/austonpramodh", name: "Facebook" },
+    { Icon: LinkedinIcon, link: "https://linkedin.com/in/austonpramodh", name: "LinkedIn" },
+];
 
 const Content: IContent = {
     HomeSection: {
-        name: "Aswathy Mohan",
+        name: BasicInfo.name,
+        position: BasicInfo.position,
+        email: BasicInfo.email,
+        location: BasicInfo.address,
+        mobile: BasicInfo.number,
+        contactsList: ContactsList,
+        socialLinks: SocialLinks,
     },
     AboutMeSection: {
         skills: ["Dotnet", "Docker", "Craftsmen"],
@@ -108,11 +135,7 @@ const Content: IContent = {
         },
     },
     Contact: {
-        ContactsCard: [
-            { Icon: EmailIcon, content: BasicInfo.email, heading: "Email" },
-            { Icon: PhoneIcon, content: BasicInfo.number, heading: "Phone" },
-            { Icon: MapMarkerIcon, content: "Navalur, Chennai", heading: "Address" },
-        ],
+        ContactsCard: ContactsList,
     },
 };
 
