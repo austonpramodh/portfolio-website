@@ -16,7 +16,7 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
     const StylesWithTheme = Styles(theme);
     const isMobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const [scrolled, setScrolled] = useState(true);
+    const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
         // console.log(scrolled);
@@ -30,17 +30,12 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
         }
     };
 
-    const componentDidMount = () => {
-        document.addEventListener("scroll", handleScroll);
-    };
-    const componentDidUnmount = () => {
-        document.removeEventListener("scroll", handleScroll);
-    };
-
     React.useEffect(() => {
-        componentDidMount();
-        return componentDidUnmount;
-    }, [1]);
+        document.addEventListener("scroll", handleScroll);
+        return () => {
+            document.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <header
