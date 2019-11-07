@@ -10,14 +10,15 @@ const Styles = (theme: Theme) =>
             paddingRight: theme.spacing(1),
             position: "fixed",
             zIndex: theme.zIndex.appBar,
+            transition: "background-color 0.3s ease-in",
             [theme.breakpoints.up("sm")]: {
-                paddingTop: "20px",
-                paddingBottom: "20px",
+                paddingTop: theme.spacing(2.5),
+                paddingBottom: theme.spacing(2.5),
             },
         },
         mobileHeader: {
             display: "flex",
-            minHeight: "64px",
+            minHeight: theme.spacing(8),
             alignItems: "center",
         },
         icon: {
@@ -35,9 +36,19 @@ const Styles = (theme: Theme) =>
         },
         linkItem: {
             margin: `0px ${theme.spacing(1)}px`,
+            transition: "color 0.3s ease-in-out",
+            "&:hover": {
+                color: theme.palette.primary.light,
+            },
         },
         activeLink: {
-            color: "blue",
+            borderBottom: `2px solid ${theme.palette.primary.dark}`,
+            "&:hover": {
+                color: theme.palette.text.primary,
+            },
+            "&>a": {
+                cursor: "default",
+            },
         },
     });
 

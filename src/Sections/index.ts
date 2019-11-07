@@ -10,7 +10,9 @@ interface Section {
     id: string;
 }
 
-const Sections: Section[] = [
+export type SectionsInterface = Section[];
+
+const Sections: SectionsInterface = [
     { name: "Home", Component: Home, id: "home" },
     { name: "About Me", Component: AboutMe, id: "about" },
     { name: "Services", Component: Service, id: "services" },

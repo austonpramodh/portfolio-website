@@ -17,9 +17,9 @@ const MainContainerMediaQueries = (theme: Theme) => {
             [theme.breakpoints.up("md")]: {
                 width: `${theme.breakpoints.width("md") - 40}px`,
             },
-            [theme.breakpoints.up("lg")]: {
-                width: `${theme.breakpoints.width("lg") - 60}px`,
-            },
+            // [theme.breakpoints.up("lg")]: {
+            //     width: `${theme.breakpoints.width("lg") - 60}px`,
+            // },
         },
     });
 };

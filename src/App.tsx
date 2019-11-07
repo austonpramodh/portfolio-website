@@ -9,8 +9,7 @@ const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <div className={classes.container}>
             <CssBaseline />
-            <NavBar />
-
+            <NavBar Sections={Sections} />
             {Sections.map(({ id, Component }) => (
                 <section key={id} id={id}>
                     <Component />
