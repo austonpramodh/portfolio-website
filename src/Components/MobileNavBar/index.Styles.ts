@@ -33,6 +33,7 @@ const Styles = (theme: Theme) =>
         },
         activeLink: {
             borderBottom: `${theme.spacing(0.5)}px solid ${theme.palette.primary.main}`,
+            borderRadius: `${theme.spacing(0.5)}px`,
         },
         linkItem: {
             margin: `${theme.spacing(2)}px 0px`,

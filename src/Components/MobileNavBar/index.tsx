@@ -30,6 +30,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
                         items={Sections.map(({ id }) => id)}
                         currentClassName={classes.activeLink}
                         style={{ ...StylesWithTheme.list }}
+                        offset={-100}
                     >
                         {Sections.map(({ name, id }) => (
                             <li key={id} className={classes.linkItem}>
