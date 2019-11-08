@@ -6,8 +6,6 @@ const Styles = (theme: Theme) =>
         header: {
             minHeight: "64px",
             width: "100%",
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
             position: "fixed",
             zIndex: theme.zIndex.appBar,
             transition: "background-color 0.3s ease-in",
@@ -16,14 +14,11 @@ const Styles = (theme: Theme) =>
                 paddingBottom: theme.spacing(2.5),
             },
         },
-        mobileHeader: {
-            display: "flex",
-            minHeight: theme.spacing(8),
-            alignItems: "center",
-        },
         icon: {
             height: "2em",
             width: "2em",
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
         },
         list: {
             position: "fixed",

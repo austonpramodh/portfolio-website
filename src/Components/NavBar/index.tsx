@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { withStyles, WithStyles, useTheme } from "@material-ui/styles";
 import { Theme, Typography, useMediaQuery } from "@material-ui/core";
 import Scrollspy from "react-scrollspy";
-import { Menu as MenuIcon } from "mdi-material-ui";
 import { SectionsInterface } from "../../Sections";
+import MobileNavBar from "../MobileNavBar";
 import Styles from "./index.Styles";
 
 const position = 64;
@@ -14,7 +14,7 @@ interface INavBar extends WithStyles<typeof Styles> {
 const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
     const theme: Theme = useTheme();
     const StylesWithTheme = Styles(theme);
-    const isMobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
+    const isMobileScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -42,12 +42,8 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
             className={classes.header}
             style={{ backgroundColor: scrolled ? theme.palette.background.paper : "transparent" }}
         >
+            {isMobileScreen && <MobileNavBar Sections={Sections} />}
             {!isMobileScreen && (
-                <div className={classes.mobileHeader}>
-                    <MenuIcon className={classes.icon} />
-                </div>
-            )}
-            {isMobileScreen && (
                 <Scrollspy
                     items={Sections.map(({ id }) => id)}
                     currentClassName={classes.activeLink}
