@@ -15,9 +15,9 @@ interface FormikInitialValues {
 }
 
 const formikInitialValues: FormikInitialValues = {
-    email: "austonpramodh@gmail.com",
-    name: "Auston",
-    message: "jkbkjb",
+    email: "",
+    name: "",
+    message: "",
 };
 const ValidationSchema = Yup.object().shape({
     email: Yup.string()
