@@ -66,6 +66,9 @@ const Styles = (theme: Theme) =>
         footerLinksContainer: {
             width: "100%",
         },
+        contactFormHeading: {
+            marginTop: theme.spacing(2),
+        },
     });
 
 export default Styles;

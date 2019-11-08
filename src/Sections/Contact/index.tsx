@@ -24,7 +24,8 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     </MahaPaper>
                 ))}
             </div>
-            <div>
+            <div className={classes.contactFormHeading}>
+                <Typography variant="h2">Lets Connect!</Typography>
                 <ContactForm />
             </div>
             <div className={classes.footer}>
