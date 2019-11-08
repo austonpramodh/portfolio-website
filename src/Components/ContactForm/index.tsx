@@ -77,7 +77,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         )}
                         {submittingState.submittingError && (
                             <Typography variant="h5" color="error">
-                                There is Some error, Please try reloading the page or check your internet connection.
+                                Something went wrong, Please try again later.
                             </Typography>
                         )}
                     </div>
