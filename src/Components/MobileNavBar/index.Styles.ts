@@ -29,6 +29,8 @@ const Styles = (theme: Theme) =>
             transform: "translateY(calc(50vh - 32px)) translateX(0vh)",
         },
         mobileMenuCloseIcon: {
+            height: "2em",
+            width: "2em",
             marginLeft: "auto",
         },
         activeLink: {
