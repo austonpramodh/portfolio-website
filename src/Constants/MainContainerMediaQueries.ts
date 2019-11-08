@@ -10,6 +10,8 @@ const MainContainerMediaQueries = (theme: Theme) => {
                 width: "auto",
                 paddingRight: `${theme.spacing(2)}px`,
                 paddingLeft: `${theme.spacing(2)}px`,
+                marginTop: theme.spacing(5),
+                marginBottom: theme.spacing(5),
             },
             [theme.breakpoints.up("sm")]: {
                 width: `${theme.breakpoints.width("sm") - 30}px`,
