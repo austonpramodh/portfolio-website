@@ -13,36 +13,49 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
     const theme: Theme = useTheme();
     const StylesWithTheme = Styles(theme);
 
-    const [isMobileMenuOpen, setMobileMenu] = useState(true);
+    const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
+    const [isMobileMenuNeeded, setMobileMenuNeed] = useState(false);
 
     const handleOpenMobileMenu = () => {
-        setMobileMenu(!isMobileMenuOpen);
+        setMobileMenuNeed(true);
+        setTimeout(() => {
+            setisMobileMenuOpen(true);
+        }, 20);
         return true;
     };
 
+    const handleCloseMobileMenu = () => {
+        setisMobileMenuOpen(false);
+        setTimeout(() => {
+            setMobileMenuNeed(false);
+        }, 350);
+        return true;
+    };
     return (
         <React.Fragment>
             <div className={classes.mobileHeader}>
                 <MenuIcon className={classes.icon} onClick={handleOpenMobileMenu} />
-                <div className={`${classes.mobileMenu} ${isMobileMenuOpen ? classes.mobileMenuOpen : ""}`}>
-                    <CloseIcon className={classes.mobileMenuCloseIcon} onClick={handleOpenMobileMenu} />
-                    <Scrollspy
-                        items={Sections.map(({ id }) => id)}
-                        currentClassName={classes.activeLink}
-                        style={{ ...StylesWithTheme.list }}
-                        offset={-100}
-                    >
-                        {Sections.map(({ name, id }) => (
-                            <li key={id} className={classes.linkItem}>
-                                <a href={`#${id}`} onClick={handleOpenMobileMenu}>
-                                    <Typography color={"inherit"} variant="h6" className={classes.linkText}>
-                                        {name}
-                                    </Typography>
-                                </a>
-                            </li>
-                        ))}
-                    </Scrollspy>
-                </div>
+                {isMobileMenuNeeded && (
+                    <div className={`${classes.mobileMenu} ${isMobileMenuOpen ? classes.mobileMenuOpen : ""}`}>
+                        <CloseIcon className={classes.mobileMenuCloseIcon} onClick={handleCloseMobileMenu} />
+                        <Scrollspy
+                            items={Sections.map(({ id }) => id)}
+                            currentClassName={classes.activeLink}
+                            style={{ ...StylesWithTheme.list }}
+                            offset={-100}
+                        >
+                            {Sections.map(({ name, id }) => (
+                                <li key={id} className={classes.linkItem}>
+                                    <a href={`#${id}`} onClick={handleCloseMobileMenu}>
+                                        <Typography color={"inherit"} variant="h6" className={classes.linkText}>
+                                            {name}
+                                        </Typography>
+                                    </a>
+                                </li>
+                            ))}
+                        </Scrollspy>
+                    </div>
+                )}
             </div>
         </React.Fragment>
     );

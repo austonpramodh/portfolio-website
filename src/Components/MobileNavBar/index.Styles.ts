@@ -18,7 +18,7 @@ const Styles = (theme: Theme) =>
             height: "100vh",
             position: "absolute",
             background: theme.palette.background.default,
-            transform: "translateY(calc(50vh - 32px)) translateX(-50vh)",
+            transform: "translateY(calc(50vh - 32px)) translateX(calc(-55vh))",
             width: "100vw",
             transition: "transform 0.3s ease-in-out",
             display: "flex",
