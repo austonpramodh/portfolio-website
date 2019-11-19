@@ -1,23 +1,27 @@
 import { createStyles } from "@material-ui/styles";
 import Theme from "../../Theme";
 
+const iconSize = 64;
 const Styles = createStyles({
     container: {
+        position: "fixed",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
         background: Theme.palette.background.default,
-        height: "100vh",
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
     },
     hourglassContainer: {
         display: "inline-block",
-        position: "relative",
-        width: "64px",
-        height: "64px",
+        position: "absolute",
+        width: `${iconSize}px`,
+        height: `${iconSize}px`,
+        top: "50%",
+        left: "50%",
+        marginTop: `-${iconSize / 2}px`,
+        marginLeft: `-${iconSize / 2}px`,
     },
     hourglass: {
-        // content: " ",
         display: "block",
         borderRadius: "50%",
         width: 0,
