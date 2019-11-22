@@ -5,8 +5,10 @@ import Styles from "./App.Styles";
 import Sections from "./Sections";
 import NavBar from "./Components/NavBar";
 import CustomTheme from "./Theme";
+import cleanPageLoading from "./Utils/cleanPageLoading";
 
 const App: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
+    cleanPageLoading();
     return (
         <ThemeProvider theme={CustomTheme}>
             <div className={classes.container}>

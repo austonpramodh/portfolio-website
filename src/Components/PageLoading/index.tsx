@@ -1,6 +1,5 @@
 import React from "react";
 import Styles from "./index.Styles";
-import "./Animation.css";
 
 const PageLoading: React.FC = () => {
     return (
@@ -15,3 +14,9 @@ const PageLoading: React.FC = () => {
 };
 
 export default PageLoading;
+
+//helper for exposing directory for Animation.css
+export const PageLoadingDirectory = __dirname;
+
+//helper for maintaining same id and avoiding typo in cleanDom module and startScript
+export const PageLoadingId = "pageLoadingId";
