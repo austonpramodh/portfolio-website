@@ -21,6 +21,7 @@ const Styles = (theme: Theme) =>
             height: 240,
             width: 240,
             border: "20px solid rgba(0, 0, 0, 0.4)",
+            background: "transparent",
         },
         avatarBorder: {
             border: "20px solid rgba(0, 0, 0, 0.9)",

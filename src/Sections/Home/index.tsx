@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography, Avatar, List, ListItem, useMediaQuery, Theme } from "@material-ui/core";
+import Image from "material-ui-image";
 import profilePic from "../../Assets/profilePic.jpg";
 import ContactLinks from "../../Components/ContactLinks";
 import { HomeSection } from "../../Constants/Content";
@@ -12,7 +13,9 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.avatarBorder}>
-                <Avatar className={classes.avatar} src={profilePic}></Avatar>
+                <Avatar className={classes.avatar}>
+                    <Image src={profilePic} style={{ background: "transparent", width: "100%" }}></Image>
+                </Avatar>
             </div>
             <div>
                 <Typography className={classes.promo}>{"Hello I'm"}</Typography>
