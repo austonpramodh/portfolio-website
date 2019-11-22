@@ -13,7 +13,11 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
-                    <Image src={HomeSection.profilePicture} style={{ background: "transparent", width: "100%" }} />
+                    <Image
+                        alt={HomeSection.profilePictureAlt}
+                        src={HomeSection.profilePicture}
+                        style={{ background: "transparent", width: "100%" }}
+                    />
                 </Avatar>
             </div>
             <div>

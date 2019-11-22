@@ -53,6 +53,7 @@ const Content: IContent = {
         contactsList: ContactsList,
         socialLinks: SocialLinks,
         profilePicture: ProfilePic,
+        profilePictureAlt: "Auston Pramodh Barboza",
     },
     AboutMeSection: {
         descPicture: AboutMeImage,
@@ -60,6 +61,7 @@ const Content: IContent = {
         cvDownloadurl: "#",
         description: `Hello, I’m a Patrick, web-developer based on Paris. I have rich experience in web site design &
         building and customization. Also I am good at`,
+        descPictureAlt: "Web Developer, Available",
     },
     Services: [
         {

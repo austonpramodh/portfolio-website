@@ -12,7 +12,12 @@ const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.imageContainer}>
-                <Image style={{ background: "transparent" }} src={AboutMeSection.descPicture} aspectRatio={16 / 9} />
+                <Image
+                    alt={AboutMeSection.descPictureAlt}
+                    style={{ background: "transparent" }}
+                    src={AboutMeSection.descPicture}
+                    aspectRatio={16 / 9}
+                />
             </div>
             <div className={classes.contentContainer}>
                 <Typography className={classes.texts} variant="h2">

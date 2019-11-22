@@ -55,12 +55,14 @@ interface IContent {
         contactsList: IContact[];
         socialLinks: ISocialLink[];
         profilePicture: string;
+        profilePictureAlt: string;
     };
     AboutMeSection: {
         description: string;
         skills: string[];
         cvDownloadurl: string;
         descPicture: string;
+        descPictureAlt: string;
     };
     Services: Service[];
     Skills: Skills;
