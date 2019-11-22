@@ -54,11 +54,13 @@ interface IContent {
         location: string;
         contactsList: IContact[];
         socialLinks: ISocialLink[];
+        profilePicture: string;
     };
     AboutMeSection: {
         description: string;
         skills: string[];
         cvDownloadurl: string;
+        descPicture: string;
     };
     Services: Service[];
     Skills: Skills;

@@ -10,6 +10,8 @@ import {
     Facebook as FacebookIcon,
     Linkedin as LinkedinIcon,
 } from "mdi-material-ui";
+import AboutMeImage from "../Assets/ab-img.png";
+import ProfilePic from "../Assets/profilePic.jpg";
 import IContent, { IContact, ISocialLink } from "./ContentInterface";
 
 const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -50,8 +52,10 @@ const Content: IContent = {
         mobile: BasicInfo.number,
         contactsList: ContactsList,
         socialLinks: SocialLinks,
+        profilePicture: ProfilePic,
     },
     AboutMeSection: {
+        descPicture: AboutMeImage,
         skills: ["Dotnet", "Docker", "Craftsmen"],
         cvDownloadurl: "#",
         description: `Hello, I’m a Patrick, web-developer based on Paris. I have rich experience in web site design &
