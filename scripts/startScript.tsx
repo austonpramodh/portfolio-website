@@ -3,20 +3,19 @@ import path from "path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { JSDOM } from "jsdom";
-import PageLoading, { PageLoadingDirectory, PageLoadingId } from "../src/Components/PageLoading";
+import PageLoading, { PageLoadingDirectory, PageLoadingId, PageLoadingStyleId } from "../src/Components/PageLoading";
 
-const PageLoadingStyleId = `${PageLoadingId}Style`;
 const fsPromises = fs.promises;
 
-const generateStaticMarkup = () => {
+const generateStaticMarkup = (): string => {
     return renderToStaticMarkup(<PageLoading />);
 };
 
-const generateAnimationStaticCSS = () => {
+const generateAnimationStaticCSS = (): Promise<string> => {
     return fsPromises.readFile(path.join(PageLoadingDirectory, "Animation.css"), "utf8");
 };
 
-const removeIfAlreadyAppended = $ => {
+const removeIfAlreadyAppended = ($: JQueryStatic): void => {
     const pageLoadingDiv = $(`#${PageLoadingId}`);
     if (pageLoadingDiv) pageLoadingDiv.remove();
     const pageLoadingStyles = $(`#${PageLoadingStyleId}`);
@@ -27,8 +26,10 @@ const appendLoaderToHtml = async () => {
     try {
         const data = await fsPromises.readFile(path.join(__dirname, "../", "public", "./index.html"), "utf8");
         const { window } = new JSDOM(data);
-        const $ = require("jquery")(window);
+        const $ = require("jquery")(window) as JQueryStatic;
+
         removeIfAlreadyAppended($);
+
         const loadingDiv = `<div id="${PageLoadingId}">${generateStaticMarkup()}</div>`;
         const animationStyle = `<style id="${PageLoadingStyleId}">${await generateAnimationStaticCSS()}</style>`;
 

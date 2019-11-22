@@ -19,4 +19,5 @@ export default PageLoading;
 export const PageLoadingDirectory = __dirname;
 
 //helper for maintaining same id and avoiding typo in cleanDom module and startScript
-export const PageLoadingId = "pageLoadingId";
+export const PageLoadingId = "pageLoading";
+export const PageLoadingStyleId = "pageLoadingStyles";
