@@ -1,7 +1,7 @@
 import { createStyles } from "@material-ui/styles";
 import Theme from "../../Theme";
 
-const iconSize = 64;
+const iconContainerSize = 200;
 const Styles = createStyles({
     container: {
         position: "fixed",
@@ -12,14 +12,19 @@ const Styles = createStyles({
         background: Theme.palette.background.default,
     },
     hourglassContainer: {
-        display: "inline-block",
+        // display: "inline-block",
         position: "absolute",
-        width: `${iconSize}px`,
-        height: `${iconSize}px`,
+        width: `${iconContainerSize}px`,
+        height: `${iconContainerSize}px`,
         top: "50%",
         left: "50%",
-        marginTop: `-${iconSize / 2}px`,
-        marginLeft: `-${iconSize / 2}px`,
+        marginTop: `-${iconContainerSize / 2}px`,
+        marginLeft: `-${iconContainerSize / 2}px`,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        textAlign: "center",
     },
     hourglass: {
         display: "block",
@@ -34,6 +39,18 @@ const Styles = createStyles({
         animationDuration: "1s",
         animationTimingFunction: "linear",
         animationIterationCount: "infinite",
+    },
+    factText: {
+        marginTop: Theme.spacing(1),
+        marginBottom: Theme.spacing(1),
+        color: Theme.palette.text.primary,
+        fontWeight: "bold",
+        fontStyle: "italic",
+    },
+    loadingText: {
+        marginTop: Theme.spacing(1),
+        marginBottom: Theme.spacing(1),
+        color: Theme.palette.text.primary,
     },
 });
 
