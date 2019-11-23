@@ -1,10 +1,10 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
-import Image from "material-ui-image";
 import { Download as DownloadIcon } from "mdi-material-ui";
 
 import { AboutMeSection } from "../../Constants/Content";
+import AboutMeAnimation from "../../Animations/AboutMe";
 import Styles from "./index.Styles";
 
 const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
@@ -12,12 +12,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.imageContainer}>
-                <Image
-                    alt={AboutMeSection.descPictureAlt}
-                    style={{ background: "transparent" }}
-                    src={AboutMeSection.descPicture}
-                    aspectRatio={16 / 9}
-                />
+                <AboutMeAnimation />
             </div>
             <div className={classes.contentContainer}>
                 <Typography className={classes.texts} variant="h2">
