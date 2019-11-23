@@ -16,7 +16,10 @@ const jqeuryFactLoaderScript = `
 <script id="${jqeuryFactLoaderId}">
 $(document).ready(function(){
     $.getJSON("https://catfact.ninja/fact?max_length=50",function(data){
-        $("#${PageLoadingFactId}")[0].innerHTML = data.fact;
+        const PageLoadingFactElements = $("#${PageLoadingFactId}");
+         if(PageLoadingFactElements.length > 0){
+            PageLoadingFactElements[0].innerHTML = data.fact;
+        }
     });
 });
 </script>`;
