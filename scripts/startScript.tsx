@@ -11,18 +11,32 @@ import PageLoading, {
 } from "../src/Components/PageLoading";
 
 const fsPromises = fs.promises;
-const jqeuryFactLoaderId = "jqeuryFactLoader";
-const jqeuryFactLoaderScript = `
-<script id="${jqeuryFactLoaderId}">
-$(document).ready(function(){
-    $.getJSON("https://catfact.ninja/fact?max_length=50",function(data){
-        const PageLoadingFactElements = $("#${PageLoadingFactId}");
-         if(PageLoadingFactElements.length > 0){
-            PageLoadingFactElements[0].innerHTML = data.fact;
+const factLoaderId = "loadingFactLoader";
+
+const factSetterScript = `
+<script id="${factLoaderId}">
+        function loadingFactSetterScript () {
+            const opts = {
+                method: 'GET',      
+                headers: {}
+            };
+            
+            fetch('https://catfact.ninja/fact?max_length=50', opts)
+            .then(function (response) {
+            return response.json();
+            })
+            .then(function (data) {
+                const PageLoadingFactElement = document.getElementById("${PageLoadingFactId}");
+                if(PageLoadingFactElement){
+                    PageLoadingFactElement.innerHTML = data.fact;
+                }
+            });
         }
-    });
-});
-</script>`;
+
+    loadingFactSetterScript();
+
+</script>
+`;
 
 const generateStaticMarkup = (): string => {
     return renderToStaticMarkup(<PageLoading />);
@@ -37,8 +51,8 @@ const removeIfAlreadyAppended = ($: JQueryStatic): void => {
     if (pageLoadingDiv) pageLoadingDiv.remove();
     const pageLoadingStyles = $(`#${PageLoadingStyleId}`);
     if (pageLoadingStyles) pageLoadingStyles.remove();
-    const jqeuryFactLoaderElement = $(`#${jqeuryFactLoaderId}`);
-    if (jqeuryFactLoaderElement) jqeuryFactLoaderElement.remove();
+    const factLoaderScriptElement = $(`#${factLoaderId}`);
+    if (factLoaderScriptElement) factLoaderScriptElement.remove();
 };
 
 const appendLoaderToHtml = async () => {
@@ -53,7 +67,7 @@ const appendLoaderToHtml = async () => {
         const animationStyle = `<style id="${PageLoadingStyleId}">${await generateAnimationStaticCSS()}</style>`;
         $("body").append(loadingDiv);
         $("head").append(animationStyle);
-        $("head").append(jqeuryFactLoaderScript);
+        $("head").append(factSetterScript);
 
         const finalDomOutput = `<!DOCTYPE html> ${window.document.documentElement.outerHTML}`;
         await fsPromises.writeFile(path.join(__dirname, "../", "./public", "./index.html"), finalDomOutput);

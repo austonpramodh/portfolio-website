@@ -46,6 +46,7 @@ const Styles = createStyles({
         color: Theme.palette.text.primary,
         fontWeight: "bold",
         fontStyle: "italic",
+        width: "100%",
     },
     loadingText: {
         marginTop: Theme.spacing(1),
