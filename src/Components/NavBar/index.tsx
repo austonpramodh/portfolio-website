@@ -36,7 +36,6 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
             document.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
     return (
         <header
             className={classes.header}
@@ -47,7 +46,7 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
                 <Scrollspy
                     items={Sections.map(({ id }) => id)}
                     currentClassName={classes.activeLink}
-                    style={{ ...StylesWithTheme.list }}
+                    style={{ ...(StylesWithTheme.list as React.CSSProperties) }}
                     offset={-100}
                 >
                     {Sections.map(({ name, id }) => (

@@ -4,9 +4,9 @@ import Styles from "./index.Styles";
 const PageLoading: React.FC = () => {
     return (
         <React.Fragment>
-            <div style={{ ...Styles.container }}>
-                <div style={{ ...Styles.hourglassContainer }}>
-                    <span style={{ ...Styles.hourglass }}></span>
+            <div style={{ ...(Styles.container as React.CSSProperties) }}>
+                <div style={{ ...(Styles.hourglassContainer as React.CSSProperties) }}>
+                    <span style={{ ...(Styles.hourglass as React.CSSProperties) }}></span>
                 </div>
             </div>
         </React.Fragment>

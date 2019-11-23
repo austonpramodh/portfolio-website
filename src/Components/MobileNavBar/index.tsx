@@ -31,6 +31,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
         }, 350);
         return true;
     };
+
     return (
         <React.Fragment>
             <div className={classes.mobileHeader}>
@@ -41,7 +42,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
                         <Scrollspy
                             items={Sections.map(({ id }) => id)}
                             currentClassName={classes.activeLink}
-                            style={{ ...StylesWithTheme.list }}
+                            style={{ ...(StylesWithTheme.list as React.CSSProperties) }}
                             offset={-100}
                         >
                             {Sections.map(({ name, id }) => (
