@@ -62,6 +62,12 @@ const Styles = (theme: Theme) =>
             lineHeight: "54px",
         },
         ContactsListHovered: {},
+        scrollDownAnimContainer: {
+            height: theme.spacing(8),
+            width: theme.spacing(8),
+            position: "absolute",
+            bottom: theme.spacing(4),
+        },
     });
 
 export default Styles;
