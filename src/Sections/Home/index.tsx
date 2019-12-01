@@ -4,7 +4,6 @@ import { Typography, Avatar, List, ListItem, useMediaQuery, Theme } from "@mater
 import Image from "material-ui-image";
 import ContactLinks from "../../Components/ContactLinks";
 import { HomeSection } from "../../Constants/Content";
-import ScrollDownAnimation from "../../Animations/ScrollDown";
 import Styles from "./index.Styles";
 
 const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
@@ -52,9 +51,6 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 </List>
                 <ContactLinks />
             </div>
-            <a className={classes.scrollDownAnimContainer} href="/#about">
-                <ScrollDownAnimation />
-            </a>
         </div>
     );
 };
