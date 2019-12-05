@@ -14,7 +14,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
                     <Image
-                        alt={HomeSection.profilePictureAlt}
+                        // alt={HomeSection.profilePictureAlt}
                         src={HomeSection.profilePicture}
                         style={{ background: "transparent", width: "100%" }}
                     />
