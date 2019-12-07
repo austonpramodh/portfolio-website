@@ -12,7 +12,7 @@ const Service: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 What i do
             </Typography>
             <div className={classes.servicesContainer}>
-                <MahaCards Cards={ServicesSection} />
+                <MahaCards keyHeader="services" Cards={ServicesSection} />
             </div>
         </div>
     );

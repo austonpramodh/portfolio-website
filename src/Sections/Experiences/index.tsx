@@ -12,13 +12,18 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <Typography className={classes.header} variant="h2">
                     Education
                 </Typography>
-                <MahaCards paperClass={classes.educationCards} Cards={ExperiencesSection.education} />
+                <MahaCards
+                    keyHeader="eduCards"
+                    paperClass={classes.educationCards}
+                    Cards={ExperiencesSection.education}
+                />
             </div>
             <div className={classes.sections}>
                 <Typography className={classes.header} variant="h2">
                     Work Experiences
                 </Typography>
                 <MahaCards
+                    keyHeader="experiences"
                     paperClass={classes.educationCards}
                     listHeader={ExperiencesSection.workExperiences.listHeader}
                     Cards={ExperiencesSection.workExperiences.listItems}
