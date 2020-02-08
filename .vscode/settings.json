@@ -21,5 +21,8 @@
     ],
     "eslint.enable": true,
     "typescript.tsserver.log": "verbose",
-    "terminal.integrated.rendererType": "dom"
+    "terminal.integrated.rendererType": "dom",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
