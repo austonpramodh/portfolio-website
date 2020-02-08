@@ -67,7 +67,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                     );
 
                     return isMobileScreen ? (
-                        <React.Fragment key={`${keyHeader}${index}`}>MahaCard</React.Fragment>
+                        <React.Fragment key={`${keyHeader}${index}`}>{MahaCard}</React.Fragment>
                     ) : (
                         <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }} key={`${keyHeader}${index}`}>
                             {MahaCard}
