@@ -10,5 +10,5 @@ node_modules/
 lib/
 
 # ignore config folder exceot for examples
-config/
-!config/*.example.*
+src/config/**/*
+!src/config/**/*.example.json
