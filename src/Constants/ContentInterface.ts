@@ -61,7 +61,7 @@ interface IContent {
         description: string;
         skills: string[];
         cvDownloadurl: string;
-        descPicture: string;
+        // descPicture: string; //Animations Added
         descPictureAlt: string;
     };
     Services: Service[];
