@@ -13,9 +13,17 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/api/notify",
+        "function": "notify"
+      },
+      {
+        "source": "!/@(api)/**",
         "destination": "/index.html"
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

@@ -12,3 +12,4 @@ lib/
 # ignore config folder exceot for examples
 src/config/**/*
 !src/config/**/*.example.json
+**/*.log
