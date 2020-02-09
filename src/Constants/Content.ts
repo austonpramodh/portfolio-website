@@ -10,7 +10,7 @@ import {
     Facebook as FacebookIcon,
     Linkedin as LinkedinIcon,
 } from "mdi-material-ui";
-import AboutMeImage from "../Assets/ab-img.png";
+// import AboutMeImage from "../Assets/ab-img.png";
 import ProfilePic from "../Assets/profilePic.jpg";
 import IContent, { IContact, ISocialLink } from "./ContentInterface";
 
@@ -58,9 +58,9 @@ const Content: IContent = {
         profilePictureAlt: "Auston Pramodh Barboza",
     },
     AboutMeSection: {
-        descPicture: AboutMeImage,
-        cvDownloadurl: "#",
+        // descPicture: AboutMeImage,//Animation Added as replacement
         descPictureAlt: "Web Developer, Available",
+        cvDownloadurl: "#",
         description: `Hello, I’m a Auston, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at`,
         skills: [
             "HTML",
@@ -120,13 +120,13 @@ const Content: IContent = {
             {
                 name: "BTech, IT from",
                 description:
-                    "Completed Btech in Information Technology from Alliance College of Engineering and Design ",
+                    "Completed by Btech in Information Technology from Alliance College of Engineering and Design ",
                 highlightedName: "Alliance University",
                 highlightedSubText: "2015-2019",
             },
             {
                 name: "+2 from ",
-                description: "Completed PUC in Science Stream from St. John's Pre-University College",
+                description: "",
                 highlightedName: "St. John's Pre-University College",
                 highlightedSubText: "2013-2015",
             },
