@@ -50,7 +50,7 @@ interface IContent {
         name: string;
         position: string;
         email: string;
-        mobile: string;
+        // mobile: string;
         location: string;
         contactsList: IContact[];
         socialLinks: ISocialLink[];

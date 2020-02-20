@@ -2,17 +2,19 @@ import { createStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries";
 
-const Styles = (theme: Theme) =>
-    createStyles({
+const Styles = (theme: Theme) => {
+    const pageOffset = `${theme.spacing(16)}px`;
+    return createStyles({
         container: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginTop: "0px !important",
             marginBottom: "0px !important",
             [theme.breakpoints.up("md")]: {
-                height: "100vh",
+                marginTop: `${theme.spacing(8)}px !important`,
+                // paddingTop: pageOffset,
+                height: `calc(100vh - ${theme.spacing(16)}px - ${pageOffset})`,
                 flexDirection: "row-reverse",
             },
         },
@@ -63,5 +65,6 @@ const Styles = (theme: Theme) =>
         },
         ContactsListHovered: {},
     });
+};
 
 export default Styles;

@@ -9,6 +9,7 @@ import {
     Gitlab as GitlabIcon,
     Facebook as FacebookIcon,
     Linkedin as LinkedinIcon,
+    Twitter as TwitterIcon,
 } from "mdi-material-ui";
 // import AboutMeImage from "../Assets/ab-img.png";
 import ProfilePic from "../Assets/profilePic.jpg";
@@ -19,11 +20,11 @@ import IContent, { IContact, ISocialLink } from "./ContentInterface";
 
 const BasicInfo = {
     name: "Auston Pramodh Barboza",
-    number: "+91 8095600003",
     facebook: "m.me/austonpramodh",
     email: "austonpramodh@gmail.com",
     address: "Chennai, India",
     position: "Software Engineer",
+    // number: "",
 };
 
 const ContactsList: IContact[] = [
@@ -39,10 +40,11 @@ const ContactsList: IContact[] = [
 ];
 
 const SocialLinks: ISocialLink[] = [
+    { Icon: LinkedinIcon, link: "https://linkedin.com/in/austonpramodh", name: "LinkedIn" },
+    { Icon: FacebookIcon, link: "https://fb.me/austonpramodh", name: "Facebook" },
+    { Icon: TwitterIcon, link: "https://twitter.com/austonpramodh", name: "Twitter" },
     { Icon: GithubBoxIcon, link: "https://www.github.com/austonpramodh", name: "Github" },
     { Icon: GitlabIcon, link: "https://www.gitlab.com/austonpramodh", name: "GitLab" },
-    { Icon: FacebookIcon, link: "https://fb.me/austonpramodh", name: "Facebook" },
-    { Icon: LinkedinIcon, link: "https://linkedin.com/in/austonpramodh", name: "LinkedIn" },
 ];
 
 const Content: IContent = {
@@ -51,7 +53,7 @@ const Content: IContent = {
         position: BasicInfo.position,
         email: BasicInfo.email,
         location: BasicInfo.address,
-        mobile: BasicInfo.number,
+        // mobile: BasicInfo.number,
         contactsList: ContactsList,
         socialLinks: SocialLinks,
         profilePicture: ProfilePic,
