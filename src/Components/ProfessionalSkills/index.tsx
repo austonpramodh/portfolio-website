@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
-import { Typography, CircularProgress } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { Skill } from "../../Constants/ContentInterface";
+import AnimatedCirculatProgress from "../../Animations/CircularProgress";
 import Styles from "./index.Styles";
 
 interface IProps {
     Skills: Skill[];
 }
+
 const ProfessionalSkills: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, Skills }) => {
     return (
         <Fragment>
@@ -16,7 +18,7 @@ const ProfessionalSkills: React.FC<IProps & WithStyles<typeof Styles>> = ({ clas
                     <Fragment key={skill.name}>
                         <div className={classes.skill}>
                             <div className={classes.progressContainer}>
-                                <CircularProgress
+                                <AnimatedCirculatProgress
                                     size={75}
                                     variant="static"
                                     value={skill.percentage}
