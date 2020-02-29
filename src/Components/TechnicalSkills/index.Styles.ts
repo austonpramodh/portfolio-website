@@ -23,12 +23,7 @@ const Styles = (theme: Theme) =>
         progressBar: {
             backgroundColor: "rgba(199, 198, 198, 0.6)",
             borderRadius: 10,
-            display: "flex",
-            overflow: "hidden",
             marginTop: theme.spacing(0.5),
-        },
-        progress: {
-            backgroundColor: theme.palette.primary.main,
             height: theme.spacing(1),
         },
     });
