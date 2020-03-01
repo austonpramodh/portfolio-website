@@ -2,10 +2,8 @@ import React from "react";
 import { WithStyles } from "@material-ui/styles/withStyles";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import Typography from "@material-ui/core/Typography";
-import { withStyles, useMediaQuery, Theme } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
-import Tilt from "react-tilt";
-import { useTheme } from "@material-ui/styles";
 import MahaPaper from "../MahaPaper";
 import Styles from "./index.Styles";
 
@@ -33,13 +31,11 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
     listHeader,
     keyHeader,
 }) => {
-    const theme: Theme = useTheme();
-    const isMobileScreen = !useMediaQuery(theme.breakpoints.up("sm"));
     return (
         <React.Fragment>
             {Cards.map(
-                ({ Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems }, index) => {
-                    const MahaCard = (
+                ({ Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems }, index) => (
+                    <React.Fragment key={`${keyHeader}${index}`}>
                         <MahaPaper className={paperClass}>
                             {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
                             <div className={classes.headersSection}>
@@ -64,16 +60,8 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                                 </ul>
                             )}
                         </MahaPaper>
-                    );
-
-                    return isMobileScreen ? (
-                        <React.Fragment key={`${keyHeader}${index}`}>{MahaCard}</React.Fragment>
-                    ) : (
-                        <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }} key={`${keyHeader}${index}`}>
-                            {MahaCard}
-                        </Tilt>
-                    );
-                },
+                    </React.Fragment>
+                ),
             )}
         </React.Fragment>
     );
