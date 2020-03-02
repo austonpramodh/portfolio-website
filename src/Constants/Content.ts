@@ -137,7 +137,7 @@ const Content: IContent = {
             listHeader: "Responsibility",
             listItems: [
                 {
-                    name: "Mobile Applications Developer at",
+                    name: "Software Technologist at",
                     highlightedName: "CES IT",
                     highlightedSubText: "2019 July - Present",
                     listItems: [
@@ -157,6 +157,54 @@ const Content: IContent = {
                     highlightedName: "Foscio",
                     highlightedSubText: "2018 May - 2018 Dec",
                     listItems: ["Develop Applications in ReactJS", "Develop Backend using NodeJS"],
+                },
+            ],
+        },
+        projects: {
+            listHeader: "Responsibility",
+            listItems: [
+                {
+                    name: "Reporting Generating Service - Internal -",
+                    highlightedName: "Handlebars, Lambda functions, NodeJS",
+                    highlightedSubText:
+                        "A report generating service built around lambda which adds data to the template and generates pdf using headless chrome and pushes it to AWS S3",
+                    listItems: [
+                        "Develop Template in Handlebar Templating Engine",
+                        "Precompile handlebar for better useablility",
+                        "Configure Webpack to pack handlebar and CSS together for better package handling",
+                    ],
+                },
+                {
+                    name: "Cab management service - ",
+                    highlightedName: "React Native",
+                    highlightedSubText: "It is the first and largest network of commuter buses that anyone can ride.",
+                    listItems: [
+                        "Develop new features for Mobile application in React Native",
+                        "Implement ESlint for better coding standards",
+                        "Regression testing to find bugs and fix them",
+                    ],
+                },
+                {
+                    name: "CanDo - ",
+                    highlightedName: "NodeJS, AWS Cloudformation, Docker, RabbitMQ",
+                    highlightedSubText: `CanDo is an innovative direct-to-consumer platform designed to develop new cannabis consumer markets through direct selling, education, delivery, and engaging community-based tools that enable a personalised cannabis experience.`,
+                    listItems: [
+                        "Learn cloudformation scripts for handling deployments",
+                        "Poc on Sync Service between multiple platforms using RabbitMQ and NodeJS",
+                        "Solve monorepo issue while building in pipeline using Drone.io CI System",
+                        "Docker for checking out Drone.io, RabbitMQ, Redis",
+                    ],
+                },
+                {
+                    name: "Soyou - ",
+                    highlightedName: "ReactJS, NodeJS, Redis, MongoDB",
+                    highlightedSubText:
+                        'soYou is a social media platform which takes the "me" out of social media. Users can upload photographs and short videos and Messages for their friends, follow other users feeds and tagging images with the name of a location.',
+                    listItems: [
+                        "Implement new features for web in ReactJS",
+                        "Implement new features Backend using NodeJS",
+                        "Learn Kubernetes for making it cloud provider agnostic",
+                    ],
                 },
             ],
         },

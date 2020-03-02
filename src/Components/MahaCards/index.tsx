@@ -22,6 +22,23 @@ interface IProps {
     paperClass?: string;
     listHeader?: string;
     keyHeader: string;
+    headerVariant?:
+        | "button"
+        | "caption"
+        | "h1"
+        | "h2"
+        | "h3"
+        | "h4"
+        | "h5"
+        | "h6"
+        | "inherit"
+        | "overline"
+        | "subtitle1"
+        | "subtitle2"
+        | "body1"
+        | "body2"
+        | "srOnly"
+        | undefined;
 }
 
 const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
@@ -30,6 +47,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
     paperClass,
     listHeader,
     keyHeader,
+    headerVariant,
 }) => {
     return (
         <React.Fragment>
@@ -39,7 +57,10 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                         <MahaPaper className={paperClass}>
                             {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
                             <div className={classes.headersSection}>
-                                <Typography className={classes.header} variant={highlightedName ? "h4" : "h3"}>
+                                <Typography
+                                    className={classes.header}
+                                    variant={headerVariant ? headerVariant : highlightedName ? "h4" : "h3"}
+                                >
                                     {name}&nbsp;<span className={classes.highlightedHeader}>{highlightedName}</span>
                                 </Typography>
                             </div>
