@@ -52,7 +52,7 @@ const Styles = (theme: Theme) =>
         footer: {
             width: "100%",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "column-reverse",
             justifyContent: "center",
             alignItems: "center",
             [theme.breakpoints.up("md")]: {

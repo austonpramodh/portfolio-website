@@ -18,7 +18,7 @@ import IContent, { IContact, ISocialLink } from "./ContentInterface";
 // const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 // laoreet dolore magna aliquam erat volutpat.`;
 
-const BasicInfo = {
+export const BasicInfo = {
     name: "Auston Pramodh Barboza",
     facebook: "m.me/austonpramodh",
     email: "austonpramodh@gmail.com",
@@ -72,7 +72,7 @@ const Content: IContent = {
             "React Native",
             "Flutter",
             "NodeJS",
-            "Dockers",
+            "Docker",
             "Azure",
             "Ubuntu",
         ],
