@@ -27,7 +27,7 @@ interface Education {
 
 interface WorkExperiences {
     name: string;
-    highlightedName: string;
+    highlightedName?: string;
     highlightedSubText: string;
     listItems: string[];
 }
@@ -69,6 +69,10 @@ interface IContent {
     Experiences: {
         education: Education[];
         workExperiences: {
+            listHeader: string;
+            listItems: WorkExperiences[];
+        };
+        projects: {
             listHeader: string;
             listItems: WorkExperiences[];
         };

@@ -13,6 +13,7 @@ const Styles = (theme: Theme) =>
             display: "flex",
             marginBottom: theme.spacing(1),
             fontWeight: "bold",
+            textAlign: "initial",
         },
         description: {
             textAlign: "left",
@@ -43,8 +44,8 @@ const Styles = (theme: Theme) =>
             "&::before": {
                 fontSize: 1,
                 content: `"a"`,
-                height: "0.75rem",
-                width: "0.75rem",
+                minHeight: "0.75rem",
+                minWidth: "0.75rem",
                 color: "transparent",
                 backgroundColor: "white",
                 borderRadius: "50%",

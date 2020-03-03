@@ -10,6 +10,15 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.sections}>
                 <Typography className={classes.header} variant="h2">
+                    Work Experiences
+                </Typography>
+                <MahaCards
+                    keyHeader="experiences"
+                    paperClass={classes.educationCards}
+                    listHeader={ExperiencesSection.workExperiences.listHeader}
+                    Cards={ExperiencesSection.workExperiences.listItems}
+                />
+                <Typography className={classes.header} variant="h2">
                     Education
                 </Typography>
                 <MahaCards
@@ -20,13 +29,14 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             </div>
             <div className={classes.sections}>
                 <Typography className={classes.header} variant="h2">
-                    Work Experiences
+                    Projects
                 </Typography>
                 <MahaCards
-                    keyHeader="experiences"
+                    listHeader={ExperiencesSection.projects.listHeader}
+                    keyHeader="projectCards"
                     paperClass={classes.educationCards}
-                    listHeader={ExperiencesSection.workExperiences.listHeader}
-                    Cards={ExperiencesSection.workExperiences.listItems}
+                    Cards={ExperiencesSection.projects.listItems}
+                    headerVariant="h4"
                 />
             </div>
         </div>
