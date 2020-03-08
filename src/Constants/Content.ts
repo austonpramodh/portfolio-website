@@ -54,7 +54,7 @@ const Content: IContent = {
     AboutMeSection: {
         // descPicture: AboutMeImage,//Animation Added as replacement
         descPictureAlt: "Web Developer, Available",
-        cvDownloadurl: "auston-resume.pdf",
+        cvDownloadurl: "https://github.com/austonpramodh/Resumes/raw/master/auston-resume.pdf",
         description: `Hello, I’m a Auston, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at`,
         skills: [
             "HTML",
