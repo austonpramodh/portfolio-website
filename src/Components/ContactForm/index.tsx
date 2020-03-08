@@ -114,6 +114,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         onClick={submitForm}
                         className={classes.button}
                         fullWidth
+                        classes={{ disabled: classes.buttonDisabled }}
                         variant="contained"
                         color="primary"
                         disabled={isSubmitting}
