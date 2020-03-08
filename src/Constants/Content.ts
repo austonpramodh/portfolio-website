@@ -14,18 +14,10 @@ import {
 // import AboutMeImage from "../Assets/ab-img.png";
 import ProfilePic from "../Assets/profilePic.jpg";
 import IContent, { IContact, ISocialLink } from "./ContentInterface";
+import BasicInfo from "./BasicInfo";
 
 // const temporaryDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 // laoreet dolore magna aliquam erat volutpat.`;
-
-export const BasicInfo = {
-    name: "Auston Pramodh Barboza",
-    facebook: "m.me/austonpramodh",
-    email: "austonpramodh@gmail.com",
-    address: "Chennai, India",
-    position: "Software Engineer",
-    // number: "",
-};
 
 const ContactsList: IContact[] = [
     { Icon: EmailIcon, content: BasicInfo.email, heading: "Email", link: "mailto:austonpramodh@gmail.com" },
@@ -62,7 +54,7 @@ const Content: IContent = {
     AboutMeSection: {
         // descPicture: AboutMeImage,//Animation Added as replacement
         descPictureAlt: "Web Developer, Available",
-        cvDownloadurl: "#",
+        cvDownloadurl: "auston-resume.pdf",
         description: `Hello, I’m a Auston, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at`,
         skills: [
             "HTML",

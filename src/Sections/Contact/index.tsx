@@ -2,7 +2,8 @@ import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import MahaPaper from "../../Components/MahaPaper";
-import { ContactsSection, BasicInfo } from "../../Constants/Content";
+import BasicInfo from "../../Constants/BasicInfo";
+import { ContactsSection } from "../../Constants/Content";
 import ContactLinks from "../../Components/ContactLinks";
 import ContactForm from "../../Components/ContactForm";
 import Styles from "./index.Styles";
@@ -34,8 +35,8 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     <ContactLinks />
                 </div>
 
-                <a href={`http://ipv6-test.com/validate.php?url=${document.domain}`}>
-                    <img src="http://ipv6-test.com/button-ipv6-big.png" alt="ipv6 ready" title="ipv6 ready" />
+                <a href={`https://ipv6-test.com/validate.php?url=${document.domain}`}>
+                    <img src="https://ipv6-test.com/button-ipv6-big.png" alt="ipv6 ready" title="ipv6 ready" />
                 </a>
             </div>
         </div>

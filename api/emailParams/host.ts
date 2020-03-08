@@ -1,5 +1,7 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import HostEmailTemplate from "../templates/host";
+import Theme from "../../src/Theme";
+import BasicInfo from "../../src/Constants/BasicInfo";
 
 interface IHostEmailParams {
     name: string;
@@ -7,20 +9,21 @@ interface IHostEmailParams {
     message: string;
 }
 
-const senderName = process.env.SENDER_NAME || "Auston Pramodh Barboza";
-const senderEmail = process.env.SENDER_EMAIL || "notification@auston.dev";
+const senderName = BasicInfo.name;
+const domain = process.env.DOMAIN || "auston.dev";
+const senderEmail = process.env.SENDER_EMAIL || `notification@${domain}`;
 
 const HostEmailParams = ({ name, email, message }: IHostEmailParams): SendEmailRequest => {
     const hostEmailTemplateHtml = HostEmailTemplate({
-        domain: process.env.DOMAIN || "auston.dev",
-        themeColor: process.env.THEME_COLOR || "#e91e63",
+        domain,
+        themeColor: Theme.palette.primary.main,
         contact: email,
         message,
         name,
     });
     return {
         Source: `${senderName} <${senderEmail}>`,
-        Destination: { ToAddresses: [`${senderName} <${process.env.REPLY_TO_EMAIL}>`] },
+        Destination: { ToAddresses: [`${senderName} <${BasicInfo.email}>`] },
         ReplyToAddresses: [`${name} <${email}>`],
         Message: {
             Body: { Html: { Data: hostEmailTemplateHtml, Charset: "UTF-8" } },

@@ -2,11 +2,7 @@
   "env": {
     "AWS_SES_ACCESS_KEY_ID": "@aws_ses_access_key_id",
     "AWS_SES_ACCESS_KEY": "@aws_ses_access_key",
-    "DOMAIN": "auston.dev",
-    "SENDER_EMAIL": "notification@auston.dev",
-    "SENDER_NAME": "Auston Pramodh Barboza",
-    "REPLY_TO_EMAIL": "austonpramodh@gmail.com",
-    "THEME_COLOR": "#e91e63"
+    "DOMAIN": "auston.dev"
   },
   "builds": [
     {

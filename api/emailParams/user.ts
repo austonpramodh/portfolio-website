@@ -1,25 +1,31 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import UserEmailTemplate from "../templates/user";
+import Theme from "../../src/Theme";
+import BasicInfo from "../../src/Constants/BasicInfo";
 
 interface IUserEmailParams {
     name: string;
     email: string;
 }
 
-const senderName = process.env.SENDER_NAME || "Auston Pramodh Barboza";
-const senderEmail = process.env.SENDER_EMAIL || "notification@auston.dev";
+const senderName = BasicInfo.name;
+const domain = process.env.DOMAIN || "auston.dev";
+const senderEmail = process.env.SENDER_EMAIL || `notification@${domain}`;
+const replyToAddress = `${senderName} <${BasicInfo.email}>`;
 
 const userEmailTemplateHtml = UserEmailTemplate({
-    domain: process.env.DOMAIN || "auston.dev",
+    domain,
     senderName,
-    themeColor: process.env.THEME_COLOR || "#e91e63",
+    themeColor: Theme.palette.primary.main,
 });
 
 const UserEmailParams = ({ name, email }: IUserEmailParams): SendEmailRequest => {
+    const destination = `${name} <${email}>`;
+    const source = `${senderName} <${senderEmail}>`;
     return {
-        Source: `${senderName} <${senderEmail}>`,
-        Destination: { ToAddresses: [`${name} <${email}>`] },
-        ReplyToAddresses: [`${senderName} <${process.env.REPLY_TO_EMAIL}>`],
+        Source: source,
+        Destination: { ToAddresses: [destination] },
+        ReplyToAddresses: [replyToAddress],
         Message: {
             Body: { Html: { Data: userEmailTemplateHtml, Charset: "UTF-8" } },
             Subject: { Data: "Thank you for contacting.", Charset: "UTF-8" },

@@ -40,11 +40,12 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const handleOnSubmit: (
         values: FormikInitialValues,
         formikActions: FormikActions<FormikInitialValues>,
-    ) => void = async ({ email, message, name }, { setSubmitting }) => {
+    ) => void = async ({ email, message, name }, { setSubmitting, resetForm }) => {
         setSubmittingState({ isSubmitting: true, submittedSuccss: false, submittingError: false });
         try {
             await sendEmail({ email, message, name });
             setSubmittingState({ ...initialSubmittingStateValues, submittedSuccss: true });
+            resetForm();
         } catch (err) {
             setSubmittingState({ isSubmitting: false, submittedSuccss: false, submittingError: true });
         }
