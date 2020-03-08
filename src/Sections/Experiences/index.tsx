@@ -15,8 +15,7 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <MahaCards
                     keyHeader="experiences"
                     paperClass={classes.educationCards}
-                    listHeader={ExperiencesSection.workExperiences.listHeader}
-                    Cards={ExperiencesSection.workExperiences.listItems}
+                    Cards={ExperiencesSection.workExperiences}
                 />
                 <Typography className={classes.header} variant="h2">
                     Education
@@ -32,10 +31,9 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     Projects
                 </Typography>
                 <MahaCards
-                    listHeader={ExperiencesSection.projects.listHeader}
                     keyHeader="projectCards"
                     paperClass={classes.educationCards}
-                    Cards={ExperiencesSection.projects.listItems}
+                    Cards={ExperiencesSection.projects}
                     headerVariant="h4"
                 />
             </div>

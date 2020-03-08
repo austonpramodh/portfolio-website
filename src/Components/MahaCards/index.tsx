@@ -5,12 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
 import MahaPaper from "../MahaPaper";
+import { ExperienceCard } from "../../Constants/ContentInterface";
 import Styles from "./index.Styles";
 
-interface MahaCard {
+interface MahaCard extends ExperienceCard {
     Icon?: (props: SvgIconProps) => JSX.Element;
     IconColor?: string; //Color in hex code like #9774fa
-    name: string;
     highlightedName?: string;
     highlightedSubText?: string;
     description?: string;
@@ -20,7 +20,6 @@ interface MahaCard {
 interface IProps {
     Cards: MahaCard[];
     paperClass?: string;
-    listHeader?: string;
     keyHeader: string;
     headerVariant?:
         | "button"
@@ -45,14 +44,16 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
     classes,
     Cards,
     paperClass,
-    listHeader,
     keyHeader,
     headerVariant,
 }) => {
     return (
         <React.Fragment>
             {Cards.map(
-                ({ Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems }, index) => (
+                (
+                    { Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems, listHeader },
+                    index,
+                ) => (
                     <React.Fragment key={`${keyHeader}${index}`}>
                         <MahaPaper className={paperClass}>
                             {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
@@ -70,7 +71,9 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                                 </Typography>
                             )}
                             {description && <Typography className={classes.description}>{description}</Typography>}
-                            {listHeader && <Typography className={classes.listHeader}>{listHeader + " :"}</Typography>}
+                            {listItems && listItems.length > 0 && listHeader && (
+                                <Typography className={classes.listHeader}>{listHeader + " :"}</Typography>
+                            )}
                             {listItems && (
                                 <ul className={classes.list}>
                                     {listItems.map(listItem => (

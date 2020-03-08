@@ -18,18 +18,13 @@ interface Skills {
     professionalSkills: Skill[];
 }
 
-interface Education {
-    name: string;
-    highlightedName: string;
-    highlightedSubText: string;
-    description: string;
-}
-
-interface WorkExperiences {
+export interface ExperienceCard {
     name: string;
     highlightedName?: string;
-    highlightedSubText: string;
-    listItems: string[];
+    description?: string;
+    highlightedSubText?: string;
+    listItems?: string[];
+    listHeader?: string;
 }
 
 export interface IContact {
@@ -67,15 +62,9 @@ interface IContent {
     Services: Service[];
     Skills: Skills;
     Experiences: {
-        education: Education[];
-        workExperiences: {
-            listHeader: string;
-            listItems: WorkExperiences[];
-        };
-        projects: {
-            listHeader: string;
-            listItems: WorkExperiences[];
-        };
+        education: ExperienceCard[];
+        workExperiences: ExperienceCard[];
+        projects: ExperienceCard[];
     };
     Contact: {
         ContactsCard: IContact[];
