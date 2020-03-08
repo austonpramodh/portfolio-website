@@ -6,10 +6,10 @@ import {
     Email as EmailIcon,
     MapMarker as MapMarkerIcon,
     GithubBox as GithubBoxIcon,
-    Gitlab as GitlabIcon,
+    // Gitlab as GitlabIcon,
     Facebook as FacebookIcon,
     Linkedin as LinkedinIcon,
-    Twitter as TwitterIcon,
+    // Twitter as TwitterIcon,
 } from "mdi-material-ui";
 // import AboutMeImage from "../Assets/ab-img.png";
 import ProfilePic from "../Assets/profilePic.jpg";
@@ -20,23 +20,23 @@ import BasicInfo from "./BasicInfo";
 // laoreet dolore magna aliquam erat volutpat.`;
 
 const ContactsList: IContact[] = [
-    { Icon: EmailIcon, content: BasicInfo.email, heading: "Email", link: "mailto:austonpramodh@gmail.com" },
+    { Icon: EmailIcon, content: BasicInfo.email, heading: "Email", link: `mailto:${BasicInfo.email}` },
     {
         Icon: FacebookMessengerIcon,
         content: BasicInfo.facebook,
         heading: "Facebook",
-        link: "https://m.me/austonpramodh",
+        link: BasicInfo.facebook,
         mobileOnlyClickable: false,
     },
     { Icon: MapMarkerIcon, content: BasicInfo.address, heading: "Address" },
 ];
 
 const SocialLinks: ISocialLink[] = [
-    { Icon: LinkedinIcon, link: "https://linkedin.com/in/austonpramodh", name: "LinkedIn" },
-    { Icon: FacebookIcon, link: "https://fb.me/austonpramodh", name: "Facebook" },
-    { Icon: TwitterIcon, link: "https://twitter.com/austonpramodh", name: "Twitter" },
-    { Icon: GithubBoxIcon, link: "https://www.github.com/austonpramodh", name: "Github" },
-    { Icon: GitlabIcon, link: "https://www.gitlab.com/austonpramodh", name: "GitLab" },
+    { Icon: LinkedinIcon, link: "", name: "LinkedIn" },
+    { Icon: FacebookIcon, link: BasicInfo.facebook, name: "Facebook" },
+    // { Icon: TwitterIcon, link: "", name: "Twitter" },
+    { Icon: GithubBoxIcon, link: "https://www.github.com/bom6", name: "Github" },
+    // { Icon: GitlabIcon, link: "", name: "GitLab" },
 ];
 
 const Content: IContent = {
@@ -49,13 +49,13 @@ const Content: IContent = {
         contactsList: ContactsList,
         socialLinks: SocialLinks,
         profilePicture: ProfilePic,
-        profilePictureAlt: "Auston Pramodh Barboza",
+        profilePictureAlt: BasicInfo.name,
     },
     AboutMeSection: {
         // descPicture: AboutMeImage,//Animation Added as replacement
-        descPictureAlt: "Web Developer, Available",
-        cvDownloadurl: "auston-resume.pdf",
-        description: `Hello, I’m a Auston, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at`,
+        descPictureAlt: "Full Stack Developer, Available",
+        cvDownloadurl: "brenda-resume.pdf",
+        description: `Hello, I’m a Brenda, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at`,
         skills: [
             "HTML",
             "CSS",
@@ -98,7 +98,6 @@ const Content: IContent = {
             { name: "ReactJS", percentage: 84 },
             { name: "React Native", percentage: 80 },
             { name: "NodeJS", percentage: 90 },
-            { name: "Flutter", percentage: 70 },
             { name: "Docker", percentage: 60 },
             { name: "GIT", percentage: 90 },
         ],
@@ -112,44 +111,94 @@ const Content: IContent = {
     Experiences: {
         education: [
             {
-                name: "BTech, IT from",
-                description:
-                    "Completed by Btech in Information Technology from Alliance College of Engineering and Design ",
-                highlightedName: "Alliance University",
-                highlightedSubText: "2015-2019",
+                name: "Masters in Computer Science from ",
+                listHeader: "Related coursework:",
+                listItems: [
+                    "Cloud Computing",
+                    "Natural Language Processing",
+                    "Ecommerce",
+                    "Database management system",
+                    "The Architecture of Large - Scale Information Systems",
+                    "Operating Systems",
+                    "Defending Computer Networks",
+                    "Software Engineering",
+                ],
+                highlightedName: "Cornell University Graduate School",
+                highlightedSubText: "2015-2015",
             },
             {
-                name: "+2 from ",
+                name: "Bachelor's Degree in Computer Science Engineering from",
+                highlightedName: "NMAM Institute of Techonology, VTU | Nitte, India",
                 description: "",
-                highlightedName: "St. John's Pre-University College",
-                highlightedSubText: "2013-2015",
+                highlightedSubText: "2008-2012",
+            },
+            {
+                name: "College, Chemistry, Physics, Maths and Biology  from",
+                highlightedName: "St.Mary's College, Shirva-574116 Udupi, India.",
+                description: "",
+                highlightedSubText: "2006-2008",
             },
         ],
         workExperiences: [
             {
-                name: "Software Technologist at",
-                highlightedName: "CES IT",
-                highlightedSubText: "2019 July - Present",
+                name: "Software Engineer at",
+                highlightedName: "Element Data, Bellevue, Washington.",
+                highlightedSubText: "Jul 2017 – Apr 2019",
                 listHeader: "Responsibility",
                 listItems: [
-                    "Develop Mobile Application using Flutter",
-                    "Develop Mobile Application using React Native, Redux",
-                    "Handle Client Calls, Requirements",
+                    "Setting up single sign-on (SSO) with JWT (Json Web Token)",
+                    "Technical leadership in automation of Docker container deployment to Amazon EC2 container with load balancer (ELB)",
+                    "Performance optimization measures for web applications to reduce response times and enhance the end user experience.",
+                    "Developing web pages using Node.js, Express.js, React framework with Google analytics and NoSQL backend",
+                    "Static asset management using awscli, shell script, s3cmd and CloudFront distribution",
+                    "Real time memory, CPU utilization and log monitoring using AWS CloudWatch.",
+                    "Aws lambda function for Slack webhook integration and Alexa skill setup for one of the products",
+                    "Setup active passive database replication and configuring AWS ELB",
+                    "Integration test and unit test for MVC framework using selenium with node.js and php-unit",
+                    "Training new hires about the products",
                 ],
             },
             {
-                name: "Web Applications Developer at",
-                highlightedName: "Gyanmatrix Technologies",
-                highlightedSubText: "2019 Jan - 2019 June",
+                name: "Software Development Engineer at",
+                highlightedName: "Schlumberger, HCS Product Center, Houston, Texas Area.",
+                highlightedSubText: "Mar 2016 – Jun 2017",
                 listHeader: "Responsibility",
-                listItems: ["Develop Web Application in ReactJS", "Develop APIs in NodeJS"],
+                listItems: [
+                    "Designed and implemented an algorithm for auto feature detection of a wireline tool as a lead developer",
+                    "Developed and managed new product along with consistent support for unplanned critical issues from high-profile field jobs",
+                    "Improved measurable code qualities such as code complexity, code duplication, unit test coverage and static analysis checks",
+                ],
             },
             {
-                name: "Web Applications Developer at",
-                highlightedName: "Foscio",
-                highlightedSubText: "2018 May - 2018 Dec",
+                name: "Software Developer Intern at",
+                highlightedName: "GrammaTech, Ithaca, New York Area.",
+                highlightedSubText: "Jun 2015 – Aug 2015",
                 listHeader: "Responsibility",
-                listItems: ["Develop Applications in ReactJS", "Develop Backend using NodeJS"],
+                listItems: [
+                    "Established a data warehouse that will support historical analysis of nightly test result. Designed and implemented a star schema, suitable for the running analytic queries to monitor trends in various test metrics.",
+                    "Authored ETL workflows on the Pentaho Data Integration framework to migrate data from PostgreSQL to MonetDB",
+                    "Assisted several projects with JSP/JavaScript/d3 pages and python to organize and present summary data for test results from the current database",
+                ],
+            },
+            {
+                name: "Associate Technical Analyst at",
+                highlightedName: "Oracle India Pvt. Ltd",
+                highlightedSubText: "Jun 2012 - Dec 2014",
+                listHeader: "Responsibility",
+                listItems: [
+                    "Monitored and maintained Oracle database application of top twenty-five clients of Oracle",
+                    "Performed database backup, recovery",
+                    "Cloning the instance for development and testing",
+                    "Applied application patches and upgrades for database software",
+                    "Troubleshooting and resolving database issues",
+                    "Optimised database performance by tuning and query optimisation",
+                    "Implemented Oracle Real Application Cluster (RAC) on UNIX platform]",
+                ],
+            },
+            {
+                name: "Oracle Apps DBA at",
+                highlightedName: "Oracle India Pvt. Ltd",
+                highlightedSubText: "Jun 2012 - Nov 2014",
             },
         ],
         projects: [
@@ -163,41 +212,6 @@ const Content: IContent = {
                     "Develop Template in Handlebar Templating Engine",
                     "Precompile handlebar for better useablility",
                     "Configure Webpack to pack handlebar and CSS together for better package handling",
-                ],
-            },
-            {
-                name: "Cab management service - ",
-                highlightedName: "React Native",
-                highlightedSubText: "It is the first and largest network of commuter buses that anyone can ride.",
-                listHeader: "Responsibility",
-                listItems: [
-                    "Develop new features for Mobile application in React Native",
-                    "Implement ESlint for better coding standards",
-                    "Regression testing to find bugs and fix them",
-                ],
-            },
-            {
-                name: "CanDo - ",
-                highlightedName: "NodeJS, AWS Cloudformation, Docker, RabbitMQ",
-                highlightedSubText: `CanDo is an innovative direct-to-consumer platform designed to develop new cannabis consumer markets through direct selling, education, delivery, and engaging community-based tools that enable a personalised cannabis experience.`,
-                listHeader: "Responsibility",
-                listItems: [
-                    "Learn cloudformation scripts for handling deployments",
-                    "Poc on Sync Service between multiple platforms using RabbitMQ and NodeJS",
-                    "Solve monorepo issue while building in pipeline using Drone.io CI System",
-                    "Docker for checking out Drone.io, RabbitMQ, Redis",
-                ],
-            },
-            {
-                name: "Soyou - ",
-                highlightedName: "ReactJS, NodeJS, Redis, MongoDB",
-                highlightedSubText:
-                    'soYou is a social media platform which takes the "me" out of social media. Users can upload photographs and short videos and Messages for their friends, follow other users feeds and tagging images with the name of a location.',
-                listHeader: "Responsibility",
-                listItems: [
-                    "Implement new features for web in ReactJS",
-                    "Implement new features Backend using NodeJS",
-                    "Learn Kubernetes for making it cloud provider agnostic",
                 ],
             },
         ],

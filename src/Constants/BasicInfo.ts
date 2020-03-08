@@ -5,11 +5,11 @@ interface BasicInfoInterface {
 }
 
 const BasicInfo: BasicInfoInterface = {
-    name: "Auston Pramodh Barboza",
-    facebook: "m.me/austonpramodh",
-    email: "austonpramodh@gmail.com",
-    address: "Chennai, India",
-    position: "Software Engineer",
+    name: "Brenda Olivia Martis",
+    facebook: "https://m.me/brenda.martis.1",
+    email: "brendaoliviamartis@gmail.com",
+    address: "Seattle, US",
+    position: "Senior Software Engineer",
     // number: "",
 };
 

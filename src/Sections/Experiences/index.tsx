@@ -17,6 +17,8 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     paperClass={classes.educationCards}
                     Cards={ExperiencesSection.workExperiences}
                 />
+            </div>
+            <div className={classes.sections}>
                 <Typography className={classes.header} variant="h2">
                     Education
                 </Typography>
@@ -25,8 +27,6 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     paperClass={classes.educationCards}
                     Cards={ExperiencesSection.education}
                 />
-            </div>
-            <div className={classes.sections}>
                 <Typography className={classes.header} variant="h2">
                     Projects
                 </Typography>

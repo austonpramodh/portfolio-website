@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { pink } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 
 const CustomTheme = createMuiTheme({
     overrides: {
@@ -8,7 +8,7 @@ const CustomTheme = createMuiTheme({
         },
     },
     palette: {
-        primary: pink,
+        primary: green,
         text: { primary: "#ffffff", secondary: "#00000" },
         background: {
             default: "#100e17",
