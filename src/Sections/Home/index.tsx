@@ -1,9 +1,9 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography, Avatar, List, ListItem, useMediaQuery, Theme } from "@material-ui/core";
-import Image from "material-ui-image";
 import ContactLinks from "../../Components/ContactLinks";
 import { HomeSection } from "../../Constants/Content";
+import ProfileImage from "../../Components/ProfileImage";
 import Styles from "./index.Styles";
 
 const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
@@ -13,11 +13,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
-                    <Image
-                        // alt={HomeSection.profilePictureAlt}
-                        src={HomeSection.profilePicture}
-                        style={{ background: "transparent", width: "100%" }}
-                    />
+                    <ProfileImage />
                 </Avatar>
             </div>
             <div>
