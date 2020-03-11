@@ -1,12 +1,12 @@
-import React from "react";
-import { withStyles, WithStyles } from "@material-ui/styles";
-import * as Yup from "yup";
-import { Formik, FormikActions } from "formik";
-import { Button, Typography } from "@material-ui/core";
 import FormikField from "../FormikField";
 import { MyTextField } from "../MyFields";
 import { sendEmail } from "../../Utils/emailService";
 import Styles from "./index.Styles";
+import React from "react";
+import { withStyles, WithStyles } from "@material-ui/styles";
+import { object as isValidObject, string as isValidString } from "yup";
+import { Formik, FormikHelpers } from "formik";
+import { Button, Typography } from "@material-ui/core";
 
 interface FormikInitialValues {
     name: string;
@@ -19,15 +19,15 @@ const formikInitialValues: FormikInitialValues = {
     name: "",
     message: "",
 };
-const ValidationSchema = Yup.object().shape({
-    email: Yup.string()
+const ValidationSchema = isValidObject().shape({
+    email: isValidString()
         .email("Must be an email address")
         .max(255, "Too Long!")
         .required("Required"),
-    name: Yup.string()
+    name: isValidString()
         .max(255, "Too Long!")
         .required("Required"),
-    message: Yup.string().required("Required"),
+    message: isValidString().required("Required"),
 });
 
 const initialSubmittingStateValues = {
@@ -39,7 +39,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const [submittingState, setSubmittingState] = React.useState(initialSubmittingStateValues);
     const handleOnSubmit: (
         values: FormikInitialValues,
-        formikActions: FormikActions<FormikInitialValues>,
+        formikActions: FormikHelpers<FormikInitialValues>,
     ) => void = async ({ email, message, name }, { setSubmitting, resetForm }) => {
         setSubmittingState({ isSubmitting: true, submittedSuccss: false, submittingError: false });
         try {
@@ -60,7 +60,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             validateOnChange={false}
             validateOnBlur={false}
         >
-            {({ errors, submitCount, submitForm, isSubmitting }) => (
+            {({ errors, submitCount, submitForm, isSubmitting, getFieldMeta }) => (
                 <React.Fragment>
                     <div className={classes.errorText}>
                         {submitCount > 0 && Object.keys(errors).length > 0 && (
@@ -91,6 +91,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         name="name"
                         type="name"
                         variant="outlined"
+                        meta={getFieldMeta("name")}
                     />
                     <FormikField
                         className={classes.inputField}
@@ -100,6 +101,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         name="email"
                         placeholder="Email"
                         type="email"
+                        meta={getFieldMeta("email")}
                     />
                     <FormikField
                         className={`${classes.inputField}`}
@@ -109,6 +111,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                         name="message"
                         variant="outlined"
                         inputProps={{ className: classes.messageInputField }}
+                        meta={getFieldMeta("message")}
                     />
                     <Button
                         onClick={submitForm}

@@ -13,7 +13,7 @@
       "src": "package.json",
       "use": "@now/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "public"
       }
     }
   ],
