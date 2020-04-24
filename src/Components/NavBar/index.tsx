@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withStyles, WithStyles, useTheme } from "@material-ui/styles";
-import { Theme, Typography, useMediaQuery } from "@material-ui/core";
+import { Theme, Typography, Hidden } from "@material-ui/core";
 import Scrollspy from "react-scrollspy";
 import { SectionsInterface } from "../../Sections";
 import MobileNavBar from "../MobileNavBar";
@@ -14,7 +14,6 @@ interface INavBar extends WithStyles<typeof Styles> {
 const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
     const theme: Theme = useTheme();
     const StylesWithTheme = Styles(theme);
-    const isMobileScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -41,8 +40,10 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
             className={classes.header}
             style={{ backgroundColor: scrolled ? theme.palette.background.paper : "transparent" }}
         >
-            {isMobileScreen && <MobileNavBar Sections={Sections} />}
-            {!isMobileScreen && (
+            <Hidden smUp implementation="css">
+                <MobileNavBar Sections={Sections} />
+            </Hidden>
+            <Hidden xsDown implementation="css">
                 <Scrollspy
                     items={Sections.map(({ id }) => id)}
                     currentClassName={classes.activeLink}
@@ -59,7 +60,7 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
                         </li>
                     ))}
                 </Scrollspy>
-            )}
+            </Hidden>
         </header>
     );
 };
