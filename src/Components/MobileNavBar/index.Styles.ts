@@ -52,6 +52,9 @@ const Styles = (theme: Theme) =>
         linkText: {
             fontSize: "2rem",
         },
+        disableBodyScroll: {
+            overflow: "hidden",
+        },
     });
 
 export default Styles;

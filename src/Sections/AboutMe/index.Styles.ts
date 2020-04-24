@@ -19,6 +19,9 @@ const Styles = (theme: Theme) =>
             width: "90%",
             margin: theme.spacing(1),
             minHeight: 433, // taken from animation height to minimize pushing of content
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
         },
         contentContainer: {
             padding: theme.spacing(1),

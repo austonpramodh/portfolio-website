@@ -16,6 +16,11 @@ const Styles = () =>
         sectionContainer: {
             display: "flex",
         },
+        "@global": {
+            html: {
+                scrollBehavior: "smooth", // required for smooth scrolling between link tags from navbar
+            },
+        },
     });
 
 const IndexPage: React.SFC<WithStyles<typeof Styles>> = ({ classes }) => (

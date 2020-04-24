@@ -30,6 +30,7 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
     };
 
     React.useEffect(() => {
+        handleScroll();
         document.addEventListener("scroll", handleScroll);
         return () => {
             document.removeEventListener("scroll", handleScroll);

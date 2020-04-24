@@ -17,6 +17,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
     const [isMobileMenuNeeded, setMobileMenuNeed] = useState(false);
 
     const handleOpenMobileMenu = () => {
+        document.body.classList.add(classes.disableBodyScroll);
         setMobileMenuNeed(true);
         setTimeout(() => {
             setisMobileMenuOpen(true);
@@ -25,6 +26,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
     };
 
     const handleCloseMobileMenu = () => {
+        document.body.classList.remove(classes.disableBodyScroll);
         setisMobileMenuOpen(false);
         setTimeout(() => {
             setMobileMenuNeed(false);
