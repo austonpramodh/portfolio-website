@@ -18,7 +18,7 @@
     "rules": {
         // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
-        "import/order": "error",
+        "import/order": "off",
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/interface-name-prefix": "off",

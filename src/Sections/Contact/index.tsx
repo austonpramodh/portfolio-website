@@ -9,6 +9,11 @@ import ContactForm from "../../Components/ContactForm";
 import Styles from "./index.Styles";
 
 const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
+    const [domain, setDomain] = React.useState("");
+    React.useLayoutEffect(() => {
+        setDomain(document.domain);
+    }, []);
+
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <Typography variant="h2">Contact Me</Typography>
@@ -35,7 +40,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     <ContactLinks />
                 </div>
 
-                <a href={`https://ipv6-test.com/validate.php?url=${document.domain}`}>
+                <a href={`https://ipv6-test.com/validate.php?url=${domain}`}>
                     <img src="https://ipv6-test.com/button-ipv6-big.png" alt="ipv6 ready" title="ipv6 ready" />
                 </a>
             </div>

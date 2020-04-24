@@ -5,7 +5,7 @@ import {
     FacebookMessenger as FacebookMessengerIcon,
     Email as EmailIcon,
     MapMarker as MapMarkerIcon,
-    GithubBox as GithubBoxIcon,
+    Github as GithubBoxIcon,
     Gitlab as GitlabIcon,
     Facebook as FacebookIcon,
     Linkedin as LinkedinIcon,
