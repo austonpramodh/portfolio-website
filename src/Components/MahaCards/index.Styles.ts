@@ -51,6 +51,9 @@ const Styles = (theme: Theme) =>
                 borderRadius: "50%",
                 marginRight: theme.spacing(1),
             },
+            "& span": {
+                textAlign: "left",
+            },
         },
     });
 

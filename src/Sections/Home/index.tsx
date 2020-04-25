@@ -1,45 +1,37 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
-import { Typography, Avatar, List, ListItem, useMediaQuery, Theme } from "@material-ui/core";
+import { Typography, Avatar, List, ListItem } from "@material-ui/core";
 import ContactLinks from "../../Components/ContactLinks";
-import { HomeSection } from "../../Constants/Content";
-import ProfileImage from "../../Components/ProfileImage";
 import Styles from "./index.Styles";
+import Img from "gatsby-image";
+import StaticHomeData from "../../Utils/StaticDataHooks/Home";
+import SVGLoader from "../../Components/SvgLoader";
 
 const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
-    const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
+    const data = StaticHomeData();
 
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
-                    <ProfileImage />
+                    <Img fluid={data.profile_picture.localFile.childImageSharp.fluid} />
                 </Avatar>
             </div>
             <div>
                 <Typography className={classes.promo}>{"Hello I'm"}</Typography>
                 <Typography variant="h2" className={classes.name}>
-                    {HomeSection.name}
+                    {`${data.first_name} ${data.middle_name} ${data.last_name}`}
                 </Typography>
-                <Typography variant="h4">{HomeSection.position}</Typography>
+                <Typography variant="h4">{data.job_role}</Typography>
                 <List>
-                    {HomeSection.contactsList.map(eachContact => {
-                        const { Icon, content, link, mobileOnlyClickable } = eachContact;
+                    {data.main_links.map(({ icon, link, name }) => {
+                        const svgPath = icon.localFile.relativePath;
+
                         return (
-                            <ListItem
-                                key={content}
-                                className={
-                                    link
-                                        ? mobileOnlyClickable
-                                            ? isMobile
-                                                ? classes.listItem
-                                                : ""
-                                            : classes.listItem
-                                        : " "
-                                }
-                            >
-                                <a href={mobileOnlyClickable ? (isMobile ? link : undefined) : link}>
-                                    <Icon className={classes.listItemIcon} /> {content}
+                            <ListItem key={name} className={link.url ? classes.listItem : ""}>
+                                <a href={link.url === "" ? undefined : link.url} className={classes.listItemLink}>
+                                    <SVGLoader className={classes.listItemIcon} path={svgPath} />
+                                    {name}
                                 </a>
                             </ListItem>
                         );

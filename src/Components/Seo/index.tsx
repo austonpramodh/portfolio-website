@@ -7,76 +7,79 @@
 
 import React from "react";
 import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({
-    description,
-    lang,
-    meta,
-    title,
-}: {
-    description: string;
-    lang: string;
-    meta: { name: string; content: string };
-    title: string;
-}) {
-    const { site } = useStaticQuery(
-        graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                        description
-                        author
-                    }
-                }
-            }
-        `,
-    );
+import StaticSEOData from "../../Utils/StaticDataHooks/SEO";
 
-    const metaDescription = description || site.siteMetadata.description;
+function SEO() {
+    const data = StaticSEOData();
+    const keywords = data.seo_keywords?.map(e => e.keyword).join(", ") || "";
 
     return (
         <Helmet
+            link={[{ ref: "canonical", href: data.page_domain.url }]}
             htmlAttributes={{
-                lang,
+                lang: "en-US",
             }}
-            title={title}
-            titleTemplate={`%s | ${site.siteMetadata.title}`}
+            title={data.page_title}
+            // titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
                 {
                     name: `description`,
-                    content: metaDescription,
+                    content: data.page_description,
                 },
                 {
                     property: `og:title`,
-                    content: title,
+                    content: data.page_title,
                 },
                 {
                     property: `og:description`,
-                    content: metaDescription,
+                    content: data.page_description,
                 },
                 {
                     property: `og:type`,
                     content: `website`,
                 },
                 {
+                    name: "og:image",
+                    content: data.profile_picture.localFile.childImageSharp.fixed.src,
+                },
+                {
+                    name: "og:url",
+                    content: data.page_domain.url,
+                },
+                {
+                    name: "og:site_name",
+                    content: data.page_title,
+                },
+                {
                     name: `twitter:card`,
-                    content: `summary`,
+                    content: data.page_description,
                 },
                 {
                     name: `twitter:creator`,
-                    content: site.siteMetadata.author,
+                    content: data.page_author,
                 },
                 {
                     name: `twitter:title`,
-                    content: title,
+                    content: data.page_title,
                 },
                 {
                     name: `twitter:description`,
-                    content: metaDescription,
+                    content: data.page_description,
                 },
-            ].concat(meta)}
+                {
+                    name: "twitter:image:alt",
+                    content: data.profile_picture.alt,
+                },
+                {
+                    name: "keywords",
+                    content: keywords,
+                },
+                {
+                    name: "image",
+                    content: data.profile_picture.localFile.childImageSharp.fixed.src,
+                },
+            ]}
         />
     );
 }

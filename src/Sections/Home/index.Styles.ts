@@ -24,6 +24,11 @@ const Styles = (theme: Theme) => {
             width: 240,
             border: "20px solid rgba(0, 0, 0, 0.4)",
             background: "transparent",
+            "& > div": {
+                //avatar image
+                height: "100%",
+                width: "100%",
+            },
         },
         avatarBorder: {
             border: "20px solid rgba(0, 0, 0, 0.9)",
@@ -55,8 +60,14 @@ const Styles = (theme: Theme) => {
                 color: theme.palette.background.default,
             },
         },
+        listItemLink: {
+            justifyContent: "center",
+            alignItems: "center",
+        },
         listItemIcon: {
             marginRight: "10px",
+            height: 21,
+            width: 21,
         },
         name: {
             fontSize: 42,

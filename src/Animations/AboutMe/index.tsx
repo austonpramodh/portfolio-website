@@ -3,6 +3,8 @@ import { CircularProgress, Typography } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import Styles from "./index.Styles";
 import Animation from "./Animation";
+import Axios from "axios";
+// import animationData from "../../Assets/11528-web-site-development.json";
 
 const AnimationLoading = (
     <div>
@@ -15,14 +17,22 @@ const AnimationLoading = (
     </div>
 );
 
-const AboutMeAnimation: React.FC<WithStyles<typeof Styles>> = () => {
+interface AboutMeAnimationProps {
+    animationDataUrl: string;
+}
+
+const AboutMeAnimation: React.FC<AboutMeAnimationProps & WithStyles<typeof Styles>> = ({ animationDataUrl }) => {
+    const [animationData, setAnimationData] = React.useState<any>({});
     const [isPageLoaded, setPageLoaded] = React.useState(false);
 
     React.useLayoutEffect(() => {
-        setPageLoaded(true);
+        Axios.get(animationDataUrl).then(response => {
+            setAnimationData(response.data);
+            setPageLoaded(true);
+        });
     }, []);
 
-    if (isPageLoaded) return <Animation />;
+    if (isPageLoaded) return <Animation animationData={animationData} />;
 
     return AnimationLoading;
 };

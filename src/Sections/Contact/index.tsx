@@ -2,11 +2,11 @@ import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import MahaPaper from "../../Components/MahaPaper";
-import BasicInfo from "../../Constants/BasicInfo";
-import { ContactsSection } from "../../Constants/Content";
 import ContactLinks from "../../Components/ContactLinks";
 import ContactForm from "../../Components/ContactForm";
 import Styles from "./index.Styles";
+import StaticContactMeLinksData from "../../Utils/StaticDataHooks/ContactMeLinks";
+import SvgLoader from "../../Components/SvgLoader";
 
 const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const [domain, setDomain] = React.useState("");
@@ -14,19 +14,23 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
         setDomain(document.domain);
     }, []);
 
+    const data = StaticContactMeLinksData();
+
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <Typography variant="h2">Contact Me</Typography>
             <div className={classes.contactCardsContainer}>
-                {ContactsSection.ContactsCard.map(({ Icon, content, heading }, key) => (
+                {data.contact_me_links.map((eachContactMeLink, key) => (
                     <MahaPaper key={`${key}Contact`} className={classes.paper}>
                         <div className={classes.iconContainer}>
-                            <Icon className={classes.icon} />
+                            <SvgLoader path={eachContactMeLink.image.localFile.relativePath} className={classes.icon} />
                         </div>
                         <Typography className={classes.cardHeading} variant="h4">
-                            {heading}
+                            {eachContactMeLink.title}
                         </Typography>
-                        <Typography className={classes.content}>{content}</Typography>
+                        <a href={eachContactMeLink.link.url ? eachContactMeLink.link.url : undefined}>
+                            <Typography className={classes.content}>{eachContactMeLink.link_name}</Typography>
+                        </a>
                     </MahaPaper>
                 ))}
             </div>
@@ -35,7 +39,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <ContactForm />
             </div>
             <div className={classes.footer}>
-                <Typography className={classes.footerText}>All right reserved {BasicInfo.name} @ 2020</Typography>
+                <Typography className={classes.footerText}>{data.footer_text}</Typography>
                 <div className={classes.footerLinksContainer}>
                     <ContactLinks />
                 </div>

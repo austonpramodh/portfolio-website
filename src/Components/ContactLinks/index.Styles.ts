@@ -14,9 +14,13 @@ const Styles = (theme: Theme) =>
         LinksListItemIcon: {
             display: "flex",
             transition: "all 0.3s ease-in",
+            "& > span": {
+                maxWidth: 24,
+                maxHeight: 24,
+            },
             "&:hover": {
                 backgroundColor: "white",
-                color: theme.palette.background.default,
+                "& > span": { fill: theme.palette.background.default },
             },
         },
     });

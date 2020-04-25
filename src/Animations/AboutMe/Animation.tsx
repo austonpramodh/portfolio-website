@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
 import VisibilitySensor from "react-visibility-sensor";
-import animationData from "../../Assets/11528-web-site-development.json";
 import Styles from "./index.Styles";
 import LottieReact from "../../Components/ReactLottie";
 
@@ -9,16 +8,19 @@ const onVisibilityChange = (setVisibility: React.Dispatch<React.SetStateAction<b
     setVisibility(isVisible);
 };
 
-const Animation: React.FC<WithStyles<typeof Styles>> = () => {
-    const [isVisibleState, setVisibility] = React.useState(true);
-    React.useEffect(() => {
-        setTimeout(() => {
-            setVisibility(false);
-        }, 100);
-    }, []);
+interface AnimationProps {
+    animationData: any;
+}
+
+const Animation: React.FC<AnimationProps & WithStyles<typeof Styles>> = ({ animationData }) => {
+    const [isVisibleState, setVisibility] = React.useState(false);
 
     return (
-        <VisibilitySensor onChange={isVisible => onVisibilityChange(setVisibility, isVisible)}>
+        <VisibilitySensor
+            partialVisibility
+            minTopValue={100}
+            onChange={isVisible => onVisibilityChange(setVisibility, isVisible)}
+        >
             <LottieReact isStopped={!isVisibleState} animationData={animationData} />
         </VisibilitySensor>
     );

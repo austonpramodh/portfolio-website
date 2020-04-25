@@ -1,10 +1,13 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require("dotenv");
+
+dotenv.config(); // required for importing .env file
+dotenv.config({
+    path: `.env.${process.env.NODE_ENV}`, // required for .env.production
+});
+
 /* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
-    siteMetadata: {
-        title: `Gatsby Default Starter`,
-        description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-        author: `@gatsbyjs`,
-    },
     plugins: [
         `gatsby-plugin-react-helmet`,
         {
@@ -19,13 +22,13 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `gatsby-starter-default`,
-                short_name: `starter`,
+                name: `Auston Pramodh Barboza`,
+                short_name: `Auston`,
                 start_url: `/`,
-                background_color: `#663399`,
-                theme_color: `#663399`,
+                background_color: `#100e17`,
+                theme_color: `#100e17`,
                 display: `minimal-ui`,
-                icon: `src/Images/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/Images/favicon.png`, // This path is relative to the root of the site.
             },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -33,5 +36,36 @@ module.exports = {
         // `gatsby-plugin-offline`,
         `gatsby-plugin-typescript`,
         `gatsby-theme-material-ui`,
+        {
+            resolve: "gatsby-source-prismic",
+            accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+            options: {
+                repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+                linkResolver: () => doc => {
+                    // URL for a category type
+                    if (doc.type === "category") {
+                        return `/category/${doc.uid}`;
+                    }
+                    // URL for a product type
+                    if (doc.type === "product") {
+                        return `/product/${doc.uid}`;
+                    }
+                    // URL for a page type
+                    if (doc.type === "page") {
+                        return `/${doc.uid}`;
+                    }
+                    // Backup for all other types
+                    return "/";
+                },
+                shouldDownloadImage: () => {
+                    // Return true to download the image or false to skip.
+                    return true;
+                },
+                schemas: {
+                    homepage: require("./src/Schemas/homepage.json"),
+                },
+            },
+        },
+        // "gatsby-plugin-svgr",
     ],
 };

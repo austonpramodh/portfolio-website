@@ -1,0 +1,437 @@
+{
+  "Main": {
+    "first_name": {
+      "type": "Text",
+      "config": {
+        "label": "First Name",
+        "placeholder": "Auston"
+      }
+    },
+    "middle_name": {
+      "type": "Text",
+      "config": {
+        "label": "Middle Name",
+        "placeholder": "Pramodh"
+      }
+    },
+    "last_name": {
+      "type": "Text",
+      "config": {
+        "label": "Last Name",
+        "placeholder": "Barboza"
+      }
+    },
+    "job_role": {
+      "type": "Text",
+      "config": {
+        "label": "Job Role",
+        "placeholder": "Software Engineer"
+      }
+    },
+    "profile_picture": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Profile Picture"
+      }
+    },
+    "main_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Icon"
+            }
+          },
+          "name": {
+            "type": "Text",
+            "config": {
+              "label": "Name"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link"
+            }
+          }
+        },
+        "label": "Main Links"
+      }
+    }
+  },
+  "About me": {
+    "about_me_header": {
+      "type": "Text",
+      "config": {
+        "label": "header",
+        "placeholder": "About Me"
+      }
+    },
+    "about_me_description": {
+      "type": "Text",
+      "config": {
+        "label": "description",
+        "placeholder": "Hello, I’m a Auston, web-developer based on Chennai. I have rich experience in web site building and customization. Also I am good at"
+      }
+    },
+    "about_me_media": {
+      "type": "Link",
+      "config": {
+        "select": "media",
+        "label": "Image/Animation"
+      }
+    },
+    "about_me_skills": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "skill": {
+            "type": "Text",
+            "config": {
+              "label": "skill",
+              "placeholder": "HTML"
+            }
+          }
+        },
+        "label": "Skills"
+      }
+    },
+    "resume": {
+      "type": "Link",
+      "config": {
+        "select": "media",
+        "label": "Resume"
+      }
+    }
+  },
+  "What I do": {
+    "what_i_do_header": {
+      "type": "Text",
+      "config": {
+        "label": "What i do Header"
+      }
+    },
+    "what_i_do_items": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "image"
+            }
+          },
+          "header": {
+            "type": "Text",
+            "config": {
+              "label": "header"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "description"
+            }
+          }
+        },
+        "label": "What I do"
+      }
+    }
+  },
+  "Links": {
+    "links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "icon"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "link"
+            }
+          },
+          "name": {
+            "type": "Text",
+            "config": {
+              "label": "name"
+            }
+          }
+        },
+        "label": "Links"
+      }
+    }
+  },
+  "Skills": {
+    "technical_skills": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "name": {
+            "type": "Text",
+            "config": {
+              "label": "name"
+            }
+          },
+          "value": {
+            "type": "Number",
+            "config": {
+              "label": "value"
+            }
+          }
+        },
+        "label": "Technical Skills"
+      }
+    },
+    "professional_skills": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "name": {
+            "type": "Text",
+            "config": {
+              "label": "Name"
+            }
+          },
+          "value": {
+            "type": "Number",
+            "config": {
+              "label": "Value"
+            }
+          }
+        },
+        "label": "Professional Skills"
+      }
+    }
+  },
+  "Experiences": {
+    "work_experiences": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "header": {
+            "type": "Text",
+            "config": {
+              "label": "Header"
+            }
+          },
+          "highlighted_header": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Header"
+            }
+          },
+          "highlighted_description": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Description"
+            }
+          },
+          "list_header": {
+            "type": "Text",
+            "config": {
+              "label": "List Header"
+            }
+          },
+          "list": {
+            "type": "Text",
+            "config": {
+              "label": "list"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "description"
+            }
+          }
+        },
+        "label": "Work Experiences"
+      }
+    },
+    "education": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "header": {
+            "type": "Text",
+            "config": {
+              "label": "Header"
+            }
+          },
+          "highlighted_header": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Header"
+            }
+          },
+          "highlighted_description": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Description"
+            }
+          },
+          "list_header": {
+            "type": "Text",
+            "config": {
+              "label": "List Header"
+            }
+          },
+          "list": {
+            "type": "Text",
+            "config": {
+              "label": "list"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "description"
+            }
+          }
+        },
+        "label": "Education"
+      }
+    },
+    "projects": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "header": {
+            "type": "Text",
+            "config": {
+              "label": "Header"
+            }
+          },
+          "highlighted_header": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Header"
+            }
+          },
+          "highlighted_description": {
+            "type": "Text",
+            "config": {
+              "label": "Highlighted Description"
+            }
+          },
+          "list_header": {
+            "type": "Text",
+            "config": {
+              "label": "List Header"
+            }
+          },
+          "list": {
+            "type": "Text",
+            "config": {
+              "label": "list"
+            }
+          },
+          "description": {
+            "type": "Text",
+            "config": {
+              "label": "description"
+            }
+          }
+        },
+        "label": "Projects"
+      }
+    }
+  },
+  "Contact Me": {
+    "contact_me_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
+          "title": {
+            "type": "Text",
+            "config": {
+              "label": "Title"
+            }
+          },
+          "link_name": {
+            "type": "Text",
+            "config": {
+              "label": "Link Name"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link"
+            }
+          }
+        },
+        "label": "Contact Me Links"
+      }
+    },
+    "footer_text": {
+      "type": "Text",
+      "config": {
+        "label": "Footer Text"
+      }
+    }
+  },
+  "SEO": {
+    "page_title": {
+      "type": "Text",
+      "config": {
+        "label": "Page Title"
+      }
+    },
+    "page_description": {
+      "type": "Text",
+      "config": {
+        "label": "Page Description"
+      }
+    },
+    "page_author": {
+      "type": "Text",
+      "config": {
+        "label": "Page Author"
+      }
+    },
+    "page_domain": {
+      "type": "Link",
+      "config": {
+        "label": "Page Domain"
+      }
+    },
+    "seo_keywords": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "keyword": {
+            "type": "Text",
+            "config": {
+              "label": "keyword"
+            }
+          }
+        },
+        "label": "SEO Keywords"
+      }
+    }
+  }
+}

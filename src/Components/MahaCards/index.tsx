@@ -1,15 +1,15 @@
 import React from "react";
 import { WithStyles } from "@material-ui/styles/withStyles";
-import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
 import MahaPaper from "../MahaPaper";
 import { ExperienceCard } from "../../Constants/ContentInterface";
 import Styles from "./index.Styles";
+import SvgLoader from "../SvgLoader";
 
 interface MahaCard extends ExperienceCard {
-    Icon?: (props: SvgIconProps) => JSX.Element;
+    IconPath?: string;
     IconColor?: string; //Color in hex code like #9774fa
     highlightedName?: string;
     highlightedSubText?: string;
@@ -51,12 +51,24 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
         <React.Fragment>
             {Cards.map(
                 (
-                    { Icon, name, description, IconColor, highlightedName, highlightedSubText, listItems, listHeader },
+                    {
+                        IconPath,
+                        name,
+                        description,
+                        IconColor,
+                        highlightedName,
+                        highlightedSubText,
+                        listItems,
+                        listHeader,
+                    },
                     index,
                 ) => (
                     <React.Fragment key={`${keyHeader}${index}`}>
                         <MahaPaper className={paperClass}>
-                            {Icon && <Icon className={classes.icon} style={{ color: IconColor }} />}
+                            {IconPath && (
+                                <SvgLoader path={IconPath} className={classes.icon} style={{ color: IconColor }} />
+                            )}
+                            {/* {IconPath && <Icon className={classes.icon} style={{ color: IconColor }} />} */}
                             <div className={classes.headersSection}>
                                 <Typography
                                     className={classes.header}

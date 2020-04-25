@@ -25,7 +25,7 @@ const Styles = () =>
 
 const IndexPage: React.SFC<WithStyles<typeof Styles>> = ({ classes }) => (
     <Layout>
-        <SEO title="Home" />
+        <SEO />
         <ThemeProvider theme={CustomTheme}>
             <div className={classes.container}>
                 <CssBaseline />

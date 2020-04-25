@@ -8,9 +8,12 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.0",
     "@now/node": "^1.5.1",
+    "@types/atob": "^2.1.2",
     "@types/react-helmet": "^5.0.15",
     "@types/react-scrollspy": "^3.3.2",
+    "atob": "^2.1.2",
     "aws-sdk": "^2.662.0",
+    "axios": "^0.19.2",
     "formik": "^2.1.4",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -21,6 +24,7 @@
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-typescript": "^2.2.2",
     "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-source-prismic": "^3.0.1",
     "gatsby-theme-material-ui": "^1.0.8",
     "gatsby-transformer-sharp": "^2.3.13",
     "lottie-web": "^5.6.8",
@@ -38,6 +42,7 @@
     "@types/yup": "^0.26.32",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
@@ -58,7 +63,8 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "lint": "eslint src --ext ts --ext js --quiet --fix"
   },
   "repository": {
     "type": "git",

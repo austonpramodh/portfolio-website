@@ -1,4 +1,3 @@
-import { AboutMeSection } from "../../Constants/Content";
 import Styles from "./index.Styles";
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
@@ -6,28 +5,30 @@ import { Typography } from "@material-ui/core";
 import { Download as DownloadIcon } from "mdi-material-ui";
 
 import AboutMeAnimation from "../../Animations/AboutMe";
+import StaticAboutMeData from "../../Utils/StaticDataHooks/AboutMe";
 
 const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
-    const { skills } = AboutMeSection;
+    const data = StaticAboutMeData();
+
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <div className={classes.imageContainer}>
-                <AboutMeAnimation />
+                <AboutMeAnimation animationDataUrl={data.about_me_media.url} />
             </div>
             <div className={classes.contentContainer}>
                 <Typography className={classes.texts} variant="h2">
-                    About Me
+                    {data.about_me_header}
                 </Typography>
-                <Typography className={classes.texts}>{AboutMeSection.description}</Typography>
+                <Typography className={classes.texts}>{data.about_me_description}</Typography>
 
                 <ul className={classes.skillList}>
-                    {skills.map(skill => (
+                    {data.about_me_skills.map(({ skill }) => (
                         <li key={skill} className={classes.skillListItem}>
                             <span> {skill}</span>
                         </li>
                     ))}
                 </ul>
-                <a href={AboutMeSection.cvDownloadurl} className={classes.cvDownloadButton}>
+                <a href={data.resume.url} className={classes.cvDownloadButton}>
                     <Typography className={classes.cvDownloadText}>Download CV</Typography>
                     <DownloadIcon className={classes.downloadIcon} />
                 </a>

@@ -12,7 +12,7 @@ import {
     Twitter as TwitterIcon,
 } from "mdi-material-ui";
 // import AboutMeImage from "../Assets/ab-img.png";
-import ProfilePic from "../Assets/profilePic.jpg";
+// import ProfilePic from "../Assets/profilePic.jpg";
 import IContent, { IContact, ISocialLink } from "./ContentInterface";
 import BasicInfo from "./BasicInfo";
 
@@ -48,7 +48,7 @@ const Content: IContent = {
         // mobile: BasicInfo.number,
         contactsList: ContactsList,
         socialLinks: SocialLinks,
-        profilePicture: ProfilePic,
+        profilePicture: "",
         profilePictureAlt: "Auston Pramodh Barboza",
     },
     AboutMeSection: {
