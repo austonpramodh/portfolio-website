@@ -8,7 +8,7 @@ interface IEmailParams {
 }
 export const sendEmail = ({ email, message, name }: IEmailParams) => {
     return (
-        fetch("/api/notify", {
+        fetch("/.netlify/functions/notify", {
             method: "post",
             body: JSON.stringify({ name, message, email }),
             headers: {

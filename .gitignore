@@ -73,3 +73,5 @@ public/
 .cache/
 
 .now
+
+built-lambda/

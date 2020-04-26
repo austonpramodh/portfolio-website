@@ -10,6 +10,11 @@ const ErrorCodesMessages = {
         statusCode: 400,
         statusText: undefined,
     },
+    validationError: {
+        code: 4003,
+        message: "Oops, you missed something in the request body",
+        statusCode: 400,
+    },
 };
 
 export default ErrorCodesMessages;
