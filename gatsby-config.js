@@ -67,5 +67,13 @@ module.exports = {
             },
         },
         // "gatsby-plugin-svgr",
+        {
+            resolve: `gatsby-plugin-github-ribbon`,
+            options: {
+                project: `https://github.com/austonpramodh/portfolio-website`,
+                color: `green`,
+                position: `right`,
+            },
+        },
     ],
 };
