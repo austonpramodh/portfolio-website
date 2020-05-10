@@ -3,6 +3,11 @@ import { Theme } from "@material-ui/core";
 
 const Styles = (theme: Theme) =>
     createStyles({
+        "@global": {
+            "body > header > a > img": {
+                zIndex: theme.zIndex.appBar + 100,
+            },
+        },
         header: {
             minHeight: "64px",
             width: "100%",

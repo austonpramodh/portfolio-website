@@ -71,7 +71,7 @@ module.exports = {
             resolve: `gatsby-plugin-github-ribbon`,
             options: {
                 project: `https://github.com/austonpramodh/portfolio-website`,
-                color: `green`,
+                color: `red`,
                 position: `right`,
             },
         },
