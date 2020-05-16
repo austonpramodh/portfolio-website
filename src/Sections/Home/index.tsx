@@ -11,7 +11,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const data = StaticHomeData();
 
     return (
-        <div className={`${classes.container} ${classes.containerMediaQueries}`}>
+        <div className={`${classes.containerMediaQueries} ${classes.container}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
                     <Img fluid={data.profile_picture.localFile.childImageSharp.fluid} />

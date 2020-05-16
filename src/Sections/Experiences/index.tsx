@@ -28,26 +28,17 @@ const Experiences: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <Typography className={classes.header} variant="h2">
                     Work Experiences
                 </Typography>
-                <MahaCards
-                    keyHeader="experiences"
-                    paperClass={classes.educationCards}
-                    Cards={mutatedWorkExperienceData}
-                />
-                <Typography className={classes.header} variant="h2">
+                <MahaCards keyHeader="experiences" Cards={mutatedWorkExperienceData} />
+                <Typography className={`${classes.header} ${classes.educationHeader}`} variant="h2">
                     Education
                 </Typography>
-                <MahaCards keyHeader="eduCards" paperClass={classes.educationCards} Cards={mutatedEducationData} />
+                <MahaCards keyHeader="eduCards" Cards={mutatedEducationData} />
             </div>
             <div className={classes.sections}>
-                <Typography className={classes.header} variant="h2">
+                <Typography className={`${classes.header} ${classes.projectsHeader}`} variant="h2">
                     Projects
                 </Typography>
-                <MahaCards
-                    keyHeader="projectCards"
-                    paperClass={classes.educationCards}
-                    Cards={mutatedProjectsData}
-                    headerVariant="h4"
-                />
+                <MahaCards keyHeader="projectCards" Cards={mutatedProjectsData} headerVariant="h4" />
             </div>
         </div>
     );

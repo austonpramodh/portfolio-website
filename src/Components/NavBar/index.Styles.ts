@@ -3,16 +3,25 @@ import { Theme } from "@material-ui/core";
 
 const Styles = (theme: Theme) =>
     createStyles({
+        "@global": {
+            "body > header > a > img": {
+                zIndex: theme.zIndex.appBar + 100,
+            },
+        },
         header: {
             minHeight: "64px",
             width: "100%",
             position: "fixed",
-            zIndex: theme.zIndex.appBar,
+            zIndex: theme.zIndex.appBar + 200,
             transition: "background-color 0.3s ease-in",
             [theme.breakpoints.up("sm")]: {
                 paddingTop: theme.spacing(2.5),
                 paddingBottom: theme.spacing(2.5),
+                zIndex: theme.zIndex.appBar,
             },
+            // [theme.breakpoints.up("md")]: {
+            //     zIndex: theme.zIndex.appBar,
+            // },
         },
         icon: {
             height: "2em",

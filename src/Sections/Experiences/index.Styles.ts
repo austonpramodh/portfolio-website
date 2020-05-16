@@ -15,13 +15,21 @@ const Styles = (theme: Theme) =>
         },
         containerMediaQueries: { ...MainContainerMediaQueries(theme).root },
         header: {
-            padding: 4,
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(2),
         },
-        educationCards: {
-            width: "100%",
+        educationHeader: {
+            marginTop: theme.spacing(4),
+        },
+        projectsHeader: {
+            [theme.breakpoints.down("sm")]: {
+                marginTop: theme.spacing(4),
+            },
         },
         sections: {
             width: "100%",
+            display: "flex",
+            flexDirection: "column",
             [theme.breakpoints.up("md")]: {
                 marginRight: theme.spacing(1),
                 marginLeft: theme.spacing(1),

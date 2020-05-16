@@ -11,36 +11,28 @@ const Styles = (theme: Theme) =>
             flexDirection: "column",
             textAlign: "left",
         },
-        containerMediaQueries: { ...MainContainerMediaQueries(theme).root },
+        containerMediaQueries: {
+            ...MainContainerMediaQueries(theme).root,
+            [theme.breakpoints.up("lg")]: {
+                width: "100%",
+            },
+        },
         header: {
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(2),
         },
         paper: {
-            padding: theme.spacing(2),
-            marginTop: theme.spacing(1),
-            marginBottom: theme.spacing(1),
-            boxShadow: "-1rem 0 3rem #000",
-            width: "100%",
-            [theme.breakpoints.up("md")]: {
-                margin: `${theme.spacing(1)}px`,
-                width: `${(theme.breakpoints.values.md - 40 - theme.spacing(2 * 3)) / 3}px`,
-                // screenwidth - safeArea Padding - (themeSpacingX2(left and right margin of paper * 3 papers ))/3(no of papers wanted)
+            [theme.breakpoints.up("lg")]: {
+                maxWidth: 290,
             },
         },
         icon: {
-            height: 30,
-            width: 30,
-            marginTop: theme.spacing(2),
-            marginBottom: theme.spacing(2.5),
-        },
-        subHeader: {
-            textAlign: "left",
-            marginBottom: theme.spacing(2),
-        },
-        description: {
-            textAlign: "left",
-            marginBottom: "1rem",
+            height: 32,
+            width: 32,
+            [theme.breakpoints.up("sm")]: {
+                height: 48,
+                width: 48,
+            },
         },
         servicesContainer: {
             display: "flex",
@@ -49,6 +41,10 @@ const Styles = (theme: Theme) =>
             [theme.breakpoints.up("md")]: {
                 flexDirection: "row",
                 flexWrap: "wrap",
+            },
+            "& > div": {
+                display: "flex",
+                flexDirection: "inherit",
             },
         },
     });

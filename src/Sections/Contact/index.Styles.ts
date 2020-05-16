@@ -34,12 +34,14 @@ const Styles = (theme: Theme) =>
         },
         icon: {},
         paper: {
+            [theme.breakpoints.up("md")]: {
+                margin: `${theme.spacing(1)}px`,
+                width: `${(theme.breakpoints.values.md - 40 - theme.spacing(2 * 3)) / 3}px`,
+            },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: theme.spacing(2),
-            marginBottom: theme.spacing(2),
         },
         cardHeading: {
             marginTop: theme.spacing(1),
@@ -67,7 +69,10 @@ const Styles = (theme: Theme) =>
             width: "100%",
         },
         contactFormHeading: {
-            marginTop: theme.spacing(2),
+            marginTop: theme.spacing(6),
+        },
+        header: {
+            marginBottom: theme.spacing(2),
         },
     });
 
