@@ -18,7 +18,9 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
 
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
-            <Typography variant="h2">Contact Me</Typography>
+            <Typography variant="h2" className={classes.header}>
+                Contact Me
+            </Typography>
             <div className={classes.contactCardsContainer}>
                 {data.contact_me_links.map((eachContactMeLink, key) => (
                     <MahaPaper key={`${key}Contact`} className={classes.paper}>
@@ -34,8 +36,10 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     </MahaPaper>
                 ))}
             </div>
-            <div className={classes.contactFormHeading}>
-                <Typography variant="h2">Lets Connect!</Typography>
+            <Typography className={classes.contactFormHeading} variant="h2">
+                Lets Connect!
+            </Typography>
+            <div>
                 <ContactForm />
             </div>
             <div className={classes.footer}>

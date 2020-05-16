@@ -9,10 +9,11 @@ const Styles = (theme: Theme) =>
             marginBottom: theme.spacing(1),
             boxShadow: "-1rem 0 3rem #000",
             width: "100%",
+            height: "100%",
             [theme.breakpoints.up("md")]: {
-                margin: `${theme.spacing(1)}px`,
-                width: `${(theme.breakpoints.values.md - 40 - theme.spacing(2 * 3)) / 3}px`,
-                // screenwidth - safeArea Padding - (themeSpacingX2(left and right margin of paper * 3 papers ))/3(no of papers wanted)
+                width: `calc(100% - ${theme.spacing(2)}px)`,
+                height: `calc(100% - ${theme.spacing(2)}px)`,
+                margin: theme.spacing(1),
             },
         },
     });

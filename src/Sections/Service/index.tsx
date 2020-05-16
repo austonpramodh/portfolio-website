@@ -14,14 +14,36 @@ const Service: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
             IconPath: eachData.image.localFile.relativePath,
         };
     });
+    const renderCards = (cardsData: { name: string; description: string; IconPath: string }[]) => {
+        const chunkSize = 2;
+        const myArray = cardsData;
+        const arrayLength = myArray.length;
+        const tempArray: React.ReactNode[] = [];
+
+        for (let index = 0; index < arrayLength; index += chunkSize) {
+            const myChunk = myArray.slice(index, index + chunkSize);
+            // Do something if you want with the group
+            tempArray.push(
+                <div>
+                    <MahaCards
+                        classes={{ icon: classes.icon }}
+                        paperClass={classes.paper}
+                        keyHeader="services"
+                        Cards={myChunk}
+                    />
+                </div>,
+            );
+        }
+
+        return tempArray;
+    };
+    // renderCards([mutatedData[0], mutatedData[0], mutatedData[1]]);
     return (
         <div className={`${classes.container} ${classes.containerMediaQueries}`}>
             <Typography className={classes.header} variant="h2">
                 {data.what_i_do_header}
             </Typography>
-            <div className={classes.servicesContainer}>
-                <MahaCards keyHeader="services" Cards={mutatedData} />
-            </div>
+            <div className={classes.servicesContainer}>{renderCards(mutatedData)}</div>
         </div>
     );
 };

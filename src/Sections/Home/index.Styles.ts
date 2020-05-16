@@ -3,18 +3,20 @@ import { Theme } from "@material-ui/core";
 import MainContainerMediaQueries from "../../Constants/MainContainerMediaQueries";
 
 const Styles = (theme: Theme) => {
-    const pageOffset = `${theme.spacing(16)}px`;
+    const pageOffset = `${theme.spacing(18)}px`;
     return createStyles({
         container: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginBottom: "0px !important",
+            [theme.breakpoints.between("xs", "xs")]: {
+                marginTop: `${theme.spacing(4)}px !important`,
+            },
+            [theme.breakpoints.up("sm")]: {
+                minHeight: `calc(100vh - ${theme.spacing(16)}px - ${pageOffset})`,
+            },
             [theme.breakpoints.up("md")]: {
-                marginTop: `${theme.spacing(8)}px !important`,
-                // paddingTop: pageOffset,
-                height: `calc(100vh - ${theme.spacing(16)}px - ${pageOffset})`,
                 flexDirection: "row-reverse",
             },
         },
