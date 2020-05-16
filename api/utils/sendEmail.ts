@@ -12,6 +12,7 @@ const SESConfig: AWS.SES.ClientConfiguration = {
 const mailer = new AWS.SES(SESConfig);
 
 const sendEmail = (mailOptions: AWS.SES.SendEmailRequest): Promise<PromiseResult<SendEmailResponse, AWSError>> => {
+    // console.log(mailOptions);
     return mailer.sendEmail(mailOptions).promise();
 };
 

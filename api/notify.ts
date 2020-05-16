@@ -29,12 +29,14 @@ const handler: Handler = async (event: APIGatewayEvent) => {
         const body = JSON.parse(rawBody || "{}") as IRequestBody;
 
         await validateBody(body);
-
-        await sendEmail(HostEmailParams({ email: body.email, name: body.name, message: body.message }));
-        await sendEmail(UserEmailParams({ email: body.email, name: body.name }));
+        await sendEmail(await HostEmailParams({ email: body.email, name: body.name, message: body.message }));
+        await sendEmail(await UserEmailParams({ email: body.email, name: body.name }));
 
         const response: HandlerResponse = {
-            body: JSON.stringify({ success: true, message: "Notifications sent successfully" }),
+            body: JSON.stringify({
+                success: true,
+                message: "Notifications sent successfully",
+            }),
             statusCode: 200,
             headers: {
                 "Content-Type": "application/json",

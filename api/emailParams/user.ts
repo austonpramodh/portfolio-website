@@ -1,25 +1,28 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import UserEmailTemplate from "../templates/user";
 import Theme from "../../src/Theme";
-import BasicInfo from "../../src/Constants/BasicInfo";
+import getCMSConfig from "../utils/getCMSConfig";
 
 interface IUserEmailParams {
     name: string;
     email: string;
 }
 
-const senderName = BasicInfo.name;
-const domain = process.env.DOMAIN || "auston.dev";
-const senderEmail = process.env.SENDER_EMAIL || `notification@${domain}`;
-const replyToAddress = `${senderName} <${BasicInfo.email}>`;
+// const senderName = BasicInfo.name;
 
-const userEmailTemplateHtml = UserEmailTemplate({
-    domain,
-    senderName,
-    themeColor: Theme.palette.primary.main,
-});
+const UserEmailParams = async ({ name, email }: IUserEmailParams): Promise<SendEmailRequest> => {
+    const configData = await getCMSConfig;
+    const senderName = configData.api_sender_name;
+    const senderEmail = configData.api_sender_email_address;
+    const replyToAddress = `${senderName} <${configData.api_reply_to_address}>`;
+    const domain = configData.api_sender_email_domain;
 
-const UserEmailParams = ({ name, email }: IUserEmailParams): SendEmailRequest => {
+    const userEmailTemplateHtml = UserEmailTemplate({
+        domain,
+        senderName: senderName,
+        themeColor: Theme.palette.primary.main,
+    });
+
     const destination = `${name} <${email}>`;
     const source = `${senderName} <${senderEmail}>`;
     return {

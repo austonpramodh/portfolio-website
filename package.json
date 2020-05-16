@@ -14,6 +14,7 @@
     "aws-sdk": "^2.662.0",
     "axios": "^0.19.2",
     "dotenv-webpack": "^1.7.0",
+    "encoding": "^0.1.12",
     "formik": "^2.1.4",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
