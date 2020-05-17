@@ -1,7 +1,7 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import HostEmailTemplate from "../templates/host";
-import Theme from "../../src/Theme";
-import BasicInfo from "../../src/Constants/BasicInfo";
+import Theme from "../../src/Theme"; //TODO: Move Theme to CMS
+import getCMSConfig from "../utils/getCMSConfig";
 
 interface IHostEmailParams {
     name: string;
@@ -9,11 +9,12 @@ interface IHostEmailParams {
     message: string;
 }
 
-const senderName = BasicInfo.name;
-const domain = process.env.DOMAIN || "auston.dev";
-const senderEmail = process.env.SENDER_EMAIL || `notification@${domain}`;
-
-const HostEmailParams = ({ name, email, message }: IHostEmailParams): SendEmailRequest => {
+const HostEmailParams = async ({ name, email, message }: IHostEmailParams): Promise<SendEmailRequest> => {
+    const configData = await getCMSConfig;
+    const domain = configData.api_sender_email_domain;
+    const senderEmail = configData.api_sender_email_address;
+    const senderName = configData.api_sender_name;
+    const senderReplyToAddress = configData.api_reply_to_address;
     const hostEmailTemplateHtml = HostEmailTemplate({
         domain,
         themeColor: Theme.palette.primary.main,
@@ -23,7 +24,7 @@ const HostEmailParams = ({ name, email, message }: IHostEmailParams): SendEmailR
     });
     return {
         Source: `${senderName} <${senderEmail}>`,
-        Destination: { ToAddresses: [`${senderName} <${BasicInfo.email}>`] },
+        Destination: { ToAddresses: [`${senderName} <${senderReplyToAddress}>`] },
         ReplyToAddresses: [`${name} <${email}>`],
         Message: {
             Body: { Html: { Data: hostEmailTemplateHtml, Charset: "UTF-8" } },

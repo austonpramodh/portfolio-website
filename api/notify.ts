@@ -22,9 +22,9 @@ export default async function(request: NowRequest, response: NowResponse): Promi
         const body = (await request.body) as IRequestBody;
         //send mails using templates
         //send an email to the host about being contacted
-        await sendEmail(HostEmailParams({ email: body.email, name: body.name, message: body.message }));
+        await sendEmail(await HostEmailParams({ email: body.email, name: body.name, message: body.message }));
         //send an email to the user for about the confirmation
-        await sendEmail(UserEmailParams({ email: body.email, name: body.name }));
+        await sendEmail(await UserEmailParams({ email: body.email, name: body.name }));
 
         response.json({ success: true, message: "Notifications sent successfully" });
         return;
