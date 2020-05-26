@@ -32,9 +32,9 @@ class Star {
     private yBoundry: { min: number; max: number; mid: number };
     private zBoundry: { min: number; max: number };
 
-    private x: number;
-    private y: number;
-    private z: number;
+    private x = 0;
+    private y = 0;
+    private z = 0;
 
     // color
     private radius: number;
@@ -61,14 +61,9 @@ class Star {
 
         this.speed = options.speed || 1;
         this.focal = options.focal;
-        this.init();
-        this.lastState = this.getState();
-    }
+        this.shadowBlur = this.radius * this.shadowBlurMultiplier;
 
-    private init = () => {
-        this.x = random(this.xBoundry.min, this.xBoundry.max);
-        this.y = random(this.yBoundry.min, this.yBoundry.max);
-        this.z = random(this.zBoundry.min, this.zBoundry.max);
+        //color
         this.ColorObject = new Color(this.color);
         const rgbArray = this.ColorObject.rgb().array();
         this.colorRGB = {
@@ -76,7 +71,15 @@ class Star {
             g: rgbArray[1],
             b: rgbArray[2],
         };
-        this.shadowBlur = this.radius * this.shadowBlurMultiplier;
+        this.init();
+
+        this.lastState = this.getState();
+    }
+
+    private init = () => {
+        this.x = random(this.xBoundry.min, this.xBoundry.max);
+        this.y = random(this.yBoundry.min, this.yBoundry.max);
+        this.z = random(this.zBoundry.min, this.zBoundry.max);
     };
 
     public update = () => {
