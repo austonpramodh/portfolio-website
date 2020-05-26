@@ -7,6 +7,7 @@ import SEO from "../Components/Seo";
 import Sections from "../Sections";
 import CustomTheme from "../Theme";
 import NavBar from "../Components/NavBar";
+import CanvasBackground from "../Components/CanvasBackground";
 
 const Styles = () =>
     createStyles({
@@ -29,6 +30,7 @@ const IndexPage: React.SFC<WithStyles<typeof Styles>> = ({ classes }) => (
         <ThemeProvider theme={CustomTheme}>
             <div className={classes.container}>
                 <CssBaseline />
+                <CanvasBackground />
                 <NavBar Sections={Sections} />
                 {Sections.map(({ id, Component }) => (
                     <section key={id} id={id} className={classes.sectionContainer}>
