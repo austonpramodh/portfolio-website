@@ -35,6 +35,9 @@ const Styles = (theme: Theme) =>
                 marginLeft: theme.spacing(1),
                 marginBottom: "auto",
             },
+            "& div": {
+                zIndex: 1,
+            },
         },
     });
 

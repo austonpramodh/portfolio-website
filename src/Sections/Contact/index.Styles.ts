@@ -20,6 +20,9 @@ const Styles = (theme: Theme) =>
             [theme.breakpoints.up("md")]: {
                 flexDirection: "row",
             },
+            "& div": {
+                zIndex: 1,
+            },
         },
         iconContainer: {
             height: "70px",

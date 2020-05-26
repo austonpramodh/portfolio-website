@@ -64,7 +64,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                     index,
                 ) => (
                     <React.Fragment key={`${keyHeader}${index}`}>
-                        <MahaPaper className={paperClass}>
+                        <MahaPaper className={`${paperClass}`}>
                             {IconPath && (
                                 <SvgLoader path={IconPath} className={classes.icon} style={{ color: IconColor }} />
                             )}

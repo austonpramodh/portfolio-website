@@ -29,14 +29,16 @@ const Styles = (theme: Theme) =>
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
         },
-        list: {
-            position: "fixed",
+        navItemsContainer: {
             display: "flex",
             justifyContent: "center",
             width: "100%",
             listStyleType: "none",
             marginTop: 0,
+            marginBottom: 0,
             backgroundColor: "transparent",
+            padding: 0,
+            alignItems: "center",
         },
         linkItem: {
             margin: `0px ${theme.spacing(1)}px`,
@@ -53,6 +55,17 @@ const Styles = (theme: Theme) =>
             "&>a": {
                 cursor: "default",
             },
+        },
+        headerActive: {
+            backgroundColor: theme.palette.background.paper,
+            zIndex: theme.zIndex.appBar + 200,
+        },
+        toggleDarkModeButton: {
+            display: "flex",
+            alignItems: "center",
+            position: "absolute",
+            right: theme.spacing(2),
+            top: theme.spacing(1),
         },
     });
 

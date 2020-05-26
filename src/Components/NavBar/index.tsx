@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { withStyles, WithStyles, useTheme } from "@material-ui/styles";
-import { Theme, Typography, Hidden } from "@material-ui/core";
+import { withStyles, WithStyles } from "@material-ui/styles";
+import { Typography, Hidden, Switch } from "@material-ui/core";
 import Scrollspy from "react-scrollspy";
 import { SectionsInterface } from "../../Sections";
 import MobileNavBar from "../MobileNavBar";
@@ -12,19 +12,16 @@ interface INavBar extends WithStyles<typeof Styles> {
     Sections: SectionsInterface;
 }
 const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
-    const theme: Theme = useTheme();
-    const StylesWithTheme = Styles(theme);
+    // const theme: Theme = useTheme();
+    // const StylesWithTheme = Styles(theme);
 
     const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
-        // console.log(scrolled);
         if (window.scrollY > position) {
-            // console.log("Setting Scroll true", scrolled);
             setScrolled(true);
         }
         if (window.scrollY < position) {
-            // console.log("Setting Scroll false");
             setScrolled(false);
         }
     };
@@ -37,18 +34,15 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
         };
     }, []);
     return (
-        <header
-            className={classes.header}
-            style={{ backgroundColor: scrolled ? theme.palette.background.paper : "transparent" }}
-        >
+        <header className={`${classes.header} ${scrolled ? classes.headerActive : ""}`}>
             <Hidden smUp implementation="css">
                 <MobileNavBar Sections={Sections} />
             </Hidden>
             <Hidden xsDown implementation="css">
                 <Scrollspy
+                    className={classes.navItemsContainer}
                     items={Sections.map(({ id }) => id)}
                     currentClassName={classes.activeLink}
-                    style={{ ...(StylesWithTheme.list as React.CSSProperties) }}
                     offset={-100}
                 >
                     {Sections.map(({ name, id }) => (
@@ -60,6 +54,10 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
                             </a>
                         </li>
                     ))}
+                    <div className={classes.toggleDarkModeButton}>
+                        <Switch color="primary" name="checkedB" inputProps={{ "aria-label": "primary checkbox" }} />
+                        <Typography>Light mode</Typography>
+                    </div>
                 </Scrollspy>
             </Hidden>
         </header>

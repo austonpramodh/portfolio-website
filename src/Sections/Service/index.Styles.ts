@@ -45,6 +45,9 @@ const Styles = (theme: Theme) =>
             "& > div": {
                 display: "flex",
                 flexDirection: "inherit",
+                "& div": {
+                    zIndex: 1,
+                },
             },
         },
     });

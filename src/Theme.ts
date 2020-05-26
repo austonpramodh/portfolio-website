@@ -16,6 +16,7 @@ const CustomTheme = createMuiTheme({
             paper: "#212529",
             // default: "#0000FF",
         },
+        type: "dark",
     },
     typography: {
         allVariants: { color: "#ffffff", fontFamily: `"roboto", sans-serif`, textAlign: "center", opacity: 0.9 },
