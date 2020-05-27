@@ -17,7 +17,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
     const [isMobileMenuNeeded, setMobileMenuNeed] = useState(false);
 
     const handleOpenMobileMenu = () => {
-        document.body.classList.add(classes.disableBodyScroll);
+        document.body.classList.add(classes.mobileNavActiveBodyClass);
         setMobileMenuNeed(true);
         setTimeout(() => {
             setisMobileMenuOpen(true);
@@ -26,7 +26,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
     };
 
     const handleCloseMobileMenu = () => {
-        document.body.classList.remove(classes.disableBodyScroll);
+        document.body.classList.remove(classes.mobileNavActiveBodyClass);
         setisMobileMenuOpen(false);
         setTimeout(() => {
             setMobileMenuNeed(false);
@@ -50,7 +50,7 @@ const MobileNavBar: React.FC<IMobileNavBar> = ({ classes, Sections }) => {
                             {Sections.map(({ name, id }) => (
                                 <li key={id} className={classes.linkItem}>
                                     <a href={`#${id}`} onClick={handleCloseMobileMenu}>
-                                        <Typography color={"inherit"} variant="h6" className={classes.linkText}>
+                                        <Typography color={"textPrimary"} variant="h6" className={classes.linkText}>
                                             {name}
                                         </Typography>
                                     </a>

@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 import { pink } from "@material-ui/core/colors";
 
-export const LightTheme = createMuiTheme({
+export const DarkTheme = createMuiTheme({
     overrides: {
         MuiOutlinedInput: {
             notchedOutline: { borderColor: "white" },
@@ -9,14 +9,14 @@ export const LightTheme = createMuiTheme({
     },
     palette: {
         primary: pink,
-        text: { primary: "#ffffff", secondary: "#ffffff" },
+        text: { primary: "rgba(255,255,255,0.9)", secondary: "rgba(255,255,255,0.8)" },
         background: {
             default: "#100e17",
             // default: indigo[900],
             paper: "#212529",
             // default: "#0000FF",
         },
-        type: "light",
+        type: "dark",
     },
     typography: {
         allVariants: { color: "#ffffff", fontFamily: `"roboto", sans-serif`, textAlign: "center", opacity: 0.9 },

@@ -18,11 +18,15 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 </Avatar>
             </div>
             <div>
-                <Typography className={classes.promo}>{"Hello I'm"}</Typography>
-                <Typography variant="h2" className={classes.name}>
+                <Typography color="textPrimary" className={classes.promo}>
+                    {"Hello I'm"}
+                </Typography>
+                <Typography color="textPrimary" variant="h2" className={classes.name}>
                     {`${data.first_name} ${data.middle_name} ${data.last_name}`}
                 </Typography>
-                <Typography variant="h4">{data.job_role}</Typography>
+                <Typography color="textSecondary" variant="h4">
+                    {data.job_role}
+                </Typography>
                 <List>
                     {data.main_links.map(({ icon, link, name }) => {
                         const svgPath = icon.localFile.relativePath;
@@ -31,7 +35,9 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                             <ListItem key={name} className={link.url ? classes.listItem : ""}>
                                 <a href={link.url === "" ? undefined : link.url} className={classes.listItemLink}>
                                     <SVGLoader className={classes.listItemIcon} path={svgPath} />
-                                    {name}
+                                    <Typography color="textPrimary" variant="body1">
+                                        {name}
+                                    </Typography>
                                 </a>
                             </ListItem>
                         );

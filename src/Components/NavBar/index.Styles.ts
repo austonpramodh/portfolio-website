@@ -12,16 +12,13 @@ const Styles = (theme: Theme) =>
             minHeight: "64px",
             width: "100%",
             position: "fixed",
-            zIndex: theme.zIndex.appBar + 200,
+            zIndex: theme.zIndex.appBar,
             transition: "background-color 0.3s ease-in",
             [theme.breakpoints.up("sm")]: {
                 paddingTop: theme.spacing(2.5),
                 paddingBottom: theme.spacing(2.5),
                 zIndex: theme.zIndex.appBar,
             },
-            // [theme.breakpoints.up("md")]: {
-            //     zIndex: theme.zIndex.appBar,
-            // },
         },
         icon: {
             height: "2em",
@@ -58,14 +55,6 @@ const Styles = (theme: Theme) =>
         },
         headerActive: {
             backgroundColor: theme.palette.background.paper,
-            zIndex: theme.zIndex.appBar + 200,
-        },
-        toggleDarkModeButton: {
-            display: "flex",
-            alignItems: "center",
-            position: "absolute",
-            right: theme.spacing(2),
-            top: theme.spacing(1),
         },
     });
 

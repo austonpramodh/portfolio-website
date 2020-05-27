@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withStyles, WithStyles } from "@material-ui/styles";
-import { Typography, Hidden, Switch } from "@material-ui/core";
+import { Typography, Hidden } from "@material-ui/core";
 import Scrollspy from "react-scrollspy";
 import { SectionsInterface } from "../../Sections";
 import MobileNavBar from "../MobileNavBar";
@@ -12,9 +12,6 @@ interface INavBar extends WithStyles<typeof Styles> {
     Sections: SectionsInterface;
 }
 const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
-    // const theme: Theme = useTheme();
-    // const StylesWithTheme = Styles(theme);
-
     const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
@@ -48,16 +45,12 @@ const NavBar: React.FC<INavBar> = ({ classes, Sections }) => {
                     {Sections.map(({ name, id }) => (
                         <li key={id} className={classes.linkItem}>
                             <a href={`#${id}`}>
-                                <Typography color={"inherit"} variant="h6">
+                                <Typography color={"textPrimary"} variant="h6">
                                     {name}
                                 </Typography>
                             </a>
                         </li>
                     ))}
-                    <div className={classes.toggleDarkModeButton}>
-                        <Switch color="primary" name="checkedB" inputProps={{ "aria-label": "primary checkbox" }} />
-                        <Typography>Light mode</Typography>
-                    </div>
                 </Scrollspy>
             </Hidden>
         </header>

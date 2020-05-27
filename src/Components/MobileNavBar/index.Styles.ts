@@ -7,12 +7,14 @@ const Styles = (theme: Theme) =>
             display: "flex",
             minHeight: theme.spacing(8),
             alignItems: "center",
+            zIndex: theme.zIndex.appBar,
         },
         icon: {
             height: "2em",
             width: "2em",
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
+            fill: theme.palette.text.primary,
         },
         mobileMenu: {
             height: "100vh",
@@ -24,6 +26,7 @@ const Styles = (theme: Theme) =>
             display: "flex",
             padding: theme.spacing(2),
             flexDirection: "column",
+            zIndex: theme.zIndex.appBar + 200,
         },
         mobileMenuOpen: {
             transform: "translateY(calc(50vh - 32px)) translateX(0vh)",
@@ -32,6 +35,7 @@ const Styles = (theme: Theme) =>
             height: "2em",
             width: "2em",
             marginLeft: "auto",
+            fill: theme.palette.text.primary,
         },
         activeLink: {
             borderBottom: `${theme.spacing(0.5)}px solid ${theme.palette.primary.main}`,
@@ -52,8 +56,11 @@ const Styles = (theme: Theme) =>
         linkText: {
             fontSize: "2rem",
         },
-        disableBodyScroll: {
+        mobileNavActiveBodyClass: {
             overflow: "hidden",
+            "& header": {
+                zIndex: theme.zIndex.appBar + 200, // required to escape darkModeSwitch button
+            },
         },
     });
 

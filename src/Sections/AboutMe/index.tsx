@@ -16,20 +16,26 @@ const AboutMe: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 <AboutMeAnimation animationDataUrl={data.about_me_media.url} />
             </div>
             <div className={classes.contentContainer}>
-                <Typography className={classes.texts} variant="h2">
+                <Typography color="textPrimary" className={classes.texts} variant="h2">
                     {data.about_me_header}
                 </Typography>
-                <Typography className={classes.texts}>{data.about_me_description}</Typography>
+                <Typography color="textPrimary" className={classes.texts}>
+                    {data.about_me_description}
+                </Typography>
 
                 <ul className={classes.skillList}>
                     {data.about_me_skills.map(({ skill }) => (
                         <li key={skill} className={classes.skillListItem}>
-                            <span> {skill}</span>
+                            <Typography component="span" color="textPrimary" variant="caption">
+                                {skill}
+                            </Typography>
                         </li>
                     ))}
                 </ul>
                 <a href={data.resume.url} className={classes.cvDownloadButton}>
-                    <Typography className={classes.cvDownloadText}>Download CV</Typography>
+                    <Typography color="textPrimary" className={classes.cvDownloadText}>
+                        Download CV
+                    </Typography>
                     <DownloadIcon className={classes.downloadIcon} />
                 </a>
             </div>

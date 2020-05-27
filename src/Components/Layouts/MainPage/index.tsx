@@ -7,23 +7,26 @@
 
 // import Header from "../Header";
 import React from "react";
-import { WithStyles, withStyles, ThemeProvider } from "@material-ui/styles";
-
-import Styles from "./index.styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 import "./layout.css";
 import SEO from "../../Seo";
-import { MainPageLightTheme } from "../../../Themes";
+import { MainPageLightTheme, MainPageDarkTheme } from "../../../Themes";
 import { CssBaseline } from "@material-ui/core";
+import LightModeSwitcher from "../../LightModeSwitcher";
 
-const Layout: React.SFC<WithStyles<typeof Styles>> = ({ children }) => {
+const Layout: React.SFC = ({ children }) => {
+    const [isDarkMode, setDarkMode] = React.useState(false);
     return (
         <>
             <SEO />
             <CssBaseline />
-            <ThemeProvider theme={MainPageLightTheme}>{children}</ThemeProvider>
+            <ThemeProvider theme={isDarkMode ? MainPageDarkTheme : MainPageLightTheme}>
+                <LightModeSwitcher onClick={() => setDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
+                {children}
+            </ThemeProvider>
         </>
     );
 };
 
-export default withStyles(Styles)(Layout);
+export default Layout;
