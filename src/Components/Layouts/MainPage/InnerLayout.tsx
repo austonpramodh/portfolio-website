@@ -15,8 +15,10 @@ import StarsBackground from "../../../Assets/stars.492b41ed.jpg";
 const Styles = (theme: Theme) => {
     return createStyles({
         container: {
+            transition: "background 1.5s linear",
             minHeight: "100vh",
-            background: theme.palette.type === "light" ? `url(${StarsBackground})` : theme.palette.background.default,
+            backgroundColor: theme.palette.type === "light" ? "#1f4c63" : theme.palette.background.default,
+            background: theme.palette.type === "light" ? `url(${StarsBackground})` : "",
             backgroundAttachment: "fixed",
         },
         "@global": {

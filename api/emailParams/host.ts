@@ -1,6 +1,6 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import HostEmailTemplate from "../templates/host";
-import Theme from "../../src/Theme"; //TODO: Move Theme to CMS
+import { MainPageDarkTheme as Theme } from "../../src/Themes"; //TODO: Move Theme to CMS
 import getCMSConfig from "../utils/getCMSConfig";
 
 interface IHostEmailParams {

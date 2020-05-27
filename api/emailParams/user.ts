@@ -1,6 +1,6 @@
 import { SendEmailRequest } from "aws-sdk/clients/ses";
 import UserEmailTemplate from "../templates/user";
-import Theme from "../../src/Theme";
+import { MainPageDarkTheme as Theme } from "../../src/Themes"; //TODO: MOve to CMS
 import getCMSConfig from "../utils/getCMSConfig";
 
 interface IUserEmailParams {
