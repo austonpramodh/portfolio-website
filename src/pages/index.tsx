@@ -1,13 +1,11 @@
 import React from "react";
-import { CssBaseline, NoSsr } from "@material-ui/core";
-import { withStyles, WithStyles, ThemeProvider, createStyles } from "@material-ui/styles";
-import Layout from "../Components/Layout";
-// import Image from "../Components/Image";
-import SEO from "../Components/Seo";
+import { NoSsr } from "@material-ui/core";
+import { withStyles, WithStyles, createStyles } from "@material-ui/styles";
+import Layout from "../Components/Layouts/MainPage";
 import Sections from "../Sections";
-import CustomTheme from "../Theme";
 import NavBar from "../Components/NavBar";
 import CanvasBackground from "../Components/CanvasBackground";
+import SEO from "../Components/Seo";
 
 const Styles = () =>
     createStyles({
@@ -32,22 +30,19 @@ const IndexPage: React.SFC<WithStyles<typeof Styles>> = ({ classes }) => {
     return (
         <Layout>
             <SEO />
-            <ThemeProvider theme={CustomTheme}>
-                <div className={classes.container}>
-                    <CssBaseline />
-                    <NoSsr>
-                        <CanvasBackground />
-                    </NoSsr>
-                    <NavBar Sections={Sections} />
-                    {Sections.map(({ id, Component }) => {
-                        return (
-                            <section key={id} id={id} className={classes.sectionContainer}>
-                                <Component />
-                            </section>
-                        );
-                    })}
-                </div>
-            </ThemeProvider>
+            <div className={classes.container}>
+                <NoSsr>
+                    <CanvasBackground />
+                </NoSsr>
+                <NavBar Sections={Sections} />
+                {Sections.map(({ id, Component }) => {
+                    return (
+                        <section key={id} id={id} className={classes.sectionContainer}>
+                            <Component />
+                        </section>
+                    );
+                })}
+            </div>
         </Layout>
     );
 };

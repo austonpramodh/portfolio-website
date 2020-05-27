@@ -63,18 +63,19 @@ module.exports = {
                 },
                 schemas: {
                     homepage: require("./src/Schemas/homepage.json"),
+                    blog_post: require("./src/Schemas/blogpost.json"),
                 },
             },
         },
         // "gatsby-plugin-svgr",
-        {
-            resolve: `gatsby-plugin-github-ribbon`,
-            options: {
-                project: `https://github.com/austonpramodh/portfolio-website`,
-                color: `red`,
-                position: `right`,
-            },
-        },
+        // {
+        //     resolve: `gatsby-plugin-github-ribbon`,
+        //     options: {
+        //         project: `https://github.com/austonpramodh/portfolio-website`,
+        //         color: `red`,
+        //         position: `left`,
+        //     },
+        // },
         {
             resolve: `gatsby-plugin-google-analytics`,
             options: {

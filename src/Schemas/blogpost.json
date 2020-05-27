@@ -1,0 +1,167 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID"
+      }
+    },
+    "short_title": {
+      "type": "Text",
+      "config": {
+        "label": "Short Title"
+      }
+    },
+    "introduction": {
+      "type": "Text",
+      "config": {
+        "label": "Introduction"
+      }
+    },
+    "published_on": {
+      "type": "Date",
+      "config": {
+        "label": "Published on"
+      }
+    },
+    "last_updated": {
+      "type": "Date",
+      "config": {
+        "label": "Last updated"
+      }
+    }
+  },
+  "Content": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "image": [],
+          "text": [],
+          "embed_links": [],
+          "code_snippet": [],
+          "quote": [],
+          "embed_link": [{
+              "name": "github",
+              "display": "Github"
+            },
+            {
+              "name": "gitlab",
+              "display": "Gitlab"
+            },
+            {
+              "name": "youtube",
+              "display": "Youtube"
+            }
+          ]
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Text",
+            "icon": "texture",
+            "display": "list",
+            "non-repeat": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Image",
+            "description": "Image",
+            "icon": "broken_image",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "embed_link": {
+            "type": "Slice",
+            "fieldset": "Embed Link",
+            "description": "Link to be Embedded",
+            "icon": "insert_link",
+            "display": "list",
+            "non-repeat": {
+              "link": {
+                "type": "Embed",
+                "config": {
+                  "label": "Link"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "code_snippet": {
+            "type": "Slice",
+            "fieldset": "Code Snippet",
+            "description": "Code Snippet with or without filename",
+            "icon": "code",
+            "display": "list",
+            "non-repeat": {
+              "language": {
+                "type": "Text",
+                "config": {
+                  "label": "Language"
+                }
+              },
+              "code_snippet": {
+                "type": "Text",
+                "config": {
+                  "label": "Code Snippet"
+                }
+              },
+              "show_line_numbers": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Hide",
+                  "placeholder_true": "Show",
+                  "default_value": true,
+                  "label": "Line Number"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "quote": {
+            "type": "Slice",
+            "fieldset": "Quote",
+            "description": "Quote",
+            "icon": "format_quote",
+            "display": "list",
+            "non-repeat": {
+              "quote": {
+                "type": "Text",
+                "config": {
+                  "label": "quote"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,22 +10,30 @@ import Helmet from "react-helmet";
 
 import StaticSEOData from "../../Utils/StaticDataHooks/SEO";
 
-function SEO() {
+interface SeoProps {
+    title?: string;
+    lang?: string;
+    meta?: ({ name: string; content: string } | { property: string; content: string })[];
+    description?: string;
+}
+
+const SEO: React.SFC<SeoProps> = ({ description = "", meta = [], lang = "en-US", title }) => {
     const data = StaticSEOData();
     const keywords = data.seo_keywords?.map(e => e.keyword).join(", ") || "";
+    const pageDescription = description || data.page_description;
 
     return (
         <Helmet
             link={[{ ref: "canonical", href: data.page_domain.url }]}
             htmlAttributes={{
-                lang: "en-US",
+                lang: lang,
             }}
-            title={data.page_title}
+            title={title || data.page_title}
             // titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
                 {
                     name: `description`,
-                    content: data.page_description,
+                    content: pageDescription,
                 },
                 {
                     property: `og:title`,
@@ -33,7 +41,7 @@ function SEO() {
                 },
                 {
                     property: `og:description`,
-                    content: data.page_description,
+                    content: pageDescription,
                 },
                 {
                     property: `og:type`,
@@ -53,7 +61,7 @@ function SEO() {
                 },
                 {
                     name: `twitter:card`,
-                    content: data.page_description,
+                    content: pageDescription,
                 },
                 {
                     name: `twitter:creator`,
@@ -65,7 +73,7 @@ function SEO() {
                 },
                 {
                     name: `twitter:description`,
-                    content: data.page_description,
+                    content: pageDescription,
                 },
                 {
                     name: "twitter:image:alt",
@@ -79,15 +87,9 @@ function SEO() {
                     name: "image",
                     content: data.profile_picture.localFile.childImageSharp.fixed.src,
                 },
-            ]}
+            ].concat(meta)}
         />
     );
-}
-
-SEO.defaultProps = {
-    lang: `en`,
-    meta: [],
-    description: ``,
 };
 
 export default SEO;

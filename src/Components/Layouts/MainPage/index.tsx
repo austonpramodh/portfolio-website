@@ -7,16 +7,21 @@
 
 // import Header from "../Header";
 import React from "react";
-import { WithStyles, withStyles } from "@material-ui/styles";
+import { WithStyles, withStyles, ThemeProvider } from "@material-ui/styles";
 
 import Styles from "./index.styles";
 
 import "./layout.css";
+import SEO from "../../Seo";
+import { MainPageLightTheme } from "../../../Themes";
+import { CssBaseline } from "@material-ui/core";
 
 const Layout: React.SFC<WithStyles<typeof Styles>> = ({ children }) => {
     return (
         <>
-            <main>{children}</main>
+            <SEO />
+            <CssBaseline />
+            <ThemeProvider theme={MainPageLightTheme}>{children}</ThemeProvider>
         </>
     );
 };
