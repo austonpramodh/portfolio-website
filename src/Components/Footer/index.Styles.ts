@@ -3,10 +3,12 @@ import { Theme } from "@material-ui/core";
 
 const Styles = (theme: Theme) =>
     createStyles({
-        github: {
-            [theme.breakpoints.up("md")]: {
-                width: "130%",
-                marginLeft: "-15%",
+        container: {
+            padding: `${theme.spacing(4)}px 0px`,
+            borderTop: "1px solid #dadada",
+            textAlign: "center",
+            "& a": {
+                display: "inline",
             },
         },
     });

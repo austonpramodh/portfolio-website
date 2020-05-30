@@ -1,10 +1,11 @@
-import React from "react";
-import { graphql, PageProps } from "gatsby";
+import React, { Fragment } from "react";
+import { graphql, PageProps, Link } from "gatsby";
 import Styles from "./index.Styles";
 import { withStyles, WithStyles, Typography } from "@material-ui/core";
-import Layout from "../../Components/Layouts/Blog";
+import withLayout from "../../Components/Layouts/Blog/withLayout";
 import SEO from "../../Components/Seo";
 import GetSliceCompoenent, { SliceType } from "../../Components/Slices";
+import Footer from "../../Components/Footer";
 
 export const query = graphql`
     query($uid: String!) {
@@ -17,6 +18,7 @@ export const query = graphql`
                 title
                 body {
                     ... on PrismicBlogPostBodyText {
+                        id
                         slice_type
                         slice_label
                         primary {
@@ -59,9 +61,30 @@ export const query = graphql`
                         slice_type
                         slice_label
                         primary {
-                            language
                             code_snippet
                             show_line_numbers
+                        }
+                    }
+
+                    ... on PrismicBlogPostBodyQuote {
+                        id
+                        slice_type
+                        slice_label
+                        primary {
+                            quote
+                        }
+                    }
+
+                    ... on PrismicBlogPostBodyRichtext {
+                        id
+                        slice_type
+                        slice_label
+                        primary {
+                            rich_text {
+                                html
+                                text
+                                raw
+                            }
                         }
                     }
                     __typename
@@ -87,21 +110,27 @@ interface PostDataInterface {
 const PostTemplate: React.SFC<PageProps<PostDataInterface> & WithStyles<typeof Styles>> = ({ data, classes }) => {
     const blogPost = data.prismicBlogPost.data;
 
-    const renderedBlog = blogPost.body.map(slice => {
-        return GetSliceCompoenent(slice);
+    const renderedBlog = blogPost.body.map((slice, index) => {
+        return GetSliceCompoenent(slice, index);
     });
 
     return (
-        <Layout>
+        <Fragment>
             <SEO title={blogPost.title} description={blogPost.title} />
             <div className={classes.container}>
-                <Typography variant="h1" className={classes.postHeader}>
-                    {blogPost.title}
-                </Typography>
+                <div className={classes.postHeader}>
+                    <Typography variant="subtitle2" className={classes.backButtonContainer}>
+                        <Link to="/blog">back to list</Link>
+                    </Typography>
+
+                    <Typography variant="h1">{blogPost.title}</Typography>
+                </div>
+
                 {renderedBlog}
+                <Footer />
             </div>
-        </Layout>
+        </Fragment>
     );
 };
 
-export default withStyles(Styles)(PostTemplate);
+export default withLayout(withStyles(Styles)(PostTemplate));

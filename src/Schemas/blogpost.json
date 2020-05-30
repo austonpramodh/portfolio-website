@@ -46,9 +46,15 @@
           "image": [],
           "text": [],
           "embed_links": [],
-          "code_snippet": [],
+          "code_snippet": [
+            {
+              "name": "javascript",
+              "display": "JavaScript"
+            }
+          ],
           "quote": [],
-          "embed_link": [{
+          "embed_link": [
+            {
               "name": "github",
               "display": "Github"
             },
@@ -60,7 +66,8 @@
               "name": "youtube",
               "display": "Youtube"
             }
-          ]
+          ],
+          "richtext": []
         },
         "choices": {
           "text": {
@@ -120,12 +127,6 @@
             "icon": "code",
             "display": "list",
             "non-repeat": {
-              "language": {
-                "type": "Text",
-                "config": {
-                  "label": "Language"
-                }
-              },
               "code_snippet": {
                 "type": "Text",
                 "config": {
@@ -155,6 +156,23 @@
                 "type": "Text",
                 "config": {
                   "label": "quote"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "richtext": {
+            "type": "Slice",
+            "fieldset": "RichText",
+            "description": "Rich Text",
+            "icon": "format_color_text",
+            "display": "list",
+            "non-repeat": {
+              "rich_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label": "Rich Text"
                 }
               }
             },

@@ -2,24 +2,24 @@ import React from "react";
 import { Typography, withStyles, WithStyles } from "@material-ui/core";
 import Styles from "./index.Style";
 
-export const TextSliceType: "text" = "text";
+export const QuoteSliceType: "quote" = "quote";
 
-export interface TextSliceProps {
+export interface QuoteSliceProps {
     __typename: string;
     id: string;
-    slice_type: typeof TextSliceType;
+    slice_type: typeof QuoteSliceType;
     slice_label: string;
     primary: {
-        text: string;
+        quote: string;
     };
 }
 
-const TextSlice: React.SFC<TextSliceProps & WithStyles<typeof Styles>> = ({ primary: { text }, id, classes }) => {
+const QuoteSlice: React.SFC<QuoteSliceProps & WithStyles<typeof Styles>> = ({ primary: { quote }, id, classes }) => {
     return (
         <Typography className={classes.container} variant="body1" key={id}>
-            {text}
+            {quote}
         </Typography>
     );
 };
 
-export default withStyles(Styles)(TextSlice);
+export default withStyles(Styles)(QuoteSlice);

@@ -6,12 +6,15 @@ import { githubGist } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const CodeBlockSliceType: "code_snippet" = "code_snippet";
 
+enum SliceLabels {
+    JavaScript = "javascript",
+}
 export interface CodeBlockSliceProps extends WithStyles<typeof Styles> {
+    __typename: string;
     id: string;
     slice_type: typeof CodeBlockSliceType;
-    slice_label: string;
+    slice_label: SliceLabels | null;
     primary: {
-        language: string;
         code_snippet: string;
         show_line_numbers: boolean;
     };
@@ -20,12 +23,19 @@ export interface CodeBlockSliceProps extends WithStyles<typeof Styles> {
 const CodeSliceBlock: React.SFC<CodeBlockSliceProps> = ({
     classes,
     // eslint-disable-next-line @typescript-eslint/camelcase
-    primary: { code_snippet, language, show_line_numbers },
+    slice_label,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    primary: { code_snippet, show_line_numbers },
 }) => {
     return (
         <div className={classes.container}>
-            {/*  eslint-disable-next-line @typescript-eslint/camelcase */}
-            <SyntaxHighlighter language={language} style={githubGist} showLineNumbers={show_line_numbers}>
+            <SyntaxHighlighter
+                // eslint-disable-next-line @typescript-eslint/camelcase
+                language={slice_label || undefined}
+                style={githubGist}
+                // eslint-disable-next-line @typescript-eslint/camelcase
+                showLineNumbers={show_line_numbers}
+            >
                 {/* eslint-disable-next-line @typescript-eslint/camelcase */}
                 {code_snippet}
             </SyntaxHighlighter>

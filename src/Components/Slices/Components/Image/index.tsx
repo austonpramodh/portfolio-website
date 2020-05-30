@@ -5,8 +5,10 @@ import Styles from "./index.Style";
 export const ImageSliceType: "image" = "image";
 
 export interface ImageSliceProps {
+    __typename: string;
     id: string;
     slice_type: typeof ImageSliceType;
+    slice_label: string;
     primary: {
         image: {
             alt?: string;
@@ -20,7 +22,6 @@ export interface ImageSliceProps {
 }
 
 const ImageSlice: React.SFC<ImageSliceProps & WithStyles<typeof Styles>> = ({
-    id,
     primary: {
         image: {
             alt,
@@ -33,10 +34,8 @@ const ImageSlice: React.SFC<ImageSliceProps & WithStyles<typeof Styles>> = ({
 }) => {
     return (
         <div className={classes.container}>
-            <div key={id} className={classes.imageContainer}>
-                <GatsbyImage fluid={fluid} />
-                <Typography variant="caption">{alt}</Typography>
-            </div>
+            <GatsbyImage className={classes.image} fluid={fluid} />
+            <Typography variant="caption">{alt}</Typography>
         </div>
     );
 };

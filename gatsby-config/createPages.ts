@@ -9,7 +9,7 @@ interface AllPrismicBlogPostUids {
     };
 }
 
-export const createPages: GatsbyNode["createPages"] = async ({ graphql, boundActionCreators }) => {
+const createPostPages: GatsbyNode["createPages"] = async ({ boundActionCreators, graphql }) => {
     const { createPage } = boundActionCreators;
     const result = await graphql(`
         query MyQuery {
@@ -30,4 +30,29 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, boundAct
             },
         });
     });
+};
+
+const createBlogHomePages: GatsbyNode["createPages"] = async ({ boundActionCreators }) => {
+    const { createPage } = boundActionCreators;
+    // const result = await graphql(`
+    //     query {
+    //         allPrismicBlogPost {
+    //             totalCount
+    //         }
+    //     }
+    // `);
+
+    createPage({
+        path: "blog",
+        component: resolve(__dirname, "../src/Template/Home/index.tsx"),
+        context: {
+            skip: 0,
+            limit: 10,
+        },
+    });
+};
+
+export const createPages: GatsbyNode["createPages"] = async createPagesArgs => {
+    createPostPages(createPagesArgs);
+    createBlogHomePages(createPagesArgs);
 };

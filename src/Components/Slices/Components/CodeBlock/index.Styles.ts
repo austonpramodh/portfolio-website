@@ -1,12 +1,14 @@
 import { createStyles } from "@material-ui/styles";
-// import { Theme } from "@material-ui/core";
+import { Theme } from "@material-ui/core";
 
-const Styles = () =>
+const Styles = (theme: Theme) =>
     createStyles({
         container: {
-            marginLeft: "auto",
-            marginRight: "auto",
-            maxWidth: 800,
+            marginBottom: theme.spacing(4),
+            [theme.breakpoints.up("md")]: {
+                width: "130%",
+                marginLeft: "-15%",
+            },
         },
     });
 

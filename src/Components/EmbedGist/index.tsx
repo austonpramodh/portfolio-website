@@ -5,6 +5,7 @@ import Styles from "./index.Styles";
 interface EmbeddedGistIframeProps extends WithStyles<typeof Styles> {
     gistUrl: string;
     file?: string;
+    className?: string;
 }
 
 interface EmbeddedGistIframeState {
@@ -56,10 +57,10 @@ class EmbeddedGistIframe extends Component<EmbeddedGistIframeProps, EmbeddedGist
     };
 
     render() {
-        const { classes } = this.props;
+        const { classes, className = "" } = this.props;
         const { isLoading } = this.state;
         return (
-            <div className={classes.container}>
+            <div className={`${classes.container} ${className}`}>
                 {isLoading && (
                     <CircularProgress variant="indeterminate" color="primary" size={40} className={classes.loader} />
                 )}

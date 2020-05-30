@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import Img, { FluidObject } from "gatsby-image";
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -13,20 +13,45 @@ import Img from "gatsby-image";
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = () => {
-    const data = useStaticQuery(graphql`
-        query {
-            placeholderImage: file(relativePath: { eq: "profilePic.jpg" }) {
-                childImageSharp {
-                    fluid(maxWidth: 300) {
-                        ...GatsbyImageSharpFluid
+interface ProfileImageData {
+    prismicHomepage: {
+        data: {
+            profile_picture: {
+                localFile: {
+                    childImageSharp: {
+                        fluid: FluidObject;
+                    };
+                };
+            };
+        };
+    };
+}
+const ProfileImage = () => {
+    const data = useStaticQuery<ProfileImageData>(graphql`
+        {
+            prismicHomepage {
+                data {
+                    profile_picture {
+                        localFile {
+                            childImageSharp {
+                                fluid(maxWidth: 300) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        alt
                     }
                 }
             }
         }
     `);
 
-    return <Img style={{ height: "100%", width: "100%" }} fluid={data.placeholderImage.childImageSharp.fluid} />;
+    return (
+        <Img
+            style={{ height: "100%", width: "100%" }}
+            fluid={data.prismicHomepage.data.profile_picture.localFile.childImageSharp.fluid}
+        />
+    );
 };
 
-export default Image;
+export default ProfileImage;
