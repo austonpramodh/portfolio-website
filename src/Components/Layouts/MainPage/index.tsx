@@ -15,14 +15,21 @@ import { MainPageLightTheme, MainPageDarkTheme } from "../../../Themes";
 import { CssBaseline } from "@material-ui/core";
 import LightModeSwitcher from "../../LightModeSwitcher";
 
-const Layout: React.SFC = ({ children }) => {
-    const [isDarkMode, setDarkMode] = React.useState(false);
+const isDarkModeStorageKey = "isDarkMode";
+const Layout: React.FunctionComponent = ({ children }) => {
+    const [isDarkMode, setDarkMode] = React.useState(localStorage.getItem(isDarkModeStorageKey) === "true");
+    const onClickModeSwitch = () => {
+        const nextMode = !isDarkMode;
+        localStorage.setItem(isDarkModeStorageKey, String(nextMode));
+        setDarkMode(nextMode);
+    };
+
     return (
         <>
             <SEO />
             <CssBaseline />
             <ThemeProvider theme={isDarkMode ? MainPageDarkTheme : MainPageLightTheme}>
-                <LightModeSwitcher onClick={() => setDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
+                <LightModeSwitcher onClick={() => onClickModeSwitch()} isDarkMode={isDarkMode} />
                 {children}
             </ThemeProvider>
         </>
