@@ -17,7 +17,10 @@ import LightModeSwitcher from "../../LightModeSwitcher";
 
 const isDarkModeStorageKey = "isDarkMode";
 const Layout: React.FunctionComponent = ({ children }) => {
-    const [isDarkMode, setDarkMode] = React.useState(localStorage.getItem(isDarkModeStorageKey) === "true");
+    const [isDarkMode, setDarkMode] = React.useState(false);
+    React.useEffect(() => {
+        setDarkMode(localStorage.getItem(isDarkModeStorageKey) === "true");
+    }, []);
     const onClickModeSwitch = () => {
         const nextMode = !isDarkMode;
         localStorage.setItem(isDarkModeStorageKey, String(nextMode));
