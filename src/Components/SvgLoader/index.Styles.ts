@@ -5,7 +5,6 @@ const Styles = () =>
         container: {
             transition: "inherit",
             display: "flex",
-            fill: "#FFFFFF",
             "&>svg": {
                 maxWidth: "inherit",
                 maxHeight: "inherit",
@@ -13,6 +12,9 @@ const Styles = () =>
                 width: "inherit",
                 // transition: "inherit",
             },
+        },
+        fillColor: {
+            fill: "#FFFFFF",
         },
     });
 

@@ -14,7 +14,7 @@ const ProfessionalSkills: React.FC<IProps & WithStyles<typeof Styles>> = ({ clas
         <Fragment>
             <Typography variant="h2">Professional Skills</Typography>
             <div className={classes.eachSkills}>
-                {Skills.map(skill => (
+                {Skills.map((skill) => (
                     <Fragment key={skill.name}>
                         <div className={classes.skill}>
                             <div className={classes.progressContainer}>

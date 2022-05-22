@@ -10,19 +10,12 @@ interface StaticData {
             middle_name: string;
             profile_picture: {
                 alt: string;
-                localFile: {
-                    childImageSharp: {
-                        fluid: FluidObject;
-                    };
-                };
+                fluid: FluidObject;
             };
             main_links: [
                 {
                     icon: {
-                        localFile: {
-                            absolutePath: string;
-                            relativePath: string;
-                        };
+                        url: string;
                     };
                     name: string;
                     link: {
@@ -35,39 +28,34 @@ interface StaticData {
 }
 
 const StaticHomeData = () =>
-    (useStaticQuery(graphql`
-        {
-            prismicHomepage(data: { about_me_description: {} }) {
-                data {
-                    first_name
-                    job_role
-                    last_name
-                    middle_name
-                    profile_picture {
-                        localFile {
-                            childImageSharp {
-                                fluid(maxWidth: 300) {
-                                    ...GatsbyImageSharpFluid
-                                }
+    (
+        useStaticQuery(graphql`
+            {
+                prismicHomepage(data: { about_me_description: {} }) {
+                    data {
+                        first_name
+                        job_role
+                        last_name
+                        middle_name
+                        profile_picture {
+                            fluid(maxWidth: 300) {
+                                ...GatsbyImgixFluid
                             }
+                            alt
                         }
-                        alt
-                    }
-                    main_links {
-                        icon {
-                            localFile {
-                                absolutePath
-                                relativePath
+                        main_links {
+                            icon {
+                                url
                             }
+                            link {
+                                url
+                            }
+                            name
                         }
-                        link {
-                            url
-                        }
-                        name
                     }
                 }
             }
-        }
-    `) as StaticData).prismicHomepage.data;
+        `) as StaticData
+    ).prismicHomepage.data;
 
 export default StaticHomeData;

@@ -13,9 +13,12 @@ const IndexPage: React.SFC<PageProps> = () => {
         <Layout>
             <SEO />
             <InnerLayout>
-                <NoSsr>
-                    <CanvasBackground />
-                </NoSsr>
+                {/* Disabled for now */}
+                {false && (
+                    <NoSsr>
+                        <CanvasBackground />
+                    </NoSsr>
+                )}
                 <NavBar Sections={Sections} />
                 {Sections.map(({ id, Component }) => {
                     return (

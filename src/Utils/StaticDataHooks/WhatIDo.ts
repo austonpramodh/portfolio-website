@@ -8,10 +8,7 @@ interface StaticData {
                 description: string;
                 header: string;
                 image: {
-                    localFile: {
-                        absolutePath: string;
-                        relativePath: string;
-                    };
+                    url: string;
                 };
             }[];
         };
@@ -19,24 +16,23 @@ interface StaticData {
 }
 
 const StaticWhatIDoData = () =>
-    (useStaticQuery(graphql`
-        {
-            prismicHomepage {
-                data {
-                    what_i_do_header
-                    what_i_do_items {
-                        description
-                        header
-                        image {
-                            localFile {
-                                relativePath
-                                absolutePath
+    (
+        useStaticQuery(graphql`
+            {
+                prismicHomepage {
+                    data {
+                        what_i_do_header
+                        what_i_do_items {
+                            description
+                            header
+                            image {
+                                url
                             }
                         }
                     }
                 }
             }
-        }
-    `) as StaticData).prismicHomepage.data;
+        `) as StaticData
+    ).prismicHomepage.data;
 
 export default StaticWhatIDoData;

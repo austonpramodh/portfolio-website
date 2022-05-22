@@ -6,10 +6,7 @@ interface StaticData {
             links: [
                 {
                     icon: {
-                        localFile: {
-                            absolutePath: string;
-                            relativePath: string;
-                        };
+                        url: string;
                     };
                     name: string;
                     link: {
@@ -22,25 +19,25 @@ interface StaticData {
 }
 
 const StaticLinksData = () =>
-    (useStaticQuery(graphql`
-        {
-            prismicHomepage {
-                data {
-                    links {
-                        icon {
-                            localFile {
-                                absolutePath
-                                relativePath
+    (
+        useStaticQuery(graphql`
+            {
+                prismicHomepage {
+                    data {
+                        links {
+                            icon {
+                                url
+                                gatsbyImageData
                             }
+                            link {
+                                url
+                            }
+                            name
                         }
-                        link {
-                            url
-                        }
-                        name
                     }
                 }
             }
-        }
-    `) as StaticData).prismicHomepage.data;
+        `) as StaticData
+    ).prismicHomepage.data;
 
 export default StaticLinksData;

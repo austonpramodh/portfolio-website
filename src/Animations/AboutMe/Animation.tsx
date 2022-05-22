@@ -19,7 +19,7 @@ const Animation: React.FC<AnimationProps & WithStyles<typeof Styles>> = ({ anima
         <VisibilitySensor
             partialVisibility
             minTopValue={100}
-            onChange={isVisible => onVisibilityChange(setVisibility, isVisible)}
+            onChange={(isVisible) => onVisibilityChange(setVisibility, isVisible)}
         >
             <LottieReact isStopped={!isVisibleState} animationData={animationData} />
         </VisibilitySensor>

@@ -49,7 +49,7 @@ const SEO: React.SFC<SeoProps> = ({ description = "", meta = [], lang = "en-US",
                 },
                 {
                     name: "og:image",
-                    content: data.profile_picture.localFile.childImageSharp.fixed.src,
+                    content: data.profile_picture.fixed.src,
                 },
                 {
                     name: "og:url",
@@ -85,7 +85,7 @@ const SEO: React.SFC<SeoProps> = ({ description = "", meta = [], lang = "en-US",
                 },
                 {
                     name: "image",
-                    content: data.profile_picture.localFile.childImageSharp.fixed.src,
+                    content: data.profile_picture.fixed.src,
                 },
             ].concat(meta)}
         />

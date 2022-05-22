@@ -36,11 +36,13 @@ module.exports = {
         // `gatsby-plugin-offline`,
         `gatsby-plugin-typescript`,
         `gatsby-theme-material-ui`,
+        `gatsby-plugin-image`,
         {
             resolve: "gatsby-source-prismic",
-            accessToken: process.env.PRISMIC_ACCESS_TOKEN,
             options: {
-                repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+                repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+                accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+                customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
                 linkResolver: () => doc => {
                     // URL for a category type
                     if (doc.type === "category") {
@@ -57,14 +59,14 @@ module.exports = {
                     // Backup for all other types
                     return "/";
                 },
-                shouldDownloadImage: () => {
-                    // Return true to download the image or false to skip.
-                    return true;
-                },
-                schemas: {
-                    homepage: require("./src/Schemas/homepage.json"),
-                    blog_post: require("./src/Schemas/blogpost.json"),
-                },
+                // shouldDownloadImage: () => {
+                //     // Return true to download the image or false to skip.
+                //     return true;
+                // },
+                // schemas: {
+                //     homepage: require("./src/Schemas/homepage.json"),
+                //     blog_post: require("./src/Schemas/blogpost.json"),
+                // },
             },
         },
         // "gatsby-plugin-svgr",
@@ -79,7 +81,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
-                trackingId: process.env.GA_TRACKING_ID,
+                trackingId: process.env.GATSBY_GA_TRACKING_ID,
             },
         },
     ],

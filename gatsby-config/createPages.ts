@@ -9,8 +9,8 @@ interface AllPrismicBlogPostUids {
     };
 }
 
-const createPostPages: GatsbyNode["createPages"] = async ({ boundActionCreators, graphql }) => {
-    const { createPage } = boundActionCreators;
+const createPostPages: GatsbyNode["createPages"] = async ({ actions, graphql }) => {
+    const { createPage } = actions;
     const result = await graphql(`
         query MyQuery {
             allPrismicBlogPost {
@@ -32,8 +32,8 @@ const createPostPages: GatsbyNode["createPages"] = async ({ boundActionCreators,
     });
 };
 
-const createBlogHomePages: GatsbyNode["createPages"] = async ({ boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
+const createBlogHomePages: GatsbyNode["createPages"] = async ({ actions }) => {
+    const { createPage } = actions;
     // const result = await graphql(`
     //     query {
     //         allPrismicBlogPost {
@@ -52,7 +52,7 @@ const createBlogHomePages: GatsbyNode["createPages"] = async ({ boundActionCreat
     });
 };
 
-export const createPages: GatsbyNode["createPages"] = async createPagesArgs => {
-    createPostPages(createPagesArgs);
-    createBlogHomePages(createPagesArgs);
+export const createPages: GatsbyNode["createPages"] = async (...args) => {
+    await createPostPages(...args);
+    await createBlogHomePages(...args);
 };

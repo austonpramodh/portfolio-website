@@ -14,7 +14,7 @@ const ContactsLink: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                     return (
                         <ListItem className={classes.linksListItem} key={name}>
                             <a title={name} href={link.url} className={classes.LinksListItemIcon}>
-                                <SVGLoader path={icon.localFile.relativePath} />
+                                <SVGLoader url={icon.url} />
                             </a>
                         </ListItem>
                     );
