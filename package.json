@@ -58,6 +58,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "husky": "^7.0.4",
+    "is-ci": "^3.0.1",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "ts-node": "^10.5.0",
@@ -74,7 +75,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "lint": "eslint src --ext ts --ext js --quiet --fix"
+    "lint": "eslint src --ext ts --ext js --quiet --fix",
+    "precommit": "lint-staged",
+    "prepare": "is-ci || husky install"
   },
   "repository": {
     "type": "git",
@@ -83,15 +86,9 @@
   "bugs": {
     "url": "https://github.com/austonpramodh/maha-portfolio/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ]
   }
 }
