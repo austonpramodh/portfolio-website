@@ -7,11 +7,11 @@ import StaticWhatIDoData from "../../Utils/StaticDataHooks/WhatIDo";
 
 const Service: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
     const data = StaticWhatIDoData();
-    const mutatedData = data.what_i_do_items.map(eachData => {
+    const mutatedData = data.what_i_do_items.map((eachData) => {
         return {
             name: eachData.header,
             description: eachData.description,
-            IconPath: eachData.image.localFile.relativePath,
+            IconPath: eachData.image.url,
         };
     });
     const renderCards = (cardsData: { name: string; description: string; IconPath: string }[]) => {

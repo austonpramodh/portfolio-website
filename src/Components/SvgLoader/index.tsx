@@ -1,42 +1,54 @@
+import { WithStyles, withStyles } from "@material-ui/core";
 import React from "react";
-import { withStyles, WithStyles } from "@material-ui/styles";
 import Styles from "./index.Styles";
-import atobNode from "atob";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-const requireSvgIcon = require.context(
-    `../../../.cache/caches/gatsby-source-prismic/`, // Don’t make this a variable
-    true, // Whether or not to check subdirectories
-    /\.svg$/, // Rough regex for extensions, maybe change this for your use case?
-);
-
-interface SVGLoader {
-    path: string;
+import clsx from "clsx";
+interface Props {
+    url: string;
     className?: string;
-    style?: React.CSSProperties;
+    fillColor?: string;
 }
 
-//TODO: Rename vairables to meaningful names
-
-const SVGLoader: React.SFC<SVGLoader & WithStyles<typeof Styles>> = ({
-    path,
-    className = undefined,
+const SvgURLLoader: React.FunctionComponent<Props & WithStyles<typeof Styles>> = ({
+    url,
+    className,
     classes,
-    style = undefined,
+    fillColor,
 }) => {
-    const str = "gatsby-source-prismic/";
-    const finalPath = path.slice(path.indexOf(str) + str.length, path.length);
-    const CompoData = requireSvgIcon("./" + finalPath);
-    const dataStr = "data:image/svg+xml;base64,";
-    const decodedData = CompoData.slice(CompoData.indexOf(dataStr) + dataStr.length, CompoData.length);
+    const [{ isLoading, svg }, setState] = React.useState<{
+        isLoading: boolean;
+        svg: string | null;
+    }>({
+        isLoading: true,
+        svg: null,
+    });
+
+    React.useEffect(() => {
+        fetch(url)
+            .then((res) => res.text())
+            .then((text) => setState({ svg: text, isLoading: false }))
+            .catch(() => {
+                setState({ isLoading: false, svg: null });
+            });
+    }, []);
+
+    if (isLoading) return <div className="spinner" />;
+
+    if (!svg) return <div className="error" />;
+
     return (
-        <span
-            style={style}
-            className={`${className} ${classes.container} `}
-            dangerouslySetInnerHTML={{ __html: atobNode(decodedData) }}
+        <div
+            id={`hello-fillColor-${fillColor}`}
+            dangerouslySetInnerHTML={{ __html: svg }}
+            className={clsx(classes.container, fillColor ? "" : classes.fillColor, className)}
+            style={
+                fillColor
+                    ? {
+                          fill: fillColor,
+                      }
+                    : {}
+            }
         />
     );
 };
 
-export default withStyles(Styles)(SVGLoader);
+export default withStyles(Styles)(SvgURLLoader);

@@ -11,11 +11,7 @@ interface StaticData {
             seo_keywords: { keyword: string }[];
             profile_picture: {
                 alt: string;
-                localFile: {
-                    childImageSharp: {
-                        fixed: FixedObject;
-                    };
-                };
+                fixed: FixedObject;
             };
         };
     };
@@ -38,12 +34,8 @@ const StaticSEOData = () =>
                     }
                     profile_picture {
                         alt
-                        localFile {
-                            childImageSharp {
-                                fixed(height: 300, width: 300) {
-                                    ...GatsbyImageSharpFixed
-                                }
-                            }
+                        fixed(height: 300, width: 300) {
+                            ...GatsbyImgixFixed
                         }
                     }
                 }

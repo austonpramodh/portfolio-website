@@ -14,7 +14,7 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
         <div className={`${classes.containerMediaQueries} ${classes.container}`}>
             <div className={classes.avatarBorder}>
                 <Avatar className={classes.avatar}>
-                    <Img fluid={data.profile_picture.localFile.childImageSharp.fluid} />
+                    <Img fluid={data.profile_picture.fluid} />
                 </Avatar>
             </div>
             <div>
@@ -29,12 +29,12 @@ const Home: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 </Typography>
                 <List>
                     {data.main_links.map(({ icon, link, name }) => {
-                        const svgPath = icon.localFile.relativePath;
+                        const svgPath = icon.url;
 
                         return (
                             <ListItem key={name} className={link.url ? classes.listItem : ""}>
                                 <a href={link.url === "" ? undefined : link.url} className={classes.listItemLink}>
-                                    <SVGLoader className={classes.listItemIcon} path={svgPath} />
+                                    <SVGLoader className={classes.listItemIcon} url={svgPath} />
                                     <Typography color="textPrimary" variant="body1">
                                         {name}
                                     </Typography>

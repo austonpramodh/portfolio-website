@@ -17,7 +17,7 @@ export const query = graphql`
                 last_updated
                 title
                 body {
-                    ... on PrismicBlogPostBodyText {
+                    ... on PrismicBlogPostDataBodyText {
                         id
                         slice_type
                         slice_label
@@ -26,7 +26,7 @@ export const query = graphql`
                         }
                     }
 
-                    ... on PrismicBlogPostBodyImage {
+                    ... on PrismicBlogPostDataBodyImage {
                         slice_type
                         slice_label
                         id
@@ -44,19 +44,16 @@ export const query = graphql`
                         }
                     }
 
-                    ... on PrismicBlogPostBodyEmbedLink {
+                    ... on PrismicBlogPostDataBodyCodeSnippet {
                         slice_type
                         slice_label
                         id
                         primary {
-                            link {
-                                title
-                                embed_url
-                            }
+                            code_snippet
                         }
                     }
 
-                    ... on PrismicBlogPostBodyCodeSnippet {
+                    ... on PrismicBlogPostDataBodyCodeSnippet {
                         id
                         slice_type
                         slice_label
@@ -66,7 +63,7 @@ export const query = graphql`
                         }
                     }
 
-                    ... on PrismicBlogPostBodyQuote {
+                    ... on PrismicBlogPostDataBodyQuote {
                         id
                         slice_type
                         slice_label
@@ -75,7 +72,7 @@ export const query = graphql`
                         }
                     }
 
-                    ... on PrismicBlogPostBodyRichtext {
+                    ... on PrismicBlogPostDataBodyRichtext {
                         id
                         slice_type
                         slice_label

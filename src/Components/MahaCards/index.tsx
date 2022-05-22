@@ -65,10 +65,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                 ) => (
                     <React.Fragment key={`${keyHeader}${index}`}>
                         <MahaPaper className={`${paperClass}`}>
-                            {IconPath && (
-                                <SvgLoader path={IconPath} className={classes.icon} style={{ color: IconColor }} />
-                            )}
-                            {/* {IconPath && <Icon className={classes.icon} style={{ color: IconColor }} />} */}
+                            {IconPath && <SvgLoader url={IconPath} className={classes.icon} fillColor={IconColor} />}
                             <div className={classes.headersSection}>
                                 <Typography
                                     className={classes.header}
@@ -88,7 +85,7 @@ const MahaCards: React.FC<IProps & WithStyles<typeof Styles>> = ({
                             )}
                             {listItems && (
                                 <ul className={classes.list}>
-                                    {listItems.map(listItem => (
+                                    {listItems.map((listItem) => (
                                         <li className={classes.listItem} key={listItem}>
                                             <ListItemText>{listItem}</ListItemText>
                                         </li>

@@ -25,7 +25,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
                 {data.contact_me_links.map((eachContactMeLink, key) => (
                     <MahaPaper key={`${key}Contact`} className={classes.paper}>
                         <div className={classes.iconContainer}>
-                            <SvgLoader path={eachContactMeLink.image.localFile.relativePath} className={classes.icon} />
+                            <SvgLoader url={eachContactMeLink.image.url} className={classes.icon} />
                         </div>
                         <Typography className={classes.cardHeading} variant="h4">
                             {eachContactMeLink.title}

@@ -2,10 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 export interface StaticContactMeLink {
     image: {
-        localFile: {
-            absolutePath: string;
-            relativePath: string;
-        };
+        url: string;
     };
     title: string;
     link_name: string;
@@ -24,28 +21,27 @@ interface StaticData {
 }
 
 const StaticContactMeLinksData = () =>
-    (useStaticQuery(graphql`
-        {
-            prismicHomepage {
-                data {
-                    footer_text
-                    contact_me_links {
-                        image {
-                            localFile {
-                                relativePath
-                                absolutePath
+    (
+        useStaticQuery(graphql`
+            {
+                prismicHomepage {
+                    data {
+                        footer_text
+                        contact_me_links {
+                            image {
+                                url
                             }
-                        }
-                        title
-                        link_name
-                        link {
-                            url
-                            link_type
+                            title
+                            link_name
+                            link {
+                                url
+                                link_type
+                            }
                         }
                     }
                 }
             }
-        }
-    `) as StaticData).prismicHomepage.data;
+        `) as StaticData
+    ).prismicHomepage.data;
 
 export default StaticContactMeLinksData;

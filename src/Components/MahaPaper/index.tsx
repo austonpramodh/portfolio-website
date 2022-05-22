@@ -2,7 +2,7 @@ import React from "react";
 import { WithStyles } from "@material-ui/styles/withStyles";
 import MaterialPaper from "@material-ui/core/Paper";
 import { withStyles, useMediaQuery, useTheme, Theme } from "@material-ui/core";
-import Tilt from "react-tilt";
+// import Tilt from "react-tilt";
 import Styles from "./index.Styles";
 
 interface IProps {
@@ -16,7 +16,10 @@ const MahaPaper: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, clas
     return isMobileScreen ? (
         <React.Fragment>{paper}</React.Fragment>
     ) : (
-        <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }}>{paper}</Tilt>
+        paper
+        // <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }}>
+        //     {paper}
+        //     </Tilt>
     );
 };
 
