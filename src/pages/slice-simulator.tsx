@@ -41,7 +41,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 
   try {
     externalLinksDoc = await client.getSingle("external_links");
-    console.log("externalLinksDoc", externalLinksDoc.data);
   } catch (error) {
     // No external links document found
     console.log("error", error);

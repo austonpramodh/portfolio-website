@@ -6,7 +6,6 @@ type Props = {
 };
 
 const CustomizedSection = styled("section")(({ theme }) => {
-  console.log("theme from CustomizedSection", theme);
   return {
     backgroundColor: theme.palette.background.default,
   };

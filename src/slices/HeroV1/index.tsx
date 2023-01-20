@@ -17,6 +17,7 @@ import * as prismicH from "@prismicio/helpers";
 import ContactLinks from "../../components/ContactLinks";
 import { useStaticDataContext } from "../../components/StaticDataContext";
 import SliceContainer from "../../components/SliceContainer";
+import ImageLoader from "../../components/ImageLoader";
 
 // Styled components
 
@@ -25,9 +26,6 @@ type HeroV1Props = SliceComponentProps<Content.HeroV1Slice>;
 const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
   const theme = useTheme();
   const staticData = useStaticDataContext();
-  React.useEffect(() => {
-    console.log("staticData", staticData);
-  }, [staticData]);
 
   return (
     <SliceContainer>
@@ -114,7 +112,7 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
           </Typography>
           <Typography
             color="textPrimary"
-            variant="h4"
+            variant="h2"
             fontWeight="bold"
             sx={() => ({})}
           >
@@ -147,6 +145,7 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       display: "flex",
+                      textDecoration: "none",
                     }}
                   >
                     <Box
@@ -163,7 +162,14 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
                         },
                       })}
                     >
-                      <PrismicNextImage field={icon} />
+                      <ImageLoader
+                        field={icon}
+                        sx={(theme) => ({
+                          svg: {
+                            fill: theme.palette.common.white,
+                          },
+                        })}
+                      />
                     </Box>
 
                     <Typography color="textPrimary" variant="body1">

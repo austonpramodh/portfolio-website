@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import { Box, BoxProps, Link, List, ListItem } from "@mui/material";
-import { PrismicNextImage } from "@prismicio/next";
+import { Link, List, ListItem } from "@mui/material";
 import { PrismicImageProps } from "@prismicio/react";
-import { ReactSVG } from "react-svg";
+import ImageLoader from "../ImageLoader";
 
 type Props = {
   linksData: {
@@ -10,33 +9,6 @@ type Props = {
     name: string;
     icon: PrismicImageProps["field"] | null;
   }[];
-};
-
-type ImageLoaderProps = {
-  field: PrismicImageProps["field"];
-} & BoxProps;
-
-const ImageLoader: React.FunctionComponent<ImageLoaderProps> = ({
-  field,
-  ...restProps
-}) => {
-  if (!field?.url) {
-    return null;
-  }
-
-  const isSVG = field?.url?.includes(".svg");
-
-  return (
-    <Box {...restProps}>
-      {isSVG ? (
-        <>
-          <ReactSVG src={field.url} />
-        </>
-      ) : (
-        <PrismicNextImage field={field} />
-      )}
-    </Box>
-  );
 };
 
 const ContactLinks: React.FunctionComponent<Props> = ({ linksData }) => {
