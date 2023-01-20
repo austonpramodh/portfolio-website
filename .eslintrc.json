@@ -14,6 +14,9 @@
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
+  "ignorePatterns": [
+    "types.generated.ts"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {

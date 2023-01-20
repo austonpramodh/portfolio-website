@@ -1,0 +1,41 @@
+{
+  "id": "external_links",
+  "label": "External Links",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "external_link": {
+        "type": "Group",
+        "config": {
+          "label": "External Link",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "icon": {
+              "type": "Image",
+              "config": {
+                "label": "icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "_cts": {
+    "external_links": {
+      "external_link": {}
+    },
+    "page": {}
+  },
+  "slices": {
+    "HeroV1": {
+      "default": {
+        "primary": {}
+      }
+    }
+  },
+  "src/slices": {
+    "HeroV1": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
+    }
+  }
+}

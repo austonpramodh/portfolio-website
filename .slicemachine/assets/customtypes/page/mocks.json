@@ -1,0 +1,133 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "shot"
+  },
+  "page_title": {
+    "__TYPE__": "FieldContent",
+    "value": "flies",
+    "type": "Text"
+  },
+  "page_description": {
+    "__TYPE__": "FieldContent",
+    "value": "degree",
+    "type": "Text"
+  },
+  "page_keywords": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "keyword",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "quarter",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "hero_v1$41f2edef-e764-402b-900d-7efcd28f62b5",
+        "name": "hero_v1",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "name": {
+              "__TYPE__": "FieldContent",
+              "value": "dig",
+              "type": "Text"
+            },
+            "designation": {
+              "__TYPE__": "FieldContent",
+              "value": "compound",
+              "type": "Text"
+            },
+            "display_picture": {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
+                "width": 3424,
+                "height": 3424
+              },
+              "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?rect=0%2C0%2C3424%2C3424&w=320&h=320",
+              "width": 320,
+              "height": 320,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "kitchen",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "id": "mock_Media_link",
+                      "kind": "image/jpeg",
+                      "name": "mock_name",
+                      "url": "https://source.unsplash.com/daily",
+                      "size": "0",
+                      "__TYPE__": "FileLink"
+                    }
+                  }
+                ],
+                [
+                  "icon",
+                  {
+                    "__TYPE__": "ImageContent",
+                    "origin": {
+                      "id": "main",
+                      "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+                      "width": 5243,
+                      "height": 3495
+                    },
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?rect=874%2C0%2C3495%2C3495&w=64&h=64",
+                    "width": 64,
+                    "height": 64,
+                    "edit": {
+                      "zoom": 1,
+                      "crop": {
+                        "x": 874,
+                        "y": 0
+                      },
+                      "background": "transparent"
+                    },
+                    "thumbnails": {}
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
