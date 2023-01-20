@@ -1,10 +1,7 @@
 import React from "react";
-import { ThemeProvider } from "@mui/styles";
-
-import "./layout.css";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 // import SEO from "../../Seo";
 import { LightTheme, DarkTheme } from "../../theme";
-import { CssBaseline } from "@mui/material";
 // import LightModeSwitcher from "../../LightModeSwitcher";
 
 const isDarkModeStorageKey = "isDarkMode";

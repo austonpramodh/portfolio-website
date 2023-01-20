@@ -7,9 +7,8 @@
 
 // import Header from "../Header";
 import React from "react";
-import { WithStyles, withStyles } from "@mui/styles";
+import { withStyles, createStyles, Theme } from "@mui/material";
 
-import { createStyles, Theme } from "@mui/material";
 // import StarsBackground from "../../../Assets/stars.492b41ed.jpg";
 
 const Styles = (theme: Theme) => {
@@ -35,14 +34,18 @@ const Styles = (theme: Theme) => {
 
 type Props = {
   children: React.ReactNode;
-} & WithStyles<typeof Styles>;
+};
 
-const InnerLayout: React.FunctionComponent<Props> = ({ children, classes }) => {
+const InnerLayout: React.FunctionComponent<Props> = ({ children }) => {
   return (
     <>
-      <div className={classes.container}>{children}</div>
+      <div
+      // className={classes.container}
+      >
+        {children}
+      </div>
     </>
   );
 };
 
-export default withStyles(Styles)(InnerLayout);
+export default InnerLayout;
