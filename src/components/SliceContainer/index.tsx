@@ -1,18 +1,11 @@
-import { useTheme, styled } from "@mui/material";
-import React from "react";
+import { styled } from "@mui/material";
+import { Element } from "react-scroll";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const CustomizedSection = styled("section")(({ theme }) => {
+// FIXME: change the to section!
+const SliceContainer = styled(Element)(({ theme }) => {
   return {
     backgroundColor: theme.palette.background.default,
   };
 });
-
-const SliceContainer: React.FunctionComponent<Props> = ({ children }) => {
-  return <CustomizedSection>{children}</CustomizedSection>;
-};
 
 export default SliceContainer;

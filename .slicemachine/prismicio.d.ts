@@ -66,6 +66,56 @@ export interface ExternalLinksDocumentDataExternalLinkItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ExternalLinksDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ExternalLinksDocumentData>, "external_links", Lang>;
+/** Content for Navbar documents */
+interface NavbarDocumentData {
+    /**
+     * Items field in *Navbar*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navbar.items[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    items: prismicT.GroupField<Simplify<NavbarDocumentDataItemsItem>>;
+}
+/**
+ * Item in Navbar → Items
+ *
+ */
+export interface NavbarDocumentDataItemsItem {
+    /**
+     * Label field in *Navbar → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navbar.items[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Link field in *Navbar → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navbar.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Navbar document from Prismic
+ *
+ * - **API ID**: `navbar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavbarDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<NavbarDocumentData>, "navbar", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
     /**
@@ -144,7 +194,7 @@ type PageDocumentDataSlicesSlice = HeroV1Slice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-export type AllDocumentTypes = ExternalLinksDocument | PageDocument;
+export type AllDocumentTypes = ExternalLinksDocument | NavbarDocument | PageDocument;
 /**
  * Primary content in HeroV1 → Primary
  *
@@ -180,6 +230,16 @@ interface HeroV1SliceDefaultPrimary {
      *
      */
     display_picture: prismicT.ImageField<never>;
+    /**
+     * Section ID field in *HeroV1 → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_v1.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
 }
 /**
  * Item in HeroV1 → Items
@@ -199,13 +259,13 @@ export interface HeroV1SliceDefaultItem {
     /**
      * Link field in *HeroV1 → Items*
      *
-     * - **Field Type**: Link
+     * - **Field Type**: Link to Media
      * - **Placeholder**: *None*
      * - **API ID Path**: hero_v1.items[].link
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    link: prismicT.LinkField;
+    link: prismicT.LinkToMediaField;
     /**
      * Icon field in *HeroV1 → Items*
      *
@@ -245,6 +305,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice };
     }
 }

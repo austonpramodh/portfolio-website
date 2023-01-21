@@ -35,6 +35,13 @@
             },
             "thumbnails": []
           }
+        },
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "Section ID",
+            "placeholder": ""
+          }
         }
       },
       "items": {
@@ -50,7 +57,7 @@
           "config": {
             "label": "Link",
             "placeholder": "",
-            "select": null
+            "select": "media"
           }
         },
         "icon": {

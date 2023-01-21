@@ -35,6 +35,11 @@
         "alt": null,
         "__TYPE__": "ImageContent",
         "thumbnails": {}
+      },
+      "section_id": {
+        "__TYPE__": "FieldContent",
+        "value": "properly",
+        "type": "Text"
       }
     },
     "items": [
@@ -54,8 +59,12 @@
             {
               "__TYPE__": "LinkContent",
               "value": {
-                "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
               }
             }
           ],

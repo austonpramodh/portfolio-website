@@ -13,6 +13,7 @@ import Layout from "../components/PageLayout";
 import StaticDataContext, {
   StaticDataContextType,
 } from "../components/StaticDataContext";
+import NavBar from "../components/NavBar";
 // import SEO from "../components/SEO";
 
 type PageProps = {
@@ -37,9 +38,23 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
                 pageDescription={page.type === "page" ? page.data.seo_description : ""}
                 pageSocialCardPreviewImage={page.type === "page" ? page.data.seo_socialCardPreview?.url : ""}
             /> */}
-        {/* <NavBar /> */}
+        <NavBar
+          sections={[
+            {
+              link: "/#home",
+              label: "Home",
+              id: "home",
+            },
+          ]}
+        />
         {page.type === "page" && (
-          <SliceZone slices={page.data.slices} components={components} />
+          <SliceZone
+            slices={page.data.slices}
+            components={components}
+            context={{
+              test: true,
+            }}
+          />
         )}
         {/* <Footer /> */}
       </Layout>

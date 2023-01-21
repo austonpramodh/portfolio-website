@@ -3,7 +3,8 @@
     "external_links": {
       "external_link": {}
     },
-    "page": {}
+    "page": {},
+    "navbar": {}
   },
   "slices": {
     "HeroV1": {

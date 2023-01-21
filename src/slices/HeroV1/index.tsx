@@ -9,7 +9,6 @@ import {
   List,
   ListItem,
   Typography,
-  useTheme,
 } from "@mui/material";
 // import SliceContainer from "../../components/SliceContainer";
 import { PrismicNextImage } from "@prismicio/next";
@@ -18,20 +17,38 @@ import ContactLinks from "../../components/ContactLinks";
 import { useStaticDataContext } from "../../components/StaticDataContext";
 import SliceContainer from "../../components/SliceContainer";
 import ImageLoader from "../../components/ImageLoader";
+import { makeStyles } from "tss-react/mui";
+// --- Styles ---
+const useStyles = makeStyles()((theme) => {
+  console.log("Theme", theme.palette.background.default);
+  return {
+    test: {
+      background: "yellow",
+    },
+  };
+});
+// --- Styles ---
 
-// Styled components
+type HeroV1Props = SliceComponentProps<
+  Content.HeroV1Slice,
+  {
+    test: boolean;
+  }
+>;
 
-type HeroV1Props = SliceComponentProps<Content.HeroV1Slice>;
-
-const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
-  const theme = useTheme();
+const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
+  console.log("Context", context);
   const staticData = useStaticDataContext();
+  const { classes } = useStyles();
 
   return (
-    <SliceContainer>
+    <SliceContainer
+      id={slice.primary.section_id || slice.id}
+      name={slice.primary.section_id || slice.id!}
+    >
       <Container
         maxWidth="md"
-        sx={() => {
+        sx={(theme) => {
           const pageOffset = `${theme.spacing(18)}`;
           return {
             display: "flex",
@@ -48,12 +65,12 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
             [theme.breakpoints.up("md")]: {
               flexDirection: "row-reverse",
             },
-            // minHeight: "100vh",
           };
         }}
       >
         {/* --------- */}
         <Box
+          className={classes.test}
           sx={(theme) => ({
             border: "20px solid rgba(0, 0, 0, 0.9)",
             borderRadius: "50%",
@@ -84,11 +101,11 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
               },
             })}
           >
-            <PrismicNextImage field={slice.primary.display_picture} />
+            <PrismicNextImage field={slice.primary.display_picture} alt="" />
           </Avatar>
         </Box>
         <Box
-          sx={(theme) => ({
+          sx={() => ({
             marginX: "8px",
           })}
         >
