@@ -196,6 +196,101 @@ type PageDocumentDataSlicesSlice = HeroV1Slice;
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 export type AllDocumentTypes = ExternalLinksDocument | NavbarDocument | PageDocument;
 /**
+ * Primary content in AboutMe → Primary
+ *
+ */
+interface AboutMeSliceDefaultPrimary {
+    /**
+     * Title field in *AboutMe → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: about_me.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *AboutMe → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: about_me.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Resume field in *AboutMe → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_me.primary.resume
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    resume: prismicT.LinkToMediaField;
+    /**
+     * Lottie field in *AboutMe → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_me.primary.lottie
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    lottie: prismicT.LinkToMediaField;
+    /**
+     * Section ID field in *AboutMe → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_me.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
+}
+/**
+ * Item in AboutMe → Items
+ *
+ */
+export interface AboutMeSliceDefaultItem {
+    /**
+     * keyword field in *AboutMe → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_me.items[].keyword
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    keyword: prismicT.KeyTextField;
+}
+/**
+ * Default variation for AboutMe Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `AboutMe`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type AboutMeSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<AboutMeSliceDefaultPrimary>, Simplify<AboutMeSliceDefaultItem>>;
+/**
+ * Slice variation for *AboutMe*
+ *
+ */
+type AboutMeSliceVariation = AboutMeSliceDefault;
+/**
+ * AboutMe Shared Slice
+ *
+ * - **API ID**: `about_me`
+ * - **Description**: `AboutMe`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type AboutMeSlice = prismicT.SharedSlice<"about_me", AboutMeSliceVariation>;
+/**
  * Primary content in HeroV1 → Primary
  *
  */
@@ -305,6 +400,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice };
     }
 }

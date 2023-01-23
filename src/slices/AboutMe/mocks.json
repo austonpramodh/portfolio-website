@@ -1,0 +1,76 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "About Me",
+              "spans": []
+            },
+            "direction": "ltr"
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Hello, I’m Auston, a software development enthusiast. I also have a great amount of interest in deployments and cloud solutions like Kubernetes, docker. I love building complex web applications. Additionally, some of my interests include",
+              "spans": []
+            },
+            "direction": "ltr"
+          }
+        ]
+      },
+      "resume": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "id": "mock_Media_link",
+          "kind": "image/jpeg",
+          "name": "mock_name",
+          "url": "https://source.unsplash.com/daily",
+          "size": "0",
+          "__TYPE__": "FileLink"
+        }
+      },
+      "lottie": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "id": "mock_Media_link",
+          "kind": "image/jpeg",
+          "name": "mock_name",
+          "url": "https://source.unsplash.com/daily",
+          "size": "0",
+          "__TYPE__": "FileLink"
+        }
+      },
+      "section_id": {
+        "__TYPE__": "FieldContent",
+        "value": "trace",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "keyword",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "HTML"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

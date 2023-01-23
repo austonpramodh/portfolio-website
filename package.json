@@ -27,11 +27,13 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
+    "lottie-web": "^5.10.2",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scroll": "^1.8.9",
     "react-svg": "^15.1.21",
+    "react-visibility-sensor": "^5.1.1",
     "tss-react": "^4.5.2",
     "typescript": "4.9.4"
   },
