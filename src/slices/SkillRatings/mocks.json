@@ -1,0 +1,95 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "bar_ratings_label": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Forty"
+            }
+          }
+        ]
+      },
+      "circular_ratings_label": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Pariatur non nulla cupidatat dolor do sit laborum ex laboris anim commodo in consequat. Elit aute incididunt cillum. Nostrud aliquip deserunt ad incididunt laboris eu non magna dolore amet."
+            }
+          }
+        ]
+      },
+      "section_id": {
+        "__TYPE__": "FieldContent",
+        "value": "pan",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "vapor",
+              "type": "Text"
+            }
+          ],
+          [
+            "rating",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "12",
+              "type": "Number"
+            }
+          ],
+          [
+            "rating_type",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Professional",
+              "type": "Select"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Testing"
+            }
+          ],
+          [
+            "rating",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Number",
+              "value": "11"
+            }
+          ],
+          [
+            "rating_type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Technical"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

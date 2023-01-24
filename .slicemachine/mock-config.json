@@ -30,6 +30,12 @@
         "primary": {},
         "items": {}
       }
+    },
+    "SkillRatings": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   }
 }

@@ -1411,23 +1411,23 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.6.0.tgz#3c7c9c46e678feefe7a2e5bb609d3dbd665ffb3f"
   integrity sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==
 
-"@slicemachine/client@1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@slicemachine/client/-/client-1.1.16.tgz#3aad77ccc5947d601d908719ad9d9a3597a828c1"
-  integrity sha512-Bp0pJmaS7AcmXiPEo+o4jRTSNkz1OJuUH5Idj0wAzArmtzEWeMiujjxpR8l6pmbkvwXhlOleWHxb9bG+R+gsWg==
+"@slicemachine/client@1.1.17":
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/@slicemachine/client/-/client-1.1.17.tgz#90e42e7afe47b7ae4c243e8a939ea9f621b9449b"
+  integrity sha512-baXUYFAGXm7N/hJPUSaBksoCS/8eHyF1eF+YNDN8BPOFrGnYmX+CGX2Fzn276EA5lRJAfxYgv5H5UzmLV2UzHw==
   dependencies:
     "@prismicio/types-internal" "^1.5.3"
-    "@slicemachine/core" "1.1.16"
+    "@slicemachine/core" "1.1.17"
     axios "^0.27.2"
     form-data "^3.0.0"
     fp-ts "^2.11.5"
     io-ts "^2.2.16"
     mime "^2.5.2"
 
-"@slicemachine/core@1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@slicemachine/core/-/core-1.1.16.tgz#d3bcd07ec6a21011e6b8fd87eb49bee102c51d6f"
-  integrity sha512-czCbLYlrxqDuihnx0ixXDL96bHfdnPQaa1IEqg3S4oTGvI2/ctkG5AIBR4/or8kqNPRSnrCxOSgJm7PBxnFcrw==
+"@slicemachine/core@1.1.17":
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/@slicemachine/core/-/core-1.1.17.tgz#30fd6b1a3117967b1d7de3ff1d578555f7f5f377"
+  integrity sha512-HghEztevYd7Ih2fZuy/zIdv4b2JsVXKFSCBxCPcvO6CJl1ZToxBYXMnoL4XYIZwEVxARSQTra1jud+JQVPazKA==
   dependencies:
     "@prismicio/types-internal" "^1.5.3"
     cookie "^0.4.1"
@@ -7294,18 +7294,18 @@ slice-ansi@^5.0.0:
     ansi-styles "^6.0.0"
     is-fullwidth-code-point "^4.0.0"
 
-slice-machine-ui@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/slice-machine-ui/-/slice-machine-ui-0.6.0.tgz#b7bf1486c81df8aa4f894b2d70757f65dc7b5c17"
-  integrity sha512-rTcQjSa5mkk9gptuDrE4KXMXYQctd22hsKZERL6E/YOFFcN2VP17E5VQfUDICfnnP+u6XzRkG/cM8IQ23s20iw==
+slice-machine-ui@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/slice-machine-ui/-/slice-machine-ui-0.6.1.tgz#344ed4957ac45f9096863e7ccddfdb14969d7380"
+  integrity sha512-FtjS5RIYzFVVZU0BWWx9zTy6pHUidXNUjChsZUiqX0fOCnnKt1ugJjlQtE4QGF+OV5RrI/eAg9xxNu2sCg5foQ==
   dependencies:
     "@prismicio/editor-fields" "^0.1.0"
     "@prismicio/editor-ui" "^0.1.0"
     "@prismicio/mocks" "1.6.4"
     "@prismicio/types-internal" "^1.5.3"
     "@sentry/node" "^7.25.0"
-    "@slicemachine/client" "1.1.16"
-    "@slicemachine/core" "1.1.16"
+    "@slicemachine/client" "1.1.17"
+    "@slicemachine/core" "1.1.17"
     analytics-node "^6.1.0"
     axios "^0.26.0"
     body-parser "^1.19.0"

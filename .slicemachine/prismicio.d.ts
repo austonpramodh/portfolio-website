@@ -480,11 +480,106 @@ type QuickCardsSliceVariation = QuickCardsSliceDefault;
  *
  */
 export type QuickCardsSlice = prismicT.SharedSlice<"quick_cards", QuickCardsSliceVariation>;
+/**
+ * Primary content in SkillRatings → Primary
+ *
+ */
+interface SkillRatingsSliceDefaultPrimary {
+    /**
+     * Bar Ratings Label field in *SkillRatings → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: Technical Skills
+     * - **API ID Path**: skill_ratings.primary.bar_ratings_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    bar_ratings_label: prismicT.TitleField;
+    /**
+     * Circular Ratings Label field in *SkillRatings → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: skill_ratings.primary.circular_ratings_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    circular_ratings_label: prismicT.RichTextField;
+    /**
+     * Section ID field in *SkillRatings → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: skill_ratings.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
+}
+/**
+ * Item in SkillRatings → Items
+ *
+ */
+export interface SkillRatingsSliceDefaultItem {
+    /**
+     * label field in *SkillRatings → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: skill_ratings.items[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * rating field in *SkillRatings → Items*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: skill_ratings.items[].rating
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    rating: prismicT.NumberField;
+    /**
+     * Rating Type field in *SkillRatings → Items*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Rating Type
+     * - **API ID Path**: skill_ratings.items[].rating_type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    rating_type: prismicT.SelectField<"Technical" | "Professional">;
+}
+/**
+ * Default variation for SkillRatings Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `SkillRatings`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SkillRatingsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<SkillRatingsSliceDefaultPrimary>, Simplify<SkillRatingsSliceDefaultItem>>;
+/**
+ * Slice variation for *SkillRatings*
+ *
+ */
+type SkillRatingsSliceVariation = SkillRatingsSliceDefault;
+/**
+ * SkillRatings Shared Slice
+ *
+ * - **API ID**: `skill_ratings`
+ * - **Description**: `SkillRatings`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SkillRatingsSlice = prismicT.SharedSlice<"skill_ratings", SkillRatingsSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }
