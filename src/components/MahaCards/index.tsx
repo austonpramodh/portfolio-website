@@ -37,7 +37,6 @@ interface IProps {
     | "subtitle2"
     | "body1"
     | "body2"
-    | "srOnly"
     | undefined;
 }
 

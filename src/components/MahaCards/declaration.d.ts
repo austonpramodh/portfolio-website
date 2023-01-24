@@ -18,6 +18,7 @@ declare module "react-tilt" {
     onMouseLeave?: (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => void;
+    children: JSX.Element;
   }
   export default class Tilt extends React.Component<IProps> {}
 }
