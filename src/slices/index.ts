@@ -2,10 +2,12 @@
 
 import AboutMe from "./AboutMe";
 import HeroV1 from "./HeroV1";
+import QuickCards from "./QuickCards";
 
-export { AboutMe, HeroV1 };
+export { AboutMe, HeroV1, QuickCards };
 
 export const components = {
   about_me: AboutMe,
   hero_v1: HeroV1,
+  quick_cards: QuickCards,
 };

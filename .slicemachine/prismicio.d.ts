@@ -183,7 +183,7 @@ export interface PageDocumentDataPageKeywordsItem {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroV1Slice;
+type PageDocumentDataSlicesSlice = HeroV1Slice | AboutMeSlice | QuickCardsSlice;
 /**
  * Page document from Prismic
  *
@@ -395,11 +395,96 @@ type HeroV1SliceVariation = HeroV1SliceDefault;
  *
  */
 export type HeroV1Slice = prismicT.SharedSlice<"hero_v1", HeroV1SliceVariation>;
+/**
+ * Primary content in QuickCards → Primary
+ *
+ */
+interface QuickCardsSliceDefaultPrimary {
+    /**
+     * Title field in *QuickCards → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: quick_cards.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Section ID field in *QuickCards → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: quick_cards.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
+}
+/**
+ * Item in QuickCards → Items
+ *
+ */
+export interface QuickCardsSliceDefaultItem {
+    /**
+     * Title field in *QuickCards → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: quick_cards.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *QuickCards → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: quick_cards.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Icon field in *QuickCards → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: quick_cards.items[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for QuickCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `QuickCards`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type QuickCardsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<QuickCardsSliceDefaultPrimary>, Simplify<QuickCardsSliceDefaultItem>>;
+/**
+ * Slice variation for *QuickCards*
+ *
+ */
+type QuickCardsSliceVariation = QuickCardsSliceDefault;
+/**
+ * QuickCards Shared Slice
+ *
+ * - **API ID**: `quick_cards`
+ * - **Description**: `QuickCards`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type QuickCardsSlice = prismicT.SharedSlice<"quick_cards", QuickCardsSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice };
     }
 }

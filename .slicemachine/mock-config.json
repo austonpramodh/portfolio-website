@@ -24,6 +24,12 @@
       "default": {
         "primary": {}
       }
+    },
+    "QuickCards": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   }
 }

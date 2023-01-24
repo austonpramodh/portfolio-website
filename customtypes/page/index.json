@@ -48,6 +48,12 @@
           "choices": {
             "hero_v1": {
               "type": "SharedSlice"
+            },
+            "about_me": {
+              "type": "SharedSlice"
+            },
+            "quick_cards": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -1,10 +1,9 @@
 import { Box, BoxProps } from "@mui/material";
-import { PrismicNextImage } from "@prismicio/next";
-import { PrismicImageProps } from "@prismicio/react";
+import { PrismicNextImage, PrismicNextImageProps } from "@prismicio/next";
 import { ReactSVG } from "react-svg";
 
 type Props = {
-  field: PrismicImageProps["field"];
+  field: PrismicNextImageProps["field"];
 } & BoxProps;
 
 const ImageLoader: React.FunctionComponent<Props> = ({
