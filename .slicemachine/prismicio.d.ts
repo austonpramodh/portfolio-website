@@ -417,16 +417,6 @@ export interface ExperiencesSliceDefaultItem {
      */
     header: prismicT.KeyTextField;
     /**
-     * Highlighted Description field in *Experiences → Items*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: experiences.items[].highlighted_description
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    highlighted_description: prismicT.KeyTextField;
-    /**
      * Highlighted Header field in *Experiences → Items*
      *
      * - **Field Type**: Text
@@ -437,15 +427,25 @@ export interface ExperiencesSliceDefaultItem {
      */
     highlighted_header: prismicT.KeyTextField;
     /**
-     * list field in *Experiences → Items*
+     * Highlighted Description field in *Experiences → Items*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: experiences.items[].list
+     * - **API ID Path**: experiences.items[].highlighted_description
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    list: prismicT.KeyTextField;
+    highlighted_description: prismicT.KeyTextField;
+    /**
+     * Description field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
     /**
      * List Header field in *Experiences → Items*
      *
@@ -457,15 +457,15 @@ export interface ExperiencesSliceDefaultItem {
      */
     list_header: prismicT.KeyTextField;
     /**
-     * Description field in *Experiences → Items*
+     * list field in *Experiences → Items*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: experiences.items[].description
+     * - **API ID Path**: experiences.items[].list
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    description: prismicT.KeyTextField;
+    list: prismicT.KeyTextField;
     /**
      * Type field in *Experiences → Items*
      *

@@ -14,6 +14,8 @@ import StaticDataContext, {
   StaticDataContextType,
 } from "../components/StaticDataContext";
 import NavBar from "../components/NavBar";
+import ScrollSpy from "react-ui-scrollspy";
+import { GlobalStyles } from "@mui/material";
 // import SEO from "../components/SEO";
 
 type PageProps = {
@@ -45,17 +47,50 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
               label: "Home",
               id: "home",
             },
+            {
+              link: "/#about-me",
+              label: "About Me",
+              id: "about-me",
+            },
+            {
+              link: "/#services",
+              label: "Services",
+              id: "services",
+            },
+            {
+              link: "/#skills",
+              label: "Skills",
+              id: "skills",
+            },
+            {
+              link: "/#experiences",
+              label: "Experiences",
+              id: "experiences",
+            },
+            {
+              link: "/#contact-me",
+              label: "Contact Me",
+              id: "contact-me",
+            },
           ]}
         />
-        {page.type === "page" && (
-          <SliceZone
-            slices={page.data.slices}
-            components={components}
-            context={{
-              test: true,
-            }}
-          />
-        )}
+        <ScrollSpy
+          offsetBottom={200}
+          offsetTop={100}
+          useBoxMethod
+          updateHistoryStack={false}
+        >
+          {page.type === "page" && (
+            <SliceZone
+              slices={page.data.slices}
+              components={components}
+              context={{
+                test: true,
+              }}
+            />
+          )}
+        </ScrollSpy>
+
         {/* <Footer /> */}
       </Layout>
     </StaticDataContext.Provider>

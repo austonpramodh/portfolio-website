@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import { Typography, Hidden, Box } from "@mui/material";
+import {
+  Typography,
+  Hidden,
+  Box,
+  List,
+  ListItem,
+  Link,
+  GlobalStyles,
+} from "@mui/material";
 // import { Scrollspy } from "@makotot/ghostui";
 // import { SectionsInterface } from "../../Sections";
 // import MobileNavBar from "../MobileNavBar";
 import useStyles from "./index.Styles";
-import { Link } from "react-scroll";
+import MobileNavBar from "../MobileNavBar";
 
 const position = 64;
 
-interface Section {
+export interface Section {
   label: string;
   link: string;
   id: string;
@@ -39,36 +47,63 @@ const NavBar: React.FunctionComponent<Props> = ({ sections }) => {
     };
   }, []);
 
-  // Scroll Spy stuff
-  React.useEffect(() => {
-    console.log("Hello");
-  }, []);
-
   return (
     <header
       className={`${classes.header} ${scrolled ? classes.headerActive : ""}`}
     >
-      {/* <Hidden smUp implementation="css">
-        <MobileNavBar Sections={Sections} />
-      </Hidden> */}
-      <Hidden xsDown implementation="css">
-        <Box className={classes.navItemsContainer}>
+      <GlobalStyles
+        styles={(theme) => ({
+          ".active-scroll-spy": {
+            "&:hover": {
+              color: theme.palette.text.primary,
+            },
+            "& > h6": {
+              cursor: "default",
+              borderBottom: `2px solid ${theme.palette.primary.dark}`,
+            },
+          },
+        })}
+      />
+      <Hidden smUp implementation="css">
+        <MobileNavBar Sections={sections} />
+      </Hidden>
+      <Hidden smDown implementation="css">
+        <List
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+            listStyleType: "none",
+            marginTop: 0,
+            marginBottom: 0,
+            backgroundColor: "transparent",
+            padding: 0,
+            alignItems: "center",
+          }}
+        >
           {sections.map(({ label, link, id }) => (
-            <li key={`${label}-${link}`}>
+            <ListItem
+              key={`${label}-${link}`}
+              sx={{
+                width: "auto",
+                padding: 0,
+              }}
+            >
               <Link
-                className={`${classes.linkItem}`}
-                to={link}
-                name={id}
-                activeClass={classes.activeLink}
+                className={classes.linkItem}
+                // activeClass={classes.activeLink}
                 href={link}
+                {...{
+                  "data-to-scrollspy-id": id,
+                }}
               >
                 <Typography color={"inherit"} variant="h6">
                   {label}
                 </Typography>
               </Link>
-            </li>
+            </ListItem>
           ))}
-        </Box>
+        </List>
       </Hidden>
     </header>
   );

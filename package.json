@@ -32,9 +32,9 @@
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scroll": "^1.8.9",
     "react-svg": "^15.1.21",
     "react-tilt": "^0.1.4",
+    "react-ui-scrollspy": "^2.3.0",
     "react-visibility-sensor": "^5.1.1",
     "tss-react": "^4.5.2",
     "typescript": "4.9.4"

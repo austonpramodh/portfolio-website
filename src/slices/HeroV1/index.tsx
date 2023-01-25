@@ -42,12 +42,9 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
   const { classes } = useStyles();
 
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={(theme) => {
           const pageOffset = `${theme.spacing(18)}`;
           return {

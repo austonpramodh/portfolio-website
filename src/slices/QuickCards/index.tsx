@@ -44,7 +44,7 @@ const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
       const myChunk = myArray.slice(index, index + chunkSize);
       // Do something if you want with the group
       tempArray.push(
-        <div>
+        <div key={`${slice.id}-${chunkSize}-${index}`}>
           <MahaCards
             classes={{ icon: classes.icon }}
             paperClass={classes.paper}
@@ -59,12 +59,9 @@ const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
   };
 
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
+        maxWidth="xl"
         sx={(theme) => {
           return {
             minHeight: "100vh",

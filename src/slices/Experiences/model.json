@@ -27,13 +27,6 @@
             "placeholder": ""
           }
         },
-        "highlighted_description": {
-          "type": "Text",
-          "config": {
-            "label": "Highlighted Description",
-            "placeholder": ""
-          }
-        },
         "highlighted_header": {
           "type": "Text",
           "config": {
@@ -41,10 +34,17 @@
             "placeholder": ""
           }
         },
-        "list": {
+        "highlighted_description": {
           "type": "Text",
           "config": {
-            "label": "list",
+            "label": "Highlighted Description",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
             "placeholder": ""
           }
         },
@@ -55,10 +55,10 @@
             "placeholder": ""
           }
         },
-        "description": {
+        "list": {
           "type": "Text",
           "config": {
-            "label": "Description",
+            "label": "list",
             "placeholder": ""
           }
         },

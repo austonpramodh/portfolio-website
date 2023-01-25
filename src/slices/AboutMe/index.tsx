@@ -5,7 +5,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { Download as DownloadIcon } from "@mui/icons-material";
 
 import AboutMeAnimation from "../../animations/AboutMe";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 import SliceContainer from "../../components/SliceContainer";
 import * as prismicH from "@prismicio/helpers";
@@ -17,10 +17,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
   slice,
 }) => {
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
         maxWidth="md"
         sx={(theme) => {
@@ -57,10 +54,10 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
             className={classes.texts}
             variant="h6"
           >
-            <PrismicRichText field={slice.primary.title} />
+            {prismicH.asText(slice.primary.title)}
           </Typography>
           <Typography color="textPrimary" className={classes.texts}>
-            <PrismicRichText field={slice.primary.description} />
+            {prismicH.asText(slice.primary.description)}
           </Typography>
           <ul className={classes.skillList}>
             {slice.items.map(({ keyword }) => (

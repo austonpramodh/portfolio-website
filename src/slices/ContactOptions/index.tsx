@@ -25,10 +25,7 @@ const ContactOptions: React.FunctionComponent<
   const staticData = useStaticDataContext();
 
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
         maxWidth="md"
         sx={(theme) => {
@@ -55,6 +52,9 @@ const ContactOptions: React.FunctionComponent<
                     field={eachItem.icon}
                     className={classes.icon}
                     sx={{
+                      "& svg": {
+                        fill: "white",
+                      },
                       "& > img": {
                         width: "100%",
                         height: "100%",

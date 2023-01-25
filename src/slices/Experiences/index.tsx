@@ -56,13 +56,19 @@ const Experiences: React.FunctionComponent<
     return experiences;
   }, [slice.items]);
 
+  // Return if none of the data is set!
+  if (
+    mutatedExperiences.edu.length +
+      mutatedExperiences.work.length +
+      mutatedExperiences.projects.length ===
+    0
+  )
+    return <></>;
+
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={(theme) => {
           return {
             minHeight: "100vh",
@@ -78,31 +84,44 @@ const Experiences: React.FunctionComponent<
         }}
       >
         <div className={classes.sections}>
-          <Typography className={classes.header} variant="h4">
-            Work Experiences
-          </Typography>
-          <MahaCards keyHeader="experiences" Cards={mutatedExperiences.work} />
-          <Typography
-            className={`${classes.header} ${classes.educationHeader}`}
-            variant="h4"
-          >
-            Education
-          </Typography>
-          <MahaCards keyHeader="eduCards" Cards={mutatedExperiences.edu} />
+          {mutatedExperiences.work.length > 0 && (
+            <>
+              <Typography className={classes.header} variant="h4">
+                Work Experiences
+              </Typography>
+              <MahaCards
+                keyHeader="experiences"
+                Cards={mutatedExperiences.work}
+              />
+            </>
+          )}
+          {mutatedExperiences.edu.length > 0 && (
+            <>
+              <Typography
+                className={`${classes.header} ${classes.educationHeader}`}
+                variant="h4"
+              >
+                Education
+              </Typography>
+              <MahaCards keyHeader="eduCards" Cards={mutatedExperiences.edu} />
+            </>
+          )}
         </div>
-        <div className={classes.sections}>
-          <Typography
-            className={`${classes.header} ${classes.projectsHeader}`}
-            variant="h4"
-          >
-            Projects
-          </Typography>
-          <MahaCards
-            keyHeader="projectCards"
-            Cards={mutatedExperiences.projects}
-            headerVariant="h4"
-          />
-        </div>
+        {mutatedExperiences.projects.length > 0 && (
+          <div className={classes.sections}>
+            <Typography
+              className={`${classes.header} ${classes.projectsHeader}`}
+              variant="h4"
+            >
+              Projects
+            </Typography>
+            <MahaCards
+              keyHeader="projectCards"
+              Cards={mutatedExperiences.projects}
+              headerVariant="h4"
+            />
+          </div>
+        )}
       </Container>
     </SliceContainer>
   );

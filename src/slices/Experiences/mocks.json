@@ -5,7 +5,7 @@
     "primary": {
       "section_id": {
         "__TYPE__": "FieldContent",
-        "value": "gently",
+        "value": "post",
         "type": "Text"
       }
     },
@@ -30,22 +30,6 @@
             }
           ],
           [
-            "list",
-            {
-              "__TYPE__": "FieldContent",
-              "type": "Text",
-              "value": "Develop Mobile Application using Flutter;Develop Mobile Application using React Native, Redux;Handle Client Calls, Requirements"
-            }
-          ],
-          [
-            "type",
-            {
-              "__TYPE__": "FieldContent",
-              "type": "Select",
-              "value": "Work Experience"
-            }
-          ],
-          [
             "highlighted_description",
             {
               "__TYPE__": "FieldContent",
@@ -59,6 +43,22 @@
               "__TYPE__": "FieldContent",
               "type": "Text",
               "value": "Responsibility"
+            }
+          ],
+          [
+            "list",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Develop Mobile Application using Flutter;Develop Mobile Application using React Native, Redux;Handle Client Calls, Requirements"
+            }
+          ],
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Work Experience"
             }
           ]
         ]
@@ -75,27 +75,19 @@
             }
           ],
           [
-            "highlighted_header",
-            {
-              "__TYPE__": "FieldContent",
-              "type": "Text",
-              "value": "React Native"
-            }
-          ],
-          [
-            "highlighted_description",
-            {
-              "__TYPE__": "FieldContent",
-              "type": "Text",
-              "value": "A mobile application to help users detect covid19."
-            }
-          ],
-          [
             "description",
             {
               "__TYPE__": "FieldContent",
               "type": "Text",
               "value": "In this project, i have handled the complete CI/CD using CirleCi and also contribute to the development of the react native application."
+            }
+          ],
+          [
+            "highlighted_header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "React Native"
             }
           ],
           [
@@ -105,12 +97,28 @@
               "type": "Select",
               "value": "Projects"
             }
+          ],
+          [
+            "highlighted_description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "A mobile application to help users detect covid19."
+            }
           ]
         ]
       },
       {
         "__TYPE__": "GroupItemContent",
         "value": [
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Education"
+            }
+          ],
           [
             "header",
             {
@@ -125,14 +133,6 @@
               "__TYPE__": "FieldContent",
               "type": "Text",
               "value": "Alliance University"
-            }
-          ],
-          [
-            "type",
-            {
-              "__TYPE__": "FieldContent",
-              "type": "Select",
-              "value": "Education"
             }
           ],
           [

@@ -36,13 +36,10 @@ const SkillRatings: React.FunctionComponent<
   }, [slice.items]);
 
   return (
-    <SliceContainer
-      id={slice.primary.section_id || slice.id}
-      name={slice.primary.section_id || slice.id!}
-    >
+    <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
-        sx={() => {
+        maxWidth="lg"
+        sx={(theme) => {
           return {
             minHeight: "100vh",
             // Testing
@@ -50,18 +47,20 @@ const SkillRatings: React.FunctionComponent<
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            textAlign: "left",
+            [theme.breakpoints.up("md")]: {
+              flexDirection: "row",
+            },
           };
         }}
       >
-        <div className={`${classes.container}`}>
-          <div className={classes.technicalSkillsContainer}>
-            <TechnicalSkills skills={skills.technicalSkills} />
-          </div>
-          <div className={classes.professionalSkillsContainer}>
-            <ProfessionalSkills Skills={skills.professionSkills} />
-          </div>
+        {/* <div className={`${classes.container}`}> */}
+        <div className={classes.technicalSkillsContainer}>
+          <TechnicalSkills skills={skills.technicalSkills} />
         </div>
+        <div className={classes.professionalSkillsContainer}>
+          <ProfessionalSkills Skills={skills.professionSkills} />
+        </div>
+        {/* </div> */}
       </Container>
     </SliceContainer>
   );

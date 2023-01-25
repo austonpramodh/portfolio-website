@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: "64px",
       width: "100%",
       position: "fixed",
+      top: 0,
       zIndex: theme.zIndex.appBar,
       transition: "background-color 0.3s ease-in",
       [theme.breakpoints.up("sm")]: {
