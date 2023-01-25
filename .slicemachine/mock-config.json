@@ -36,6 +36,12 @@
         "primary": {},
         "items": {}
       }
+    },
+    "ContactOptions": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   }
 }

@@ -89,6 +89,64 @@
             }
           ]
         ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Test2"
+            }
+          ],
+          [
+            "rating",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Number",
+              "value": "43"
+            }
+          ],
+          [
+            "rating_type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Technical"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "rating_type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Professional"
+            }
+          ],
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Test4"
+            }
+          ],
+          [
+            "rating",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Number",
+              "value": "66"
+            }
+          ]
+        ]
       }
     ]
   }

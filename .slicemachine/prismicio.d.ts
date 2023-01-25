@@ -291,6 +291,101 @@ type AboutMeSliceVariation = AboutMeSliceDefault;
  */
 export type AboutMeSlice = prismicT.SharedSlice<"about_me", AboutMeSliceVariation>;
 /**
+ * Primary content in ContactOptions → Primary
+ *
+ */
+interface ContactOptionsSliceDefaultPrimary {
+    /**
+     * Title field in *ContactOptions → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: contact_options.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Section ID field in *ContactOptions → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_options.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
+}
+/**
+ * Item in ContactOptions → Items
+ *
+ */
+export interface ContactOptionsSliceDefaultItem {
+    /**
+     * Icon field in *ContactOptions → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_options.items[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * Title field in *ContactOptions → Items*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: LinkedIn
+     * - **API ID Path**: contact_options.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *ContactOptions → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_options.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Link field in *ContactOptions → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_options.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Default variation for ContactOptions Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ContactOptions`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactOptionsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ContactOptionsSliceDefaultPrimary>, Simplify<ContactOptionsSliceDefaultItem>>;
+/**
+ * Slice variation for *ContactOptions*
+ *
+ */
+type ContactOptionsSliceVariation = ContactOptionsSliceDefault;
+/**
+ * ContactOptions Shared Slice
+ *
+ * - **API ID**: `contact_options`
+ * - **Description**: `ContactOptions`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactOptionsSlice = prismicT.SharedSlice<"contact_options", ContactOptionsSliceVariation>;
+/**
  * Primary content in HeroV1 → Primary
  *
  */
@@ -580,6 +675,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }
