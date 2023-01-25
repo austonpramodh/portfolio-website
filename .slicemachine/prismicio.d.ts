@@ -194,7 +194,129 @@ type PageDocumentDataSlicesSlice = HeroV1Slice | AboutMeSlice | QuickCardsSlice 
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-export type AllDocumentTypes = ExternalLinksDocument | NavbarDocument | PageDocument;
+/** Content for SEO Data documents */
+interface SeoDataDocumentData {
+    /**
+     * Page Title field in *SEO Data*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.page_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    page_title: prismicT.KeyTextField;
+    /**
+     * description field in *SEO Data*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * keywords field in *SEO Data*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.keywords[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    keywords: prismicT.GroupField<Simplify<SeoDataDocumentDataKeywordsItem>>;
+    /**
+     * Image field in *SEO Data*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Page Author field in *SEO Data*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.page_author
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    page_author: prismicT.KeyTextField;
+    /**
+     * domain field in *SEO Data*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.domain
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    domain: prismicT.LinkField;
+    /**
+     * Favicon field in *SEO Data*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.favicon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    favicon: prismicT.LinkToMediaField;
+    /**
+     * Slice Zone field in *SEO Data*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<SeoDataDocumentDataSlicesSlice>;
+}
+/**
+ * Item in SEO Data → keywords
+ *
+ */
+export interface SeoDataDocumentDataKeywordsItem {
+    /**
+     * keyword field in *SEO Data → keywords*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_data.keywords[].keyword
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    keyword: prismicT.KeyTextField;
+}
+/**
+ * Slice for *SEO Data → Slice Zone*
+ *
+ */
+type SeoDataDocumentDataSlicesSlice = never;
+/**
+ * SEO Data document from Prismic
+ *
+ * - **API ID**: `seo_data`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SeoDataDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SeoDataDocumentData>, "seo_data", Lang>;
+export type AllDocumentTypes = ExternalLinksDocument | NavbarDocument | PageDocument | SeoDataDocument;
 /**
  * Primary content in AboutMe → Primary
  *
@@ -790,6 +912,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, SeoDataDocumentData, SeoDataDocumentDataKeywordsItem, SeoDataDocumentDataSlicesSlice, SeoDataDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }

@@ -21,7 +21,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
   return (
     <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={(theme) => {
           return {
             // Testing

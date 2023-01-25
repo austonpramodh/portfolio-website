@@ -3,6 +3,7 @@ import React from "react";
 
 export type StaticDataContextType = {
   externalLinksData?: Content.ExternalLinksDocumentData | null;
+  seoData?: Content.SeoDataDocumentData | null;
 };
 
 const StaticDataContext = React.createContext<StaticDataContextType>({});

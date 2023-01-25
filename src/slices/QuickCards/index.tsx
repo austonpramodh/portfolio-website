@@ -66,7 +66,6 @@ const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
         maxWidth="xl"
         sx={(theme) => {
           return {
-            minHeight: "100vh",
             // Testing
             display: "flex",
             justifyContent: "center",

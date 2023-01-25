@@ -11,18 +11,12 @@ const Styles = (theme: Theme) =>
       flexDirection: "column",
       textAlign: "left",
     },
-    // containerMediaQueries: {
-    //     ...MainContainerMediaQueries(theme).root,
-    //     [theme.breakpoints.up("lg")]: {
-    //         width: "100%",
-    //     },
-    // },
     header: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(2),
     },
     paper: {
-      [theme.breakpoints.up("lg")]: {
+      [theme.breakpoints.up("xl")]: {
         maxWidth: 290,
       },
     },

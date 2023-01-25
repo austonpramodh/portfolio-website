@@ -12,7 +12,7 @@ type Props = SliceComponentProps<Content.SkillRatingsSlice>;
 
 const SkillRatings: React.FunctionComponent<
   Props & WithStyles<typeof Styles>
-> = ({ slice, classes }) => {
+> = ({ slice, classes, index, slices }) => {
   const skills: {
     technicalSkills: Skill[];
     professionSkills: Skill[];
@@ -41,7 +41,6 @@ const SkillRatings: React.FunctionComponent<
         maxWidth="lg"
         sx={(theme) => {
           return {
-            minHeight: "100vh",
             // Testing
             display: "flex",
             justifyContent: "center",
@@ -50,6 +49,9 @@ const SkillRatings: React.FunctionComponent<
             [theme.breakpoints.up("md")]: {
               flexDirection: "row",
             },
+            mb:
+              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
+            mt: index === 1 ? 0 : theme.spacing(8),
           };
         }}
       >

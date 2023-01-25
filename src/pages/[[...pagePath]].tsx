@@ -15,8 +15,7 @@ import StaticDataContext, {
 } from "../components/StaticDataContext";
 import NavBar from "../components/NavBar";
 import ScrollSpy from "react-ui-scrollspy";
-import { GlobalStyles } from "@mui/material";
-// import SEO from "../components/SEO";
+import SEO from "../components/Seo";
 
 type PageProps = {
   page: Content.AllDocumentTypes;
@@ -34,12 +33,7 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
-        {/* <SEO
-                defaultSEOData={defaultSEOData}
-                pageTitle={page.type === "page" ? prismicH.asText(page.data.title) : ""}
-                pageDescription={page.type === "page" ? page.data.seo_description : ""}
-                pageSocialCardPreviewImage={page.type === "page" ? page.data.seo_socialCardPreview?.url : ""}
-            /> */}
+        <SEO />
         <NavBar
           sections={[
             {
@@ -109,9 +103,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   const page = await client.getByUID("page", uid);
 
   let externalLinksDoc: Content.ExternalLinksDocument | null = null;
+  let seoDataDoc: Content.SeoDataDocument | null = null;
 
   try {
     externalLinksDoc = await client.getSingle("external_links");
+    seoDataDoc = await client.getSingle("seo_data");
   } catch (error) {
     // No external links document found
     console.log("error", error);
@@ -122,6 +118,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       page,
       staticDataContext: {
         externalLinksData: externalLinksDoc?.data || null,
+        seoData: seoDataDoc?.data || null,
       },
     },
   };
