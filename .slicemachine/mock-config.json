@@ -42,6 +42,12 @@
         "primary": {},
         "items": {}
       }
+    },
+    "Experiences": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   }
 }

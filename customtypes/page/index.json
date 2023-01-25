@@ -54,6 +54,15 @@
             },
             "quick_cards": {
               "type": "SharedSlice"
+            },
+            "contact_options": {
+              "type": "SharedSlice"
+            },
+            "skill_ratings": {
+              "type": "SharedSlice"
+            },
+            "experiences": {
+              "type": "SharedSlice"
             }
           }
         }

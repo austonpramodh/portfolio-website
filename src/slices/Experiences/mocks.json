@@ -1,0 +1,158 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_id": {
+        "__TYPE__": "FieldContent",
+        "value": "gently",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Software Technologist at"
+            }
+          ],
+          [
+            "highlighted_header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "CES IT"
+            }
+          ],
+          [
+            "list",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Develop Mobile Application using Flutter;Develop Mobile Application using React Native, Redux;Handle Client Calls, Requirements"
+            }
+          ],
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Work Experience"
+            }
+          ],
+          [
+            "highlighted_description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "2019 July - 2022 Feb"
+            }
+          ],
+          [
+            "list_header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Responsibility"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Mobile application using"
+            }
+          ],
+          [
+            "highlighted_header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "React Native"
+            }
+          ],
+          [
+            "highlighted_description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "A mobile application to help users detect covid19."
+            }
+          ],
+          [
+            "description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "In this project, i have handled the complete CI/CD using CirleCi and also contribute to the development of the react native application."
+            }
+          ],
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Projects"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "BTech, IT from"
+            }
+          ],
+          [
+            "highlighted_header",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Alliance University"
+            }
+          ],
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Select",
+              "value": "Education"
+            }
+          ],
+          [
+            "highlighted_description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "2015-2019"
+            }
+          ],
+          [
+            "description",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "Completed by Btech in Information Technology from Alliance College of Engineering and Design"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

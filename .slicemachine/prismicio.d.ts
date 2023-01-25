@@ -183,7 +183,7 @@ export interface PageDocumentDataPageKeywordsItem {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroV1Slice | AboutMeSlice | QuickCardsSlice;
+type PageDocumentDataSlicesSlice = HeroV1Slice | AboutMeSlice | QuickCardsSlice | ContactOptionsSlice | SkillRatingsSlice | ExperiencesSlice;
 /**
  * Page document from Prismic
  *
@@ -385,6 +385,121 @@ type ContactOptionsSliceVariation = ContactOptionsSliceDefault;
  *
  */
 export type ContactOptionsSlice = prismicT.SharedSlice<"contact_options", ContactOptionsSliceVariation>;
+/**
+ * Primary content in Experiences → Primary
+ *
+ */
+interface ExperiencesSliceDefaultPrimary {
+    /**
+     * Section ID field in *Experiences → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.primary.section_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    section_id: prismicT.KeyTextField;
+}
+/**
+ * Item in Experiences → Items
+ *
+ */
+export interface ExperiencesSliceDefaultItem {
+    /**
+     * Header field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].header
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    header: prismicT.KeyTextField;
+    /**
+     * Highlighted Description field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].highlighted_description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    highlighted_description: prismicT.KeyTextField;
+    /**
+     * Highlighted Header field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].highlighted_header
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    highlighted_header: prismicT.KeyTextField;
+    /**
+     * list field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].list
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    list: prismicT.KeyTextField;
+    /**
+     * List Header field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].list_header
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    list_header: prismicT.KeyTextField;
+    /**
+     * Description field in *Experiences → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Type field in *Experiences → Items*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: experiences.items[].type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Work Experience" | "Projects" | "Education">;
+}
+/**
+ * Default variation for Experiences Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Experiences`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ExperiencesSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ExperiencesSliceDefaultPrimary>, Simplify<ExperiencesSliceDefaultItem>>;
+/**
+ * Slice variation for *Experiences*
+ *
+ */
+type ExperiencesSliceVariation = ExperiencesSliceDefault;
+/**
+ * Experiences Shared Slice
+ *
+ * - **API ID**: `experiences`
+ * - **Description**: `Experiences`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ExperiencesSlice = prismicT.SharedSlice<"experiences", ExperiencesSliceVariation>;
 /**
  * Primary content in HeroV1 → Primary
  *
@@ -675,6 +790,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
+        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }
