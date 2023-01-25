@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Layout: React.FunctionComponent<Props> = ({ children }) => {
-  const [isDarkMode, setDarkMode] = React.useState(false);
+  const [isDarkMode, setDarkMode] = React.useState(true);
   React.useEffect(() => {
     setDarkMode(localStorage.getItem(isDarkModeStorageKey) === "true");
   }, []);
@@ -25,13 +25,13 @@ const Layout: React.FunctionComponent<Props> = ({ children }) => {
     <>
       {/* <SEO /> */}
       <CssBaseline />
-      <ThemeProvider theme={isDarkMode ? DarkTheme : LightTheme}>
-        {/* <LightModeSwitcher
+      {/* <ThemeProvider theme={isDarkMode ? DarkTheme : LightTheme}> */}
+      {/* <LightModeSwitcher
           onClick={() => onClickModeSwitch()}
           isDarkMode={isDarkMode}
         /> */}
-        {children}
-      </ThemeProvider>
+      {children}
+      {/* </ThemeProvider> */}
     </>
   );
 };

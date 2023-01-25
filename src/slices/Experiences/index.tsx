@@ -33,7 +33,7 @@ type Props = SliceComponentProps<Content.ExperiencesSlice>;
 
 const Experiences: React.FunctionComponent<
   Props & WithStyles<typeof Styles>
-> = ({ classes, slice }) => {
+> = ({ classes, slice, index, slices }) => {
   const mutatedExperiences = React.useMemo(() => {
     const experiences: {
       work: ExperienceCard[];
@@ -80,6 +80,9 @@ const Experiences: React.FunctionComponent<
             [theme.breakpoints.up("md")]: {
               flexDirection: "row",
             },
+            mb:
+              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
+            mt: index === 1 ? 0 : theme.spacing(8),
           };
         }}
       >
@@ -118,7 +121,6 @@ const Experiences: React.FunctionComponent<
             <MahaCards
               keyHeader="projectCards"
               Cards={mutatedExperiences.projects}
-              headerVariant="h4"
             />
           </div>
         )}

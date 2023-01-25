@@ -6,12 +6,15 @@ const Styles = (theme: Theme) =>
     inputField: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
-      "& .MuiInputBase-root.Mui-disabled": {
-        color: "rgb(255,255,255,0.3)",
-        "& fieldset": {
-          borderColor: "rgb(255,255,255,0.5)",
-        },
-      },
+      // "& fieldset": {
+      //   borderColor: "rgb(255,255,255,0.5)",
+      // },
+      // "& .MuiInputBase-root.Mui-disabled": {
+      //   color: "rgb(255,255,255,0.3)",
+      //   "& fieldset": {
+      //     borderColor: "rgb(255,255,255,0.5)",
+      //   },
+      // },
     },
     button: {
       width: "80%",

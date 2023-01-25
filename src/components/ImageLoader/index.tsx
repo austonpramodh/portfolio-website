@@ -20,7 +20,13 @@ const ImageLoader: React.FunctionComponent<Props> = ({
     <Box {...restProps}>
       {isSVG ? (
         <>
-          <ReactSVG src={field.url} />
+          <ReactSVG
+            src={field.url}
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "inherit");
+              svg.setAttribute("height", "inherit");
+            }}
+          />
         </>
       ) : (
         <PrismicNextImage field={field} />

@@ -15,6 +15,8 @@ type QuickCardsProps = SliceComponentProps<Content.QuickCardsSlice>;
 const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
   classes,
   slice,
+  index,
+  slices,
 }) => {
   const mutatedData = slice.items.map((eachItem) => {
     return {
@@ -71,6 +73,9 @@ const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
             alignItems: "center",
             flexDirection: "column",
             textAlign: "left",
+            mb:
+              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
+            mt: index === 1 ? 0 : theme.spacing(8),
           };
         }}
       >

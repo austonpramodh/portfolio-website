@@ -15,6 +15,8 @@ type Props = SliceComponentProps<Content.AboutMeSlice>;
 const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
   classes,
   slice,
+  index,
+  slices,
 }) => {
   return (
     <SliceContainer id={slice.primary.section_id || slice.id}>
@@ -22,10 +24,13 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
         maxWidth="md"
         sx={(theme) => {
           return {
-            minHeight: "100vh",
             // Testing
             display: "grid",
             gridTemplateColumns: "1fr",
+            // Check if this is second slice, if it is then have my else only mb
+            mb:
+              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
+            mt: index === 1 ? 0 : theme.spacing(8),
             [theme.breakpoints.up("md")]: {
               flexDirection: "row",
               gridTemplateColumns: "1fr 1fr",

@@ -35,18 +35,6 @@ const Styles = (theme: Theme) =>
       overflow: "hidden",
     },
     icon: {},
-    paper: {
-      [theme.breakpoints.up("md")]: {
-        margin: `${theme.spacing(1)}px`,
-        // width: `${
-        //   (theme.breakpoints.values.md - 40 - theme.spacing(2 * 3)) / 3
-        // }px`,
-      },
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    },
     cardHeading: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),

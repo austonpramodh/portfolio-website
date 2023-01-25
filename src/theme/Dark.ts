@@ -2,11 +2,6 @@ import { createTheme } from "@mui/material";
 import { pink } from "@mui/material/colors";
 
 export const DarkTheme = createTheme({
-  //   overrides: {
-  //     MuiOutlinedInput: {
-  //       notchedOutline: { borderColor: "white" },
-  //     },
-  //   },
   palette: {
     primary: pink,
     text: {
@@ -36,5 +31,20 @@ export const DarkTheme = createTheme({
     // h4: { fontSize: "1.5rem", fontWeight: "bold", lineHeight: 1.2 },
     // h5: { fontWeight: "bold", lineHeight: 1.2, fontSize: "1.3rem" },
     // h6: { fontSize: "1.1rem", fontWeight: "bold", lineHeight: 1.2 },
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: "white",
+          ":root": {
+            "&.Mui-disabled": {
+              color: "rgb(255,255,255,0.3)",
+              borderColor: "rgb(255,255,255,0.5)",
+            },
+          },
+        },
+      },
+    },
   },
 });

@@ -1,37 +1,48 @@
 import React from "react";
 import { withStyles, WithStyles } from "@mui/styles";
 import {
-  useMediaQuery,
-  useTheme,
-  Theme,
   Paper as MaterialPaper,
+  PaperProps as MaterialPaperProps,
+  Hidden,
 } from "@mui/material";
 import Tilt from "react-tilt";
 import Styles from "./index.Styles";
+import clsx from "clsx";
 
-interface IProps {
+type Props = {
   className?: string;
   children: JSX.Element;
-}
+  overrideDefaultPaperClasses?: boolean;
+} & MaterialPaperProps;
 
-const MahaPaper: React.FC<IProps & WithStyles<typeof Styles>> = ({
+const MahaPaper: React.FC<Props & WithStyles<typeof Styles>> = ({
   classes,
   className,
   children,
+  overrideDefaultPaperClasses,
+  ...restProps
 }) => {
-  const theme: Theme = useTheme();
-  const isMobileScreen = !useMediaQuery(theme.breakpoints.up("sm"));
   const paper = (
-    <MaterialPaper className={`${classes.paper} ${className}`}>
+    <MaterialPaper
+      {...restProps}
+      className={clsx(!overrideDefaultPaperClasses && classes.paper, className)}
+    >
       {children}
     </MaterialPaper>
   );
-  return isMobileScreen ? (
-    <React.Fragment>{paper}</React.Fragment>
-  ) : (
-    <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }}>
-      {paper}
-    </Tilt>
+
+  return (
+    <>
+      <Hidden implementation="css" mdUp>
+        {paper}
+      </Hidden>
+
+      <Hidden implementation="css" mdDown>
+        <Tilt options={{ max: 25, scale: 1, reset: true, reverse: true }}>
+          {paper}
+        </Tilt>
+      </Hidden>
+    </>
   );
 };
 

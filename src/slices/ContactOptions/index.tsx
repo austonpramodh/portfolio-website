@@ -11,12 +11,13 @@ import ImageLoader from "../../components/ImageLoader";
 import ContactLinks from "../../components/ContactLinks";
 import { useStaticDataContext } from "../../components/StaticDataContext";
 import ContactForm from "../../components/ContactForm";
+import NextImage from "next/image";
 
 type Props = SliceComponentProps<Content.ContactOptionsSlice>;
 
 const ContactOptions: React.FunctionComponent<
   Props & WithStyles<typeof Styles>
-> = ({ slice, classes }) => {
+> = ({ slice, classes, index, slices }) => {
   const [domain, setDomain] = React.useState("");
   React.useLayoutEffect(() => {
     setDomain(document.domain);
@@ -27,16 +28,18 @@ const ContactOptions: React.FunctionComponent<
   return (
     <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
-        maxWidth="md"
+        maxWidth="xl"
         sx={(theme) => {
           return {
-            minHeight: "100vh",
-            // Testing
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginBottom: `${theme.spacing(1)} !important`,
+            // mt: `${theme.spacing(12)} !important`,
+            // mb: `${theme.spacing(1)} !important`,
+            mb:
+              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
+            mt: index === 1 ? 0 : theme.spacing(8),
           };
         }}
       >
@@ -45,13 +48,36 @@ const ContactOptions: React.FunctionComponent<
         </Typography>
         <div className={classes.contactCardsContainer}>
           {slice.items.map((eachItem, key) => (
-            <MahaPaper key={`${key}Contact`} className={classes.paper}>
+            <MahaPaper
+              key={`${key}Contact`}
+              // className={classes.paper}
+              overrideDefaultPaperClasses
+              sx={(theme) => ({
+                [theme.breakpoints.up("md")]: {
+                  margin: `${theme.spacing(1)}`,
+                  width: `${
+                    (theme.breakpoints.values.md -
+                      40 -
+                      Number(theme.spacing(2 * 3).split("px")[0])) /
+                    3
+                  }px`,
+                  my: 0,
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                py: 2,
+                my: 1,
+              })}
+            >
               <>
                 <div className={classes.iconContainer}>
                   <ImageLoader
                     field={eachItem.icon}
                     className={classes.icon}
-                    sx={{
+                    sx={(theme) => ({
+                      padding: theme.spacing(2),
                       "& svg": {
                         fill: "white",
                       },
@@ -61,10 +87,10 @@ const ContactOptions: React.FunctionComponent<
                         objectFit: "cover",
                         objectPosition: "center",
                       },
-                    }}
+                    })}
                   />
                 </div>
-                <Typography className={classes.cardHeading} variant="h4">
+                <Typography className={classes.cardHeading} variant="h5">
                   {prismicH.asText(eachItem.title)}
                 </Typography>
                 <Link
@@ -73,7 +99,7 @@ const ContactOptions: React.FunctionComponent<
                     textDecoration: "none",
                   }}
                 >
-                  <Typography className={classes.content}>
+                  <Typography className={classes.content} variant="body2">
                     {prismicH.asText(eachItem.description)}
                   </Typography>
                 </Link>
@@ -84,7 +110,10 @@ const ContactOptions: React.FunctionComponent<
         <Typography className={classes.contactFormHeading} variant="h2">
           Lets Connect!
         </Typography>
-        <ContactForm />
+        <Container maxWidth="sm">
+          <ContactForm />
+        </Container>
+
         <div className={classes.footer}>
           <Typography className={classes.footerText}>
             Made with love by Auston Pramodh Barboza @ 2022
@@ -105,10 +134,12 @@ const ContactOptions: React.FunctionComponent<
           )}
           <a href={`https://ipv6-test.com/validate.php?url=${domain}`}>
             {/* TODO: fix me */}
-            <img
+            <NextImage
               src="https://ipv6-test.com/button-ipv6-big.png"
               alt="ipv6 ready"
               title="ipv6 ready"
+              width={100}
+              height={50}
             />
           </a>
         </div>

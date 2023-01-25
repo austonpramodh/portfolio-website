@@ -46,8 +46,10 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
       <Container
         maxWidth="lg"
         sx={(theme) => {
-          const pageOffset = `${theme.spacing(18)}`;
+          const pageOffset = `${theme.spacing(18)} - ${theme.spacing(0)}`;
+          // const pageOffset = 0;
           return {
+            minHeight: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -57,7 +59,7 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
             },
             [theme.breakpoints.up("sm")]: {
               marginTop: `${theme.spacing(16)} !important`,
-              minHeight: `calc(100vh - ${theme.spacing(16)} - ${pageOffset})`,
+              minHeight: `calc(100vh - ${pageOffset})`,
             },
             [theme.breakpoints.up("md")]: {
               flexDirection: "row-reverse",
