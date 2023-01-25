@@ -760,7 +760,7 @@ export interface SkillRatingsSliceDefaultItem {
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    rating_type: prismicT.SelectField<"Technical" | "Professional">;
+    rating_type: prismicT.SelectField<"Bar Rating" | "Circular Rating">;
 }
 /**
  * Default variation for SkillRatings Slice

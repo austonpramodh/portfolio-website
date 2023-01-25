@@ -55,7 +55,7 @@
             "rating_type",
             {
               "__TYPE__": "FieldContent",
-              "value": "Professional",
+              "value": "Circular Rating",
               "type": "Select"
             }
           ]
@@ -84,8 +84,8 @@
             "rating_type",
             {
               "__TYPE__": "FieldContent",
-              "type": "Select",
-              "value": "Technical"
+              "value": "Bar Rating",
+              "type": "Select"
             }
           ]
         ]
@@ -113,8 +113,8 @@
             "rating_type",
             {
               "__TYPE__": "FieldContent",
-              "type": "Select",
-              "value": "Technical"
+              "value": "Bar Rating",
+              "type": "Select"
             }
           ]
         ]
@@ -126,8 +126,8 @@
             "rating_type",
             {
               "__TYPE__": "FieldContent",
-              "type": "Select",
-              "value": "Professional"
+              "value": "Circular Rating",
+              "type": "Select"
             }
           ],
           [

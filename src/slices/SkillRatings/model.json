@@ -58,8 +58,8 @@
             "label": "Rating Type",
             "placeholder": "Rating Type",
             "options": [
-              "Technical",
-              "Professional"
+              "Bar Rating",
+              "Circular Rating"
             ]
           }
         }

@@ -28,8 +28,8 @@ const SkillRatings: React.FunctionComponent<
         percentage: item.rating,
       };
 
-      item.rating_type === "Professional" && professionSkills.push(skill);
-      item.rating_type === "Technical" && technicalSkills.push(skill);
+      item.rating_type === "Bar Rating" && technicalSkills.push(skill);
+      item.rating_type === "Circular Rating" && professionSkills.push(skill);
     }
 
     return { professionSkills, technicalSkills };
