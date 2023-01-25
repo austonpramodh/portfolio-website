@@ -55,9 +55,9 @@
         "link": {
           "type": "Link",
           "config": {
-            "label": "Link",
+            "label": "link",
             "placeholder": "",
-            "select": "media"
+            "select": null
           }
         },
         "icon": {

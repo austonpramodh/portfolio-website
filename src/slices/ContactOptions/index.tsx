@@ -138,6 +138,7 @@ const ContactOptions: React.FunctionComponent<
               src="https://ipv6-test.com/button-ipv6-big.png"
               alt="ipv6 ready"
               title="ipv6 ready"
+              // interensic height, 2:1 ratio
               width={100}
               height={50}
             />

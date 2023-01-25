@@ -562,15 +562,15 @@ export interface HeroV1SliceDefaultItem {
      */
     label: prismicT.KeyTextField;
     /**
-     * Link field in *HeroV1 → Items*
+     * link field in *HeroV1 → Items*
      *
-     * - **Field Type**: Link to Media
+     * - **Field Type**: Link
      * - **Placeholder**: *None*
      * - **API ID Path**: hero_v1.items[].link
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    link: prismicT.LinkToMediaField;
+    link: prismicT.LinkField;
     /**
      * Icon field in *HeroV1 → Items*
      *
