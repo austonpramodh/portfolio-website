@@ -39,11 +39,19 @@ const SEO: React.FunctionComponent<SeoProps> = ({
 
   if (!pageTitle) pageTitle = "Page Title required!";
 
+  let faviconUrl = prismicH.asImageSrc(seoData?.favicon);
+
+  if (!faviconUrl) {
+    console.error("Plese set the Favicon on Prismic, Using default for now!");
+    faviconUrl = "/favicon.ico";
+  }
+
   return (
     <>
       <Head>
         {/* eslint-disable-next-line react/no-string-refs */}
         <link ref="canonical" href={domain} />
+        <link rel="icon" type="image/x-icon" href={faviconUrl} />
         <title>{pageTitle}</title>
         {[
           {

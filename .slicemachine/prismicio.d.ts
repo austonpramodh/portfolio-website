@@ -265,14 +265,14 @@ interface SeoDataDocumentData {
     /**
      * Favicon field in *SEO Data*
      *
-     * - **Field Type**: Link to Media
+     * - **Field Type**: Image
      * - **Placeholder**: *None*
      * - **API ID Path**: seo_data.favicon
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    favicon: prismicT.LinkToMediaField;
+    favicon: prismicT.ImageField<never>;
     /**
      * Slice Zone field in *SEO Data*
      *

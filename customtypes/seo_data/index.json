@@ -61,11 +61,14 @@
         }
       },
       "favicon": {
-        "type": "Link",
+        "type": "Image",
         "config": {
           "label": "Favicon",
-          "placeholder": "",
-          "select": "media"
+          "constraint": {
+            "width": 32,
+            "height": 32
+          },
+          "thumbnails": []
         }
       },
       "slices": {
