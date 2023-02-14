@@ -6,6 +6,63 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for API Config documents */
+interface ApiConfigDocumentData {
+    /**
+     * API Sender Name field in *API Config*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: api_config.api_sender_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    api_sender_name: prismicT.KeyTextField;
+    /**
+     * API Sender Email Domain field in *API Config*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: api_config.api_sender_email_domain
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    api_sender_email_domain: prismicT.KeyTextField;
+    /**
+     * API Reply to Address field in *API Config*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: api_config.api_reply_to_address
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    api_reply_to_address: prismicT.KeyTextField;
+    /**
+     * API Sender Email Address field in *API Config*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: api_config.api_sender_email_address
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    api_sender_email_address: prismicT.KeyTextField;
+}
+/**
+ * API Config document from Prismic
+ *
+ * - **API ID**: `api_config`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ApiConfigDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ApiConfigDocumentData>, "api_config", Lang>;
 /** Content for External Links documents */
 interface ExternalLinksDocumentData {
     /**
@@ -316,7 +373,7 @@ type SeoDataDocumentDataSlicesSlice = never;
  * @typeParam Lang - Language API ID of the document.
  */
 export type SeoDataDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SeoDataDocumentData>, "seo_data", Lang>;
-export type AllDocumentTypes = ExternalLinksDocument | NavbarDocument | PageDocument | SeoDataDocument;
+export type AllDocumentTypes = ApiConfigDocument | ExternalLinksDocument | NavbarDocument | PageDocument | SeoDataDocument;
 /**
  * Primary content in AboutMe → Primary
  *
@@ -912,6 +969,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, SeoDataDocumentData, SeoDataDocumentDataKeywordsItem, SeoDataDocumentDataSlicesSlice, SeoDataDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
+        export type { ApiConfigDocumentData, ApiConfigDocument, ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, SeoDataDocumentData, SeoDataDocumentDataKeywordsItem, SeoDataDocumentDataSlicesSlice, SeoDataDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }

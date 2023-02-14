@@ -1,6 +1,6 @@
 import FormikField from "../FormikField";
 import { MyTextField } from "../MyFields";
-// import { sendEmail } from "../../Utils/emailService";
+import { sendEmail } from "../../utils/emailService";
 import Styles from "./index.Styles";
 import React from "react";
 import { withStyles, WithStyles } from "@mui/styles";
@@ -50,7 +50,7 @@ const Contact: React.FC<WithStyles<typeof Styles>> = ({ classes }) => {
       submittingError: false,
     });
     try {
-      //   await sendEmail({ email, message, name });
+      await sendEmail({ email, message, name });
       setSubmittingState({
         ...initialSubmittingStateValues,
         submittedSuccss: true,
