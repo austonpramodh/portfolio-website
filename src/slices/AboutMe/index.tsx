@@ -1,7 +1,7 @@
 import Styles from "./index.Styles";
 import React from "react";
 import { withStyles, WithStyles } from "@mui/styles";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { Download as DownloadIcon } from "@mui/icons-material";
 
 import AboutMeAnimation from "../../animations/AboutMe";
@@ -22,21 +22,25 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({
     <SliceContainer id={slice.primary.section_id || slice.id}>
       <Container
         maxWidth="lg"
-        sx={(theme) => {
-          return {
-            // Testing
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            // Check if this is second slice, if it is then have my else only mb
-            mb:
-              index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
-            mt: index === 1 ? 0 : theme.spacing(8),
-            [theme.breakpoints.up("md")]: {
-              flexDirection: "row",
-              gridTemplateColumns: "1fr 1fr",
-            },
-          };
-        }}
+        sx={[
+          (theme) => {
+            return {
+              // Testing
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              [theme.breakpoints.up("md")]: {
+                flexDirection: "row",
+                gridTemplateColumns: "1fr 1fr",
+              },
+              // Check if this is second slice, if it is then have my else only mb
+              mb:
+                index + 1 === slices.length
+                  ? theme.spacing(2)
+                  : theme.spacing(8),
+              mt: index === 1 ? theme.spacing(8) : theme.spacing(16),
+            };
+          },
+        ]}
       >
         <Box>
           {/* TODO: add image support */}

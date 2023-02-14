@@ -80,9 +80,10 @@ const Experiences: React.FunctionComponent<
             [theme.breakpoints.up("md")]: {
               flexDirection: "row",
             },
+            // Check if this is second slice, if it is then have my else only mb
             mb:
               index + 1 === slices.length ? theme.spacing(2) : theme.spacing(8),
-            mt: index === 1 ? 0 : theme.spacing(8),
+            mt: index === 1 ? theme.spacing(8) : theme.spacing(16),
           };
         }}
       >

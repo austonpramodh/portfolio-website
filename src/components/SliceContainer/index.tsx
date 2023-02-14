@@ -4,6 +4,7 @@ import { styled } from "@mui/material";
 const SliceContainer = styled("section")(({ theme }) => {
   return {
     backgroundColor: theme.palette.background.default,
+    display: "flex",
   };
 });
 
