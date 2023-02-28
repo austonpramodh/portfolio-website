@@ -61,7 +61,12 @@ const QuickCards: React.FC<WithStyles<typeof Styles> & QuickCardsProps> = ({
   };
 
   return (
-    <SliceContainer id={slice.primary.section_id || slice.id}>
+    <SliceContainer
+      id={slice.primary.section_id || slice.id}
+      sx={{
+        display: "block",
+      }}
+    >
       <Container
         maxWidth="xl"
         sx={(theme) => {

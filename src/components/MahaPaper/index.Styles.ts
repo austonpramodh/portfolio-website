@@ -5,8 +5,8 @@ const Styles = (theme: Theme) =>
   createStyles({
     paper: {
       padding: theme.spacing(2),
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2),
       boxShadow: "-1rem 0 3rem #000",
       width: "100%",
       height: "100%",

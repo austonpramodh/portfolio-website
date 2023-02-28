@@ -66,7 +66,12 @@ const Experiences: React.FunctionComponent<
     return <></>;
 
   return (
-    <SliceContainer id={slice.primary.section_id || slice.id}>
+    <SliceContainer
+      id={slice.primary.section_id || slice.id}
+      sx={{
+        display: "block",
+      }}
+    >
       <Container
         maxWidth="lg"
         sx={(theme) => {
