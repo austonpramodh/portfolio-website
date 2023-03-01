@@ -1,0 +1,88 @@
+{
+  "page_title": {
+    "__TYPE__": "FieldContent",
+    "value": "fat",
+    "type": "Text"
+  },
+  "description": {
+    "__TYPE__": "FieldContent",
+    "value": "fresh",
+    "type": "Text"
+  },
+  "keywords": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "keyword",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "settle",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
+      "width": 4000,
+      "height": 6000
+    },
+    "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?rect=0%2C1000%2C4000%2C4000&w=64&h=64",
+    "width": 64,
+    "height": 64,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 1000
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "page_author": {
+    "__TYPE__": "FieldContent",
+    "value": "feet",
+    "type": "Text"
+  },
+  "domain": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://slicemachine.dev"
+    }
+  },
+  "favicon": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+      "width": 3168,
+      "height": 4752
+    },
+    "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?rect=0%2C792%2C3168%2C3168&w=32&h=32",
+    "width": 32,
+    "height": 32,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 792
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": []
+  }
+}

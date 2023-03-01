@@ -1,0 +1,38 @@
+{
+  "id": "api_config",
+  "label": "API Config",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "api_sender_name": {
+        "type": "Text",
+        "config": {
+          "label": "API Sender Name",
+          "placeholder": ""
+        }
+      },
+      "api_sender_email_domain": {
+        "type": "Text",
+        "config": {
+          "label": "API Sender Email Domain",
+          "placeholder": ""
+        }
+      },
+      "api_reply_to_address": {
+        "type": "Text",
+        "config": {
+          "label": "API Reply to Address",
+          "placeholder": ""
+        }
+      },
+      "api_sender_email_address": {
+        "type": "Text",
+        "config": {
+          "label": "API Sender Email Address",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "skill_ratings",
+  "type": "SharedSlice",
+  "name": "SkillRatings",
+  "description": "SkillRatings",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "SkillRatings",
+      "primary": {
+        "bar_ratings_label": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Bar Ratings Label",
+            "placeholder": "Technical Skills",
+            "allowTargetBlank": true,
+            "single": "heading1"
+          }
+        },
+        "circular_ratings_label": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Circular Ratings Label",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "Section ID",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "label",
+            "placeholder": ""
+          }
+        },
+        "rating": {
+          "type": "Number",
+          "config": {
+            "label": "rating",
+            "placeholder": ""
+          }
+        },
+        "rating_type": {
+          "type": "Select",
+          "config": {
+            "label": "Rating Type",
+            "placeholder": "Rating Type",
+            "options": [
+              "Bar Rating",
+              "Circular Rating"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

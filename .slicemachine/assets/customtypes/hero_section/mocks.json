@@ -1,0 +1,85 @@
+{
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "classroom",
+    "type": "Text"
+  },
+  "designation": {
+    "__TYPE__": "FieldContent",
+    "value": "invented",
+    "type": "Text"
+  },
+  "profile_picture": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+      "width": 4024,
+      "height": 4024
+    },
+    "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+    "width": 4024,
+    "height": 4024,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "link": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "organization",
+              "type": "Text"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            }
+          ],
+          [
+            "icon",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+                "width": 6000,
+                "height": 4000
+              },
+              "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?rect=1000%2C0%2C4000%2C4000&w=64&h=64",
+              "width": 64,
+              "height": 64,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 1000,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "_cts": {
+    "external_links": {
+      "external_link": {}
+    },
+    "page": {},
+    "navbar": {},
+    "seo_data": {},
+    "api_config": {},
+    "resume": {}
+  },
+  "slices": {
+    "HeroV1": {
+      "default": {
+        "primary": {}
+      }
+    }
+  },
+  "src/slices": {
+    "HeroV1": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
+    },
+    "AboutMe": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "QuickCards": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "SkillRatings": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "ContactOptions": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Experiences": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    }
+  }
+}
