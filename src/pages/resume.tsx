@@ -13,7 +13,17 @@ import { pdfjs, Document, Page } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-import { Box, Hidden, LinearProgress, Link, Pagination, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+    Box,
+    GlobalStyles,
+    Hidden,
+    LinearProgress,
+    Link,
+    Pagination,
+    Typography,
+    useMediaQuery,
+    useTheme,
+} from "@mui/material";
 import { Download as DownloadIcon } from "@mui/icons-material";
 
 type PageProps = {
@@ -86,6 +96,13 @@ const Resume: NextPage<PageProps> = ({ staticDataContext }) => {
     return (
         <StaticDataContext.Provider value={staticDataContext}>
             <Layout>
+                <GlobalStyles
+                    styles={{
+                        body: {
+                            minWidth: "540px",
+                        },
+                    }}
+                />
                 <SEO title="Resume" />
                 <Box
                     sx={(theme) => ({
