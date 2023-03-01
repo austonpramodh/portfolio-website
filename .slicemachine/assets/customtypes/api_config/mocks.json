@@ -1,0 +1,22 @@
+{
+  "api_sender_name": {
+    "__TYPE__": "FieldContent",
+    "value": "voyage",
+    "type": "Text"
+  },
+  "api_sender_email_domain": {
+    "__TYPE__": "FieldContent",
+    "value": "related",
+    "type": "Text"
+  },
+  "api_reply_to_address": {
+    "__TYPE__": "FieldContent",
+    "value": "step",
+    "type": "Text"
+  },
+  "api_sender_email_address": {
+    "__TYPE__": "FieldContent",
+    "value": "mirror",
+    "type": "Text"
+  }
+}

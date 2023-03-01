@@ -1,0 +1,8 @@
+{
+  "apiEndpoint": "https://auston-portfolio-v2.prismic.io/api/v2",
+  "libraries": [
+    "@/src/slices"
+  ],
+  "_latest": "0.6.0",
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "experiences",
+  "type": "SharedSlice",
+  "name": "Experiences",
+  "description": "Experiences",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Experiences",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "Section ID",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "header": {
+          "type": "Text",
+          "config": {
+            "label": "Header",
+            "placeholder": ""
+          }
+        },
+        "highlighted_header": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Header",
+            "placeholder": ""
+          }
+        },
+        "highlighted_description": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Description",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "list_header": {
+          "type": "Text",
+          "config": {
+            "label": "List Header",
+            "placeholder": ""
+          }
+        },
+        "list": {
+          "type": "Text",
+          "config": {
+            "label": "list",
+            "placeholder": ""
+          }
+        },
+        "type": {
+          "type": "Select",
+          "config": {
+            "label": "Type",
+            "placeholder": "",
+            "options": [
+              "Work Experience",
+              "Projects",
+              "Education"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

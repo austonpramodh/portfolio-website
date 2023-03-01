@@ -1,0 +1,526 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "blank"
+  },
+  "page_title": {
+    "__TYPE__": "FieldContent",
+    "value": "stopped",
+    "type": "Text"
+  },
+  "page_description": {
+    "__TYPE__": "FieldContent",
+    "value": "directly",
+    "type": "Text"
+  },
+  "page_keywords": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "keyword",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "forth",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "hero_v1$ac64b79a-e3ef-484c-ac79-131ce7ec86a0",
+        "name": "hero_v1",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "name": {
+              "__TYPE__": "FieldContent",
+              "value": "raw",
+              "type": "Text"
+            },
+            "designation": {
+              "__TYPE__": "FieldContent",
+              "value": "driving",
+              "type": "Text"
+            },
+            "display_picture": {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+                "width": 3168,
+                "height": 4752
+              },
+              "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?rect=0%2C792%2C3168%2C3168&w=320&h=320",
+              "width": 320,
+              "height": 320,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 792
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            },
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "promised",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "touch",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "id": "mock_Media_link",
+                      "kind": "image/jpeg",
+                      "name": "mock_name",
+                      "url": "https://source.unsplash.com/daily",
+                      "size": "0",
+                      "__TYPE__": "FileLink"
+                    }
+                  }
+                ],
+                [
+                  "icon",
+                  {
+                    "__TYPE__": "ImageContent",
+                    "origin": {
+                      "id": "main",
+                      "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
+                      "width": 3424,
+                      "height": 3424
+                    },
+                    "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?rect=0%2C0%2C3424%2C3424&w=64&h=64",
+                    "width": 64,
+                    "height": 64,
+                    "edit": {
+                      "zoom": 1,
+                      "crop": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "background": "transparent"
+                    },
+                    "thumbnails": {}
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "about_me$393a5919-ba69-4d5d-958e-370338d2fb44",
+        "name": "about_me",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Beginning"
+                  }
+                }
+              ]
+            },
+            "description": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Do magna ut ea anim amet consectetur sunt qui velit magna laborum eiusmod in. Elit pariatur laboris ipsum."
+                  }
+                }
+              ]
+            },
+            "resume": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
+              }
+            },
+            "lottie": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
+              }
+            },
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "describe",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "keyword",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "clearly",
+                    "type": "Text"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "quick_cards$f1d6fa75-4017-4cb7-9129-34bca32abf1b",
+        "name": "quick_cards",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Certainly"
+                  }
+                }
+              ]
+            },
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "actually",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "title",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "alphabet",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "description",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "major",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "icon",
+                  {
+                    "__TYPE__": "ImageContent",
+                    "origin": {
+                      "id": "main",
+                      "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+                      "width": 4480,
+                      "height": 4480
+                    },
+                    "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+                    "width": 4480,
+                    "height": 4480,
+                    "edit": {
+                      "zoom": 1,
+                      "crop": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "background": "transparent"
+                    },
+                    "thumbnails": {}
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "contact_options$59e51224-81e8-4af5-95ba-85f525412280",
+        "name": "contact_options",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Western"
+                  }
+                }
+              ]
+            },
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "common",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "icon",
+                  {
+                    "__TYPE__": "ImageContent",
+                    "origin": {
+                      "id": "main",
+                      "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+                      "width": 5616,
+                      "height": 3744
+                    },
+                    "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+                    "width": 5616,
+                    "height": 3744,
+                    "edit": {
+                      "zoom": 1,
+                      "crop": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "background": "transparent"
+                    },
+                    "thumbnails": {}
+                  }
+                ],
+                [
+                  "title",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "heading6",
+                        "content": {
+                          "text": "Opposite"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "description",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Non commodo Lorem id amet quis labore labore laborum in commodo sunt eiusmod minim proident laboris. Sit consectetur incididunt adipisicing id deserunt laboris pariatur."
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "http://twitter.com"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "skill_ratings$9783f375-4b13-420c-892a-4676b2c62b61",
+        "name": "skill_ratings",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "bar_ratings_label": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Dangerous"
+                  }
+                }
+              ]
+            },
+            "circular_ratings_label": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Deserunt et pariatur qui nostrud Lorem ex cupidatat anim ex consectetur eiusmod velit sit."
+                  }
+                }
+              ]
+            },
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "safe",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "farm",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "rating",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "36",
+                    "type": "Number"
+                  }
+                ],
+                [
+                  "rating_type",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "Professional",
+                    "type": "Select"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "experiences$335af2b5-19af-408e-84cb-103d26f0909a",
+        "name": "experiences",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "section_id": {
+              "__TYPE__": "FieldContent",
+              "value": "blew",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "header",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "somebody",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "highlighted_description",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "caught",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "highlighted_header",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "provide",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "list",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "excited",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "list_header",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "atmosphere",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "description",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "wire",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "Work Experience",
+                    "type": "Select"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

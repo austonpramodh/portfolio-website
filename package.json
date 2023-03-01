@@ -1,96 +1,71 @@
 {
-  "name": "maha-portfolio",
+  "name": "portfolio-website",
   "version": "0.1.0",
-  "private": false,
-  "author": "Auston Pramodh Barboza <austonpramodh@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine",
+    "prepare": "husky install"
+  },
   "dependencies": {
-    "@material-ui/core": "^4.9.5",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.9.0",
-    "@now/node": "^1.5.1",
-    "@types/atob": "^2.1.2",
-    "@types/color": "^3.0.1",
-    "@types/react-helmet": "^5.0.15",
-    "@types/react-scrollspy": "^3.3.2",
-    "@types/react-syntax-highlighter": "^11.0.4",
-    "atob": "^2.1.2",
-    "aws-sdk": "^2.662.0",
-    "axios": "^0.19.2",
-    "color": "^3.1.2",
-    "formik": "^2.1.4",
-    "gatsby": "^2.19.7",
-    "gatsby-image": "^2.2.39",
-    "gatsby-plugin-github-ribbon": "^1.1.0",
-    "gatsby-plugin-google-analytics": "^2.3.1",
-    "gatsby-plugin-manifest": "^2.2.39",
-    "gatsby-plugin-material-ui": "^2.1.10",
-    "gatsby-plugin-offline": "^3.0.32",
-    "gatsby-plugin-react-helmet": "^3.1.21",
-    "gatsby-plugin-sharp": "^2.4.3",
-    "gatsby-plugin-typescript": "^2.2.2",
-    "gatsby-source-filesystem": "^2.1.46",
-    "gatsby-source-prismic": "^3.0.2",
-    "gatsby-theme-material-ui": "^1.0.8",
-    "gatsby-transformer-sharp": "^2.3.13",
-    "html-react-parser": "^0.10.5",
-    "lottie-web": "^5.6.8",
-    "mdi-material-ui": "^6.12.0",
-    "moment": "^2.26.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "react-scrollspy": "^3.4.2",
-    "react-syntax-highlighter": "^12.2.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.11",
+    "@mui/styles": "^5.11.11",
+    "@next/font": "13.2.1",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/helpers": "^2.3.9",
+    "@prismicio/next": "^1.0.3",
+    "@prismicio/react": "^2.5.2",
+    "@prismicio/slice-simulator-react": "^0.2.3",
+    "@types/node": "18.14.2",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "aws-sdk": "^2.1325.0",
+    "formik": "^2.2.9",
+    "lottie-web": "^5.10.2",
+    "next": "13.2.1",
+    "nextjs-google-analytics": "^2.3.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-svg": "^15.1.21",
     "react-tilt": "^0.1.4",
+    "react-ui-scrollspy": "^2.3.0",
     "react-visibility-sensor": "^5.1.1",
-    "yup": "^0.28.3"
+    "tss-react": "^4.6.1",
+    "typescript": "4.9.5"
   },
   "devDependencies": {
-    "@types/yup": "^0.26.32",
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "@commitlint/cli": "17.4.4",
+    "@commitlint/config-conventional": "17.4.4",
+    "@prismicio/types": "^0.2.7",
+    "@types/react-scroll": "^1.8.6",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
+    "commitizen": "4.3.0",
+    "concurrently": "7.6.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.1",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-tss-unused-classes": "^0.0.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "2.8.4",
+    "slice-machine-ui": "^0.7.0"
   },
-  "keywords": [
-    "gatsby",
-    "portfolio"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "lint": "eslint src --ext ts --ext js --quiet --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/austonpramodh/maha-portfolio"
-  },
-  "bugs": {
-    "url": "https://github.com/austonpramodh/maha-portfolio/issues"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }

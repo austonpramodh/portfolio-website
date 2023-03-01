@@ -1,0 +1,58 @@
+{
+  "id": "about_me",
+  "type": "SharedSlice",
+  "name": "AboutMe",
+  "description": "AboutMe",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "AboutMe",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title",
+            "placeholder": "This is where it all begins..."
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Description",
+            "placeholder": "A nice description of your feature"
+          }
+        },
+        "lottie": {
+          "type": "Link",
+          "config": {
+            "label": "Lottie",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "Section ID",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "keyword": {
+          "type": "Text",
+          "config": {
+            "label": "keyword",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

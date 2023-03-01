@@ -1,0 +1,18 @@
+{
+  "id": "resume",
+  "label": "Resume",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "resume_doc": {
+        "type": "Link",
+        "config": {
+          "label": "Resume Doc",
+          "placeholder": "",
+          "select": "media"
+        }
+      }
+    }
+  }
+}

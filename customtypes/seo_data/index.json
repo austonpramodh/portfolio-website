@@ -1,0 +1,83 @@
+{
+  "id": "seo_data",
+  "label": "SEO Data",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "page_title": {
+        "type": "Text",
+        "config": {
+          "label": "Page Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "description",
+          "placeholder": ""
+        }
+      },
+      "keywords": {
+        "type": "Group",
+        "config": {
+          "label": "keywords",
+          "fields": {
+            "keyword": {
+              "type": "Text",
+              "config": {
+                "label": "keyword",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {
+            "width": 64,
+            "height": 64
+          },
+          "thumbnails": []
+        }
+      },
+      "page_author": {
+        "type": "Text",
+        "config": {
+          "label": "Page Author",
+          "placeholder": ""
+        }
+      },
+      "domain": {
+        "type": "Link",
+        "config": {
+          "label": "domain",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "favicon": {
+        "type": "Image",
+        "config": {
+          "label": "Favicon",
+          "constraint": {
+            "width": 32,
+            "height": 32
+          },
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}
