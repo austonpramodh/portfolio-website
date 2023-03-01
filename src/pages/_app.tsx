@@ -9,17 +9,17 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+    emotionCache?: EmotionCache;
 }
 
 export default function App(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+    const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={DarkTheme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
-  );
+    return (
+        <CacheProvider value={emotionCache}>
+            <ThemeProvider theme={DarkTheme}>
+                <Component {...pageProps} />
+            </ThemeProvider>
+        </CacheProvider>
+    );
 }

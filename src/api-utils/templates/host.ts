@@ -1,19 +1,19 @@
 interface IHostEmailTemplate {
-  themeColor: string;
-  domain: string;
-  name: string;
-  message: string;
-  contact: string;
-  senderName: string;
+    themeColor: string;
+    domain: string;
+    name: string;
+    message: string;
+    contact: string;
+    senderName: string;
 }
 
 const HostEmailTemplate = ({
-  domain,
-  name,
-  themeColor,
-  contact,
-  message,
-  senderName,
+    domain,
+    name,
+    themeColor,
+    contact,
+    message,
+    senderName,
 }: IHostEmailTemplate) => `<html lang="en">
 <head>
   <meta charset="UTF-8">

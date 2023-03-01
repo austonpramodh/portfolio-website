@@ -14,15 +14,15 @@ export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint);
  *
  */
 export const linkResolver: prismicH.LinkResolverFunction = (link) => {
-  if (link.type === "page") {
-    if (link.uid === "home") {
-      return "/";
+    if (link.type === "page") {
+        if (link.uid === "home") {
+            return "/";
+        }
+
+        return `/${link.uid}`;
     }
 
-    return `/${link.uid}`;
-  }
-
-  return "/";
+    return "/";
 };
 
 /**
@@ -31,13 +31,13 @@ export const linkResolver: prismicH.LinkResolverFunction = (link) => {
  *
  */
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
-  const client = prismic.createClient(sm.apiEndpoint);
+    const client = prismic.createClient(sm.apiEndpoint);
 
-  prismicNext.enableAutoPreviews({
-    client,
-    previewData: config.previewData,
-    req: config.req,
-  });
+    prismicNext.enableAutoPreviews({
+        client,
+        previewData: config.previewData,
+        req: config.req,
+    });
 
-  return client;
+    return client;
 };

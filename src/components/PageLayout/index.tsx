@@ -7,33 +7,33 @@ import { LightTheme, DarkTheme } from "../../theme";
 const isDarkModeStorageKey = "isDarkMode";
 
 interface Props {
-  children?: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const Layout: React.FunctionComponent<Props> = ({ children }) => {
-  const [isDarkMode, setDarkMode] = React.useState(true);
-  React.useEffect(() => {
-    setDarkMode(localStorage.getItem(isDarkModeStorageKey) === "true");
-  }, []);
-  // const onClickModeSwitch = () => {
-  //   const nextMode = !isDarkMode;
-  //   localStorage.setItem(isDarkModeStorageKey, String(nextMode));
-  //   setDarkMode(nextMode);
-  // };
+    const [isDarkMode, setDarkMode] = React.useState(true);
+    React.useEffect(() => {
+        setDarkMode(localStorage.getItem(isDarkModeStorageKey) === "true");
+    }, []);
+    // const onClickModeSwitch = () => {
+    //   const nextMode = !isDarkMode;
+    //   localStorage.setItem(isDarkModeStorageKey, String(nextMode));
+    //   setDarkMode(nextMode);
+    // };
 
-  return (
-    <>
-      {/* <SEO /> */}
-      <CssBaseline />
-      {/* <ThemeProvider theme={isDarkMode ? DarkTheme : LightTheme}> */}
-      {/* <LightModeSwitcher
+    return (
+        <>
+            {/* <SEO /> */}
+            <CssBaseline />
+            {/* <ThemeProvider theme={isDarkMode ? DarkTheme : LightTheme}> */}
+            {/* <LightModeSwitcher
           onClick={() => onClickModeSwitch()}
           isDarkMode={isDarkMode}
         /> */}
-      {children}
-      {/* </ThemeProvider> */}
-    </>
-  );
+            {children}
+            {/* </ThemeProvider> */}
+        </>
+    );
 };
 
 export default Layout;

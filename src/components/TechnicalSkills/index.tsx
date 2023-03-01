@@ -5,41 +5,33 @@ import AnimatedProgressBar from "../../animations/ProgressBar";
 import Styles from "./index.Styles";
 
 export interface Skill {
-  name: string;
-  percentage: number;
+    name: string;
+    percentage: number;
 }
 
 interface IProps {
-  skills: Skill[];
+    skills: Skill[];
 }
 
-const TechnicalSkills: React.FC<IProps & WithStyles<typeof Styles>> = ({
-  classes,
-  skills,
-}) => {
-  return (
-    <Fragment>
-      <Typography variant="h4">Technical Skills</Typography>
-      <div className={classes.eachSkills}>
-        {skills.map((skill) => (
-          <Fragment key={skill.name}>
-            <div className={classes.skill}>
-              <div className={classes.info}>
-                <Typography variant={"h6"}>{skill.name}</Typography>
-                <Typography className={classes.percentage}>
-                  {skill.percentage}%
-                </Typography>
-              </div>
-              <AnimatedProgressBar
-                value={skill.percentage}
-                classes={{ root: classes.progressBar }}
-              />
+const TechnicalSkills: React.FC<IProps & WithStyles<typeof Styles>> = ({ classes, skills }) => {
+    return (
+        <Fragment>
+            <Typography variant="h4">Technical Skills</Typography>
+            <div className={classes.eachSkills}>
+                {skills.map((skill) => (
+                    <Fragment key={skill.name}>
+                        <div className={classes.skill}>
+                            <div className={classes.info}>
+                                <Typography variant={"h6"}>{skill.name}</Typography>
+                                <Typography className={classes.percentage}>{skill.percentage}%</Typography>
+                            </div>
+                            <AnimatedProgressBar value={skill.percentage} classes={{ root: classes.progressBar }} />
+                        </div>
+                    </Fragment>
+                ))}
             </div>
-          </Fragment>
-        ))}
-      </div>
-    </Fragment>
-  );
+        </Fragment>
+    );
 };
 
 export default withStyles(Styles)(TechnicalSkills);

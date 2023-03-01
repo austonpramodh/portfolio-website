@@ -1,14 +1,10 @@
 interface IUserEmailTemplate {
-  themeColor: string;
-  domain: string;
-  senderName: string;
+    themeColor: string;
+    domain: string;
+    senderName: string;
 }
 
-const UserEmailTemplate = ({
-  domain,
-  senderName,
-  themeColor,
-}: IUserEmailTemplate) => `<html lang="en">
+const UserEmailTemplate = ({ domain, senderName, themeColor }: IUserEmailTemplate) => `<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
