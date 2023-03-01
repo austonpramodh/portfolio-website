@@ -131,7 +131,12 @@ const ContactOptions: React.FunctionComponent<
               />
             </div>
           )}
-          <a href={`https://ipv6-test.com/validate.php?url=${domain}`}>
+          <a
+            href={`https://ipv6-test.com/validate.php?url=${domain}`}
+            style={{
+              display: "hidden",
+            }}
+          >
             {/* TODO: fix me */}
             <NextImage
               src="https://ipv6-test.com/button-ipv6-big.png"
