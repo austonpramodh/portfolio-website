@@ -22,6 +22,7 @@ type PageProps = {
 };
 
 const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
+    const pageTitle = (page.type === "page" && page.data.page_title) || "";
     return (
         <StaticDataContext.Provider value={staticDataContext}>
             <Layout>
@@ -31,7 +32,7 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
-                <SEO />
+                <SEO title={pageTitle} />
                 <NavBar
                     sections={[
                         {
