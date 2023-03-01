@@ -15,12 +15,17 @@ import { linkResolver, createClient } from "../../prismicio";
  * The Prismic webhook must send the correct secret.
  */
 const handler: NextApiHandler = async (req, res) => {
-    if (req.body.type === "api-update" && req.body.documents.length > 0) {
-        // Check for secret to confirm this is a valid request
-        if (req.body.secret !== process.env.PRISMIC_WEBHOOK_SECRET) {
-            return res.status(401).json({ message: "Invalid token" });
-        }
+    // Check for secret to confirm this is a valid request
+    if (req.body.secret !== process.env.PRISMIC_WEBHOOK_SECRET) {
+        return res.status(401).json({ message: "Invalid token" });
+    }
 
+    // test-trigger
+    if (req.body.type === "test-trigger") {
+        return res.json({ message: "Test trigger received" });
+    }
+
+    if (req.body.type === "api-update" && req.body.documents.length > 0) {
         // If you have a `createClient()` function defined elsewhere in
         // your app, use that instead
         const client = createClient();
