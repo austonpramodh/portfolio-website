@@ -251,6 +251,30 @@ type PageDocumentDataSlicesSlice = HeroV1Slice | AboutMeSlice | QuickCardsSlice 
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+/** Content for Resume documents */
+interface ResumeDocumentData {
+    /**
+     * Resume Doc field in *Resume*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: resume.resume_doc
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    resume_doc: prismicT.LinkToMediaField;
+}
+/**
+ * Resume document from Prismic
+ *
+ * - **API ID**: `resume`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ResumeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ResumeDocumentData>, "resume", Lang>;
 /** Content for SEO Data documents */
 interface SeoDataDocumentData {
     /**
@@ -373,7 +397,7 @@ type SeoDataDocumentDataSlicesSlice = never;
  * @typeParam Lang - Language API ID of the document.
  */
 export type SeoDataDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SeoDataDocumentData>, "seo_data", Lang>;
-export type AllDocumentTypes = ApiConfigDocument | ExternalLinksDocument | NavbarDocument | PageDocument | SeoDataDocument;
+export type AllDocumentTypes = ApiConfigDocument | ExternalLinksDocument | NavbarDocument | PageDocument | ResumeDocument | SeoDataDocument;
 /**
  * Primary content in AboutMe → Primary
  *
@@ -969,6 +993,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ApiConfigDocumentData, ApiConfigDocument, ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, SeoDataDocumentData, SeoDataDocumentDataKeywordsItem, SeoDataDocumentDataSlicesSlice, SeoDataDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
+        export type { ApiConfigDocumentData, ApiConfigDocument, ExternalLinksDocumentData, ExternalLinksDocumentDataExternalLinkItem, ExternalLinksDocument, NavbarDocumentData, NavbarDocumentDataItemsItem, NavbarDocument, PageDocumentData, PageDocumentDataPageKeywordsItem, PageDocumentDataSlicesSlice, PageDocument, ResumeDocumentData, ResumeDocument, SeoDataDocumentData, SeoDataDocumentDataKeywordsItem, SeoDataDocumentDataSlicesSlice, SeoDataDocument, AllDocumentTypes, AboutMeSliceDefaultPrimary, AboutMeSliceDefaultItem, AboutMeSliceDefault, AboutMeSliceVariation, AboutMeSlice, ContactOptionsSliceDefaultPrimary, ContactOptionsSliceDefaultItem, ContactOptionsSliceDefault, ContactOptionsSliceVariation, ContactOptionsSlice, ExperiencesSliceDefaultPrimary, ExperiencesSliceDefaultItem, ExperiencesSliceDefault, ExperiencesSliceVariation, ExperiencesSlice, HeroV1SliceDefaultPrimary, HeroV1SliceDefaultItem, HeroV1SliceDefault, HeroV1SliceVariation, HeroV1Slice, QuickCardsSliceDefaultPrimary, QuickCardsSliceDefaultItem, QuickCardsSliceDefault, QuickCardsSliceVariation, QuickCardsSlice, SkillRatingsSliceDefaultPrimary, SkillRatingsSliceDefaultItem, SkillRatingsSliceDefault, SkillRatingsSliceVariation, SkillRatingsSlice };
     }
 }

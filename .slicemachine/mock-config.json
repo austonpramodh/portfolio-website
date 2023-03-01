@@ -6,7 +6,8 @@
     "page": {},
     "navbar": {},
     "seo_data": {},
-    "api_config": {}
+    "api_config": {},
+    "resume": {}
   },
   "slices": {
     "HeroV1": {
