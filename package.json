@@ -31,6 +31,7 @@
     "formik": "^2.2.9",
     "lottie-web": "^5.10.2",
     "next": "13.2.1",
+    "nextjs-google-analytics": "^2.3.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-svg": "^15.1.21",

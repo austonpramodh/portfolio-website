@@ -66,7 +66,7 @@ const AboutMe: React.FC<WithStyles<typeof Styles> & Props> = ({ classes, slice, 
                         ))}
                     </ul>
                     <a
-                        href={prismicH.asLink(slice.primary.resume) || ""}
+                        href={"/resume"}
                         className={classes.cvDownloadButton}
                         style={{
                             textDecoration: "none",

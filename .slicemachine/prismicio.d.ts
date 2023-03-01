@@ -424,16 +424,6 @@ interface AboutMeSliceDefaultPrimary {
      */
     description: prismicT.RichTextField;
     /**
-     * Resume field in *AboutMe → Primary*
-     *
-     * - **Field Type**: Link to Media
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about_me.primary.resume
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    resume: prismicT.LinkToMediaField;
-    /**
      * Lottie field in *AboutMe → Primary*
      *
      * - **Field Type**: Link to Media

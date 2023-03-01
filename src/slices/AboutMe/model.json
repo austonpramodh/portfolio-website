@@ -27,14 +27,6 @@
             "placeholder": "A nice description of your feature"
           }
         },
-        "resume": {
-          "type": "Link",
-          "config": {
-            "label": "Resume",
-            "placeholder": "",
-            "select": "media"
-          }
-        },
         "lottie": {
           "type": "Link",
           "config": {
