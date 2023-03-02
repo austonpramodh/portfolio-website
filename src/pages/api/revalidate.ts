@@ -1,6 +1,5 @@
 // pages/api/revalidate.js
 // https://prismic.io/blog/nextjs-sites-on-demand-isr
-import * as prismic from "@prismicio/client";
 import * as prismicH from "@prismicio/helpers";
 import { NextApiHandler } from "next";
 
