@@ -88,21 +88,27 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
 export default Page;
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previewData }) => {
+    if (previewData) console.log("previewData", previewData);
+
     const client = createClient({ previewData });
 
     const uid = params?.pagePath?.[params.pagePath.length - 1] || "home";
-    const page = await client.getByUID("page", uid);
 
-    let externalLinksDoc: Content.ExternalLinksDocument | null = null;
-    let seoDataDoc: Content.SeoDataDocument | null = null;
+    console.log("Getting all Static Props");
 
-    try {
-        externalLinksDoc = await client.getSingle("external_links");
-        seoDataDoc = await client.getSingle("seo_data");
-    } catch (error) {
-        // No external links document found
-        console.log("error", error);
-    }
+    const allRequests = [
+        client.getByUID("page", uid),
+        client.getSingle("external_links"),
+        client.getSingle("seo_data"),
+    ];
+
+    const [page, externalLinksDoc, seoDataDoc] = (await Promise.all(allRequests)) as [
+        Content.AllDocumentTypes,
+        Content.ExternalLinksDocument,
+        Content.SeoDataDocument
+    ];
+
+    console.log("Got all Static Props");
 
     return {
         props: {

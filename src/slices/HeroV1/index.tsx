@@ -9,30 +9,11 @@ import ContactLinks from "../../components/ContactLinks";
 import { useStaticDataContext } from "../../components/StaticDataContext";
 import SliceContainer from "../../components/SliceContainer";
 import ImageLoader from "../../components/ImageLoader";
-import { makeStyles } from "tss-react/mui";
-// --- Styles ---
-const useStyles = makeStyles()((theme) => {
-    console.log("Theme", theme.palette.background.default);
-    return {
-        test: {
-            // background: "yellow",
-        },
-    };
-});
-// --- Styles ---
 
-type HeroV1Props = SliceComponentProps<
-    Content.HeroV1Slice,
-    {
-        test: boolean;
-    }
->;
+type HeroV1Props = SliceComponentProps<Content.HeroV1Slice>;
 
-const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
-    console.log("Context", context);
+const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
     const staticData = useStaticDataContext();
-    const { classes } = useStyles();
-
     return (
         <SliceContainer id={slice.primary.section_id || slice.id}>
             <Container
@@ -61,7 +42,6 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice, context }) => {
             >
                 {/* --------- */}
                 <Box
-                    className={classes.test}
                     sx={(theme) => ({
                         border: "20px solid rgba(0, 0, 0, 0.9)",
                         borderRadius: "50%",
