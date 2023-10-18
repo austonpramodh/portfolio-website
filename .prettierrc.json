@@ -4,5 +4,5 @@
   "semi": true,
   "singleQuote": false,
   "printWidth": 120,
-  "eol": "lf"
+  "eol": "auto"
 }
