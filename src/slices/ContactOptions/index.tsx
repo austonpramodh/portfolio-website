@@ -22,7 +22,7 @@ const ContactOptions: React.FunctionComponent<Props & WithStyles<typeof Styles>>
     slices,
 }) => {
     const [domain, setDomain] = React.useState("");
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         setDomain(document.domain);
     }, []);
 
