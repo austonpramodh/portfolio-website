@@ -92,10 +92,11 @@ export default class AppDocument extends Document<AppDocumentInitialProps> {
                     <Main />
                     <NextScript />
                     <Script
-                        defer
-                        async
                         src="https://static.cdn.prismic.io/prismic.js?new=true&repo=auston-portfolio-v2"
-                    />
+                        strategy="afterInteractive"
+                        async
+                        defer
+                    ></Script>
                 </body>
             </Html>
         );
