@@ -16,13 +16,23 @@ import ScrollSpy from "react-ui-scrollspy";
 import SEO from "../components/Seo";
 
 type PageProps = {
-    page: Content.AllDocumentTypes;
+    page?: Content.AllDocumentTypes;
     //   defaultSEOData: SeoMetadataDocument;
-    staticDataContext: StaticDataContextType;
+    staticDataContext?: StaticDataContextType;
+    error?: string;
 };
 
-const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
+const Page: NextPage<PageProps> = ({ page, staticDataContext, error }) => {
+    if (error || !page || !staticDataContext) {
+        return (
+            <Layout>
+                <div>{error}</div>
+            </Layout>
+        );
+    }
+
     const pageTitle = (page.type === "page" && page.data.page_title) || "";
+
     return (
         <StaticDataContext.Provider value={staticDataContext}>
             <Layout>
@@ -87,14 +97,36 @@ const Page: NextPage<PageProps> = ({ page, staticDataContext }) => {
 
 export default Page;
 
+function promiseWithTimeout<T>(
+    promise: Promise<T>,
+    ms: number,
+    timeoutError = new Error("Promise timed out")
+): Promise<T> {
+    // create a promise that rejects in milliseconds
+    const timeout = new Promise<never>((_, reject) => {
+        setTimeout(() => {
+            reject(timeoutError);
+        }, ms);
+    });
+
+    // returns a race between timeout and the passed promise
+    return Promise.race<T>([promise, timeout]);
+}
+
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previewData }) => {
-    if (previewData) console.log("previewData", previewData);
+    console.log("Getting all Static Props");
+
+    console.time("getStaticProps");
+
+    if (previewData) {
+        console.log("-----------------");
+        console.log("getStaticProps:Preview Data", previewData);
+        console.log("-----------------");
+    }
 
     const client = createClient({ previewData });
 
     const uid = params?.pagePath?.[params.pagePath.length - 1] || "home";
-
-    console.log("Getting all Static Props");
 
     const allRequests = [
         client.getByUID("page", uid),
@@ -102,23 +134,43 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previe
         client.getSingle("seo_data"),
     ];
 
-    const [page, externalLinksDoc, seoDataDoc] = (await Promise.all(allRequests)) as [
-        Content.AllDocumentTypes,
-        Content.ExternalLinksDocument,
-        Content.SeoDataDocument
-    ];
+    try {
+        // const [page, externalLinksDoc, seoDataDoc] = (await Promise.all(allRequests)) as [
+        //     Content.AllDocumentTypes,
+        //     Content.ExternalLinksDocument,
+        //     Content.SeoDataDocument
+        // ];
+        const MAX_TIMEOUT = 5000;
+        const [page, externalLinksDoc, seoDataDoc] = (await promiseWithTimeout(
+            Promise.all(allRequests),
+            MAX_TIMEOUT,
+            new Error("Get Static props timed out!")
+        )) as [Content.AllDocumentTypes, Content.ExternalLinksDocument, Content.SeoDataDocument];
 
-    console.log("Got all Static Props");
+        console.log("Got all Static Props");
+        console.timeEnd("getStaticProps");
 
-    return {
-        props: {
-            page,
-            staticDataContext: {
-                externalLinksData: externalLinksDoc?.data || null,
-                seoData: seoDataDoc?.data || null,
+        return {
+            props: {
+                page,
+                staticDataContext: {
+                    externalLinksData: externalLinksDoc?.data || null,
+                    seoData: seoDataDoc?.data || null,
+                },
             },
-        },
-    };
+        };
+    } catch (error) {
+        console.log("Error in getStaticProps", error);
+        let message: string;
+        if (error instanceof Error) message = error.message;
+        else message = String(error);
+
+        return {
+            props: {
+                error: message,
+            },
+        };
+    }
 };
 
 interface Params extends ParsedUrlQuery {
@@ -128,7 +180,13 @@ interface Params extends ParsedUrlQuery {
 // TODO: add typings for this
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async (params) => {
+    console.log("Getting all Static Paths");
+
+    console.log("-----------------");
+    console.log("getStaticPaths:params", params);
+    console.log("-----------------");
+
     const client = createClient();
 
     const pages = await client.getAllByType("page");
