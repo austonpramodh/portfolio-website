@@ -2,7 +2,7 @@ import Styles from "./index.Styles";
 import React from "react";
 import { withStyles, WithStyles } from "@mui/styles";
 import { Box, Container, Typography, useTheme } from "@mui/material";
-import { Download as DownloadIcon } from "@mui/icons-material";
+import DownloadIcon from "@mui/icons-material/Download";
 
 import AboutMeAnimation from "../../animations/AboutMe";
 import { SliceComponentProps } from "@prismicio/react";

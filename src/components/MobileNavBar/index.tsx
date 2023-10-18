@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTheme, Typography, Theme } from "@mui/material";
-import { Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Styles from "./index.Styles";
 import { withStyles, WithStyles } from "@mui/styles";
 import { Section } from "../NavBar";
