@@ -10,7 +10,7 @@ import SkillRatings from "./SkillRatings";
 export { AboutMe, ContactOptions, Experiences, HeroV1, QuickCards, SkillRatings };
 
 export const components = {
-    about_me: AboutMe,
+    // about_me: AboutMe,
     contact_options: ContactOptions,
     experiences: Experiences,
     hero_v1: HeroV1,
