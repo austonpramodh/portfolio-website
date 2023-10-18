@@ -6,6 +6,7 @@ import React from "react";
 // TODO: remove this after we have completely moved to new mui
 // https://stackoverflow.com/questions/50685175/react-material-ui-warning-prop-classname-did-not-match
 import { ServerStyleSheets } from "@mui/styles";
+import Script from "next/script";
 
 type AppDocumentInitialProps = {
     emotionStyleTags: JSX.Element[];
@@ -90,6 +91,11 @@ export default class AppDocument extends Document<AppDocumentInitialProps> {
                 <body>
                     <Main />
                     <NextScript />
+                    <Script
+                        defer
+                        async
+                        src="https://static.cdn.prismic.io/prismic.js?new=true&repo=auston-portfolio-v2"
+                    />
                 </body>
             </Html>
         );

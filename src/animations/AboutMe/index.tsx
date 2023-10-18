@@ -25,12 +25,12 @@ const AboutMeAnimation: React.FC<AboutMeAnimationProps & WithStyles<typeof Style
     const [animationData, setAnimationData] = React.useState<any>({});
     const [isPageLoaded, setPageLoaded] = React.useState(false);
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         Axios.get(animationDataUrl).then((response) => {
             setAnimationData(response.data);
             setPageLoaded(true);
         });
-    }, []);
+    }, [animationDataUrl]);
 
     if (isPageLoaded) return <Animation animationData={animationData} />;
 
