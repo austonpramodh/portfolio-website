@@ -14,6 +14,7 @@ import StaticDataContext, { StaticDataContextType } from "../components/StaticDa
 import NavBar from "../components/NavBar";
 import ScrollSpy from "react-ui-scrollspy";
 import SEO from "../components/Seo";
+import { useEffect } from "react";
 
 type PageProps = {
     page?: Content.AllDocumentTypes;
@@ -23,6 +24,13 @@ type PageProps = {
 };
 
 const Page: NextPage<PageProps> = ({ page, staticDataContext, error }) => {
+    useEffect(() => {
+        console.log("Page Mounted");
+        console.log("-----------------");
+        console.log(staticDataContext?.last_publication_date);
+        console.log("-----------------");
+    }, []);
+
     if (error || !page || !staticDataContext) {
         return (
             <Layout>
@@ -132,6 +140,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previe
         client.getByUID("page", uid),
         client.getSingle("external_links"),
         client.getSingle("seo_data"),
+        client.getSingle("resume"),
     ];
 
     try {
@@ -141,14 +150,28 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previe
         //     Content.SeoDataDocument
         // ];
         const MAX_TIMEOUT = 5000;
-        const [page, externalLinksDoc, seoDataDoc] = (await promiseWithTimeout(
+        const [page, externalLinksDoc, seoDataDoc, resumeDataDoc] = (await promiseWithTimeout(
             Promise.all(allRequests),
             MAX_TIMEOUT,
             new Error("Get Static props timed out!")
-        )) as [Content.AllDocumentTypes, Content.ExternalLinksDocument, Content.SeoDataDocument];
+        )) as [
+            Content.AllDocumentTypes,
+            Content.ExternalLinksDocument,
+            Content.SeoDataDocument,
+            Content.ResumeDocument
+        ];
 
         console.log("Got all Static Props");
         console.timeEnd("getStaticProps");
+
+        // Get the last publication date from all the documents
+        let last_publication_date = page.last_publication_date;
+
+        for (const doc of [externalLinksDoc, seoDataDoc, resumeDataDoc]) {
+            if (doc?.last_publication_date && doc.last_publication_date > last_publication_date) {
+                last_publication_date = doc.last_publication_date;
+            }
+        }
 
         return {
             props: {
@@ -156,6 +179,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previe
                 staticDataContext: {
                     externalLinksData: externalLinksDoc?.data || null,
                     seoData: seoDataDoc?.data || null,
+                    resumeData: resumeDataDoc?.data || null,
+                    last_publication_date,
                 },
             },
         };
