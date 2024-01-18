@@ -5,6 +5,7 @@ export type StaticDataContextType = {
     externalLinksData?: Content.ExternalLinksDocumentData | null;
     seoData?: Content.SeoDataDocumentData | null;
     resumeData?: Content.ResumeDocumentData | null;
+    last_publication_date?: string | null;
 };
 
 const StaticDataContext = React.createContext<StaticDataContextType>({});

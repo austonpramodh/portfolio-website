@@ -117,7 +117,7 @@ const ContactOptions: React.FunctionComponent<Props & WithStyles<typeof Styles>>
 
                 <div className={classes.footer}>
                     <Typography className={classes.footerText}>
-                        Made with love by Auston Pramodh Barboza @ 2022
+                        Made with love by Auston Pramodh Barboza @ {new Date().getFullYear()}
                     </Typography>
 
                     {staticData.externalLinksData && (
@@ -147,6 +147,19 @@ const ContactOptions: React.FunctionComponent<Props & WithStyles<typeof Styles>>
                             height={50}
                         />
                     </a>
+                </div>
+                <div>
+                    {/* Last upddated date */}
+                    {staticData.last_publication_date &&
+                        `Last updated on ${new Date(
+                            staticData.last_publication_date
+                        ).toLocaleDateString()} at ${new Date(staticData.last_publication_date)
+                            // Remove seconds from time
+                            .toLocaleTimeString("en-US", {
+                                hour: "numeric",
+                                minute: "numeric",
+                                hour12: true,
+                            })}`}
                 </div>
             </Container>
         </SliceContainer>
