@@ -35,6 +35,8 @@ const Resume: NextPage<PageProps> = ({ staticDataContext }) => {
         ? prismicH.asLink(staticDataContext.resumeData?.resume_doc)
         : "";
 
+    // const link = "https://files.testfile.org/PDF/200MB-TESTFILE.ORG.pdf";
+
     const router = useRouter();
 
     const [numPages, setNumPages] = useState<null | number>(null);
@@ -50,17 +52,34 @@ const Resume: NextPage<PageProps> = ({ staticDataContext }) => {
 
     useEffect(() => {
         // Redirect to resume on desktop
-        setTimeout(() => {
-            if (matches && link) {
-                router.push(link);
-            }
-        }, 500);
+        // setTimeout(() => {
+        //     if (matches && link) {
+        //         router.push(link);
+        //     }
+        // }, 500);
     }, [link, router, matches]);
 
     const DownloadButton = (
         <>
+            <Typography
+                style={{
+                    marginTop: "1rem",
+                }}
+            >
+                {staticDataContext.last_publication_date &&
+                    `Last updated on ${new Date(
+                        staticDataContext.last_publication_date
+                    ).toLocaleDateString()} at ${new Date(staticDataContext.last_publication_date)
+                        // Remove seconds from time
+                        .toLocaleTimeString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                            hour12: true,
+                        })}`}
+            </Typography>
             <Link
                 href={link || ""}
+                download="Data-Export.xlsx"
                 sx={(theme) => ({
                     backgroundColor: theme.palette.primary.main,
                     color: theme.palette.text.primary,
@@ -114,31 +133,17 @@ const Resume: NextPage<PageProps> = ({ staticDataContext }) => {
                     })}
                 >
                     <Hidden mdDown>
-                        <Typography>
-                            Redirecting to resume in a seconds. If you are not redirected, click the download button
-                            below.
-                        </Typography>
-
-                        <LinearProgress
-                            sx={(theme) => ({
-                                width: "40%",
-                                height: "5px",
-                                my: theme.spacing(2),
-                            })}
-                        />
+                        <Document
+                            file={link}
+                            onLoadSuccess={onDocumentLoadSuccess}
+                            onLoadProgress={(data) => {
+                                setLoadProgress((data.loaded / data.total) * 100);
+                            }}
+                        >
+                            <Page pageNumber={pageNumber} scale={1.3} />
+                        </Document>
                     </Hidden>
                     <Hidden mdUp>
-                        {numPages === null && (
-                            <LinearProgress
-                                variant="determinate"
-                                value={loadProgress}
-                                sx={(theme) => ({
-                                    width: "40%",
-                                    height: "5px",
-                                    my: theme.spacing(2),
-                                })}
-                            />
-                        )}
                         <Document
                             file={link}
                             onLoadSuccess={onDocumentLoadSuccess}
@@ -148,21 +153,32 @@ const Resume: NextPage<PageProps> = ({ staticDataContext }) => {
                         >
                             <Page pageNumber={pageNumber} />
                         </Document>
-                        {numPages !== null && (
-                            <Pagination
-                                count={numPages || 0}
-                                onChange={(e, value) => {
-                                    setPageNumber(value);
-                                }}
-                                page={pageNumber}
-                                shape="rounded"
-                                color="primary"
-                                sx={(theme) => ({
-                                    my: theme.spacing(2),
-                                })}
-                            />
-                        )}
                     </Hidden>
+                    {numPages === null && (
+                        <LinearProgress
+                            variant="determinate"
+                            value={loadProgress}
+                            sx={(theme) => ({
+                                width: "40%",
+                                height: "5px",
+                                my: theme.spacing(2),
+                            })}
+                        />
+                    )}
+                    {numPages !== null && (
+                        <Pagination
+                            count={numPages || 0}
+                            onChange={(e, value) => {
+                                setPageNumber(value);
+                            }}
+                            page={pageNumber}
+                            shape="rounded"
+                            color="primary"
+                            sx={(theme) => ({
+                                my: theme.spacing(2),
+                            })}
+                        />
+                    )}
                     {/* Download button */}
                     {DownloadButton}
                 </Box>
@@ -197,6 +213,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params, previe
                 externalLinksData: null,
                 seoData: seoDataDoc?.data || null,
                 resumeData: resumeDoc?.data || null,
+                last_publication_date: resumeDoc?.last_publication_date || null,
             },
         },
     };
