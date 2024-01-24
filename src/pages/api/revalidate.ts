@@ -31,10 +31,42 @@ const handler: NextApiHandler = async (req, res) => {
 
         // Get a list of URLs for any new, updated, or deleted documents
         const documents = await client.getAllByIDs(req.body.documents);
-        const urls = documents.map((doc) => prismicH.asLink(doc, linkResolver));
+        console.log(JSON.stringify(documents));
+
+        const nonPageDocuments = documents.filter((doc) => doc.type !== "page");
+        const pageDocuments = documents.filter((doc) => doc.type === "page");
+        const urls: string[] = [];
+        // if there are non page documents, then revalidate all pages including the page documents
+        if (nonPageDocuments.length > 0) {
+            // fetch all pages uids
+            const pages = await client.getAllByType("page");
+            for (const page of pages) {
+                const url = prismicH.asLink(page, linkResolver);
+                if (url) {
+                    urls.push(url);
+                }
+            }
+
+            // add static pages
+            const staticPages = ["/", "/resume"];
+            urls.push(...staticPages);
+        }
+
+        // add specific page documents if there are no non page documents since we don't want to revalidate all pages
+        if (nonPageDocuments.length === 0 && pageDocuments.length > 0) {
+            // Otherwise, only revalidate the URLs for the page documents
+            for (const doc of pageDocuments) {
+                const url = prismicH.asLink(doc, linkResolver);
+                if (url) {
+                    urls.push(url);
+                }
+            }
+        }
 
         try {
             // Revalidate the URLs for those documents
+
+            console.log("revalidating urls: ", urls.join(","));
             await Promise.all(urls.map(async (url) => await res.revalidate(url!)));
 
             return res.json({ revalidated: true });
