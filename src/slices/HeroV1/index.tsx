@@ -72,7 +72,17 @@ const HeroV1: React.FunctionComponent<HeroV1Props> = ({ slice }) => {
                             },
                         })}
                     >
-                        <PrismicNextImage field={slice.primary.display_picture} alt="" />
+                        <PrismicNextImage
+                            field={slice.primary.display_picture}
+                            imgixParams={{
+                                fit: "facearea",
+                                auto: ["format", "compress", "true"],
+                                faceindex: 1,
+                                facepad: 3,
+                                mask: "ellipse",
+                            }}
+                            alt=""
+                        />
                     </Avatar>
                 </Box>
                 <Box

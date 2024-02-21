@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { useStaticDataContext } from "../StaticDataContext";
 import * as prismicH from "@prismicio/helpers";
+import queryString from "query-string";
 
 interface SeoProps {
     title?: string;
@@ -36,6 +37,34 @@ const SEO: React.FunctionComponent<SeoProps> = ({ description = "", meta = [], t
         faviconUrl = "/favicon.ico";
     }
 
+    useEffect(() => {
+        const parsedUrl = queryString.parseUrl(profile_picture);
+        // Add the mask and mask-bg query params to the image url
+        parsedUrl.query.mask = "ellipse";
+        parsedUrl.query["mask-bg"] = "696969";
+        console.log(
+            queryString.stringifyUrl({
+                url: parsedUrl.url,
+                query: parsedUrl.query,
+            })
+        );
+    }, []);
+
+    const multiplier = 4;
+    const metaDataProfilePicture = queryString.stringifyUrl({
+        url: profile_picture,
+        query: {
+            mask: "ellipse",
+            "mask-bg": "696969",
+            h: Math.round(128 * multiplier),
+            w: Math.round(128 * multiplier),
+            "pad-left": Math.round(8 * multiplier),
+            "pad-right": Math.round(8 * multiplier),
+            "pad-top": Math.round(8 * multiplier),
+            "pad-bottom": Math.round(8 * multiplier),
+        },
+    });
+
     return (
         <>
             <Head>
@@ -61,15 +90,15 @@ const SEO: React.FunctionComponent<SeoProps> = ({ description = "", meta = [], t
                         content: `website`,
                     },
                     {
-                        name: "og:image",
-                        content: profile_picture,
+                        property: "og:image",
+                        content: metaDataProfilePicture,
                     },
                     {
-                        name: "og:url",
+                        property: "og:url",
                         content: domain,
                     },
                     {
-                        name: "og:site_name",
+                        property: "og:site_name",
                         content: pageTitle,
                     },
                     {
@@ -98,13 +127,15 @@ const SEO: React.FunctionComponent<SeoProps> = ({ description = "", meta = [], t
                     },
                     {
                         name: "image",
-                        content: profile_picture,
+                        content: metaDataProfilePicture,
                     },
                 ]
                     .concat(meta)
                     .map((eachMeta, i) => (
                         <meta key={`meta-${i}`} {...eachMeta} />
                     ))}
+                {/* <meta property="og:image:width" content={`${Math.round(128 * multiplier)}`} />
+                <meta property="og:image:height" content={`${Math.round(128 * multiplier)}`} /> */}
             </Head>
         </>
     );
