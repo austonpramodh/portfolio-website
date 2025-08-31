@@ -1,16 +1,29 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+    Box,
+    Button,
+    CircularProgress,
+    TextField,
+    Typography,
+} from "@mui/material";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import z from "zod";
 
+/* ---------------------------------- */
+/* 1️⃣  Validation schema            */
+/* ---------------------------------- */
 const schema = z.object({
     name: z.string().min(2, "Name is too short"),
     email: z.string().email("Invalid email address"),
     message: z.string().min(5, "Message should be at least 5 characters"),
 });
 
+/* ---------------------------------- */
+/* 2️⃣  API helper                   */
+/* ---------------------------------- */
 export const sendEmail = ({ email, message, name }: z.infer<typeof schema>) => {
     return fetch("/api/notify", {
         method: "post",
@@ -22,10 +35,36 @@ export const sendEmail = ({ email, message, name }: z.infer<typeof schema>) => {
     }).then((res) => res.json());
 };
 
+/* ---------------------------------- */
+/* 3️⃣  Error box (fixed height, centered) */
+/* ---------------------------------- */
+const ErrorBox = ({ message }: { message: string | null }) => (
+    <Box
+        sx={{
+            minHeight: 24,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center", // <‑‑ Centered
+        }}
+    >
+        {message && (
+            <Typography variant="body1" color="error">
+                {message}
+            </Typography>
+        )}
+    </Box>
+);
+
+/* ---------------------------------- */
+/* 4️⃣  ContactForm component        */
+/* ---------------------------------- */
 export const ContactForm = () => {
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
+
     const {
         handleSubmit,
-        formState: { errors, submitCount },
+        formState: { errors, submitCount, isSubmitting },
         control,
     } = useForm({
         resolver: zodResolver(schema),
@@ -36,17 +75,45 @@ export const ContactForm = () => {
         },
     });
 
+    const onSubmit = async (data: z.infer<typeof schema>) => {
+        setSubmitError(null);
+        setSuccess(false);
+
+        try {
+            await sendEmail(data);
+            setSuccess(true);
+        } catch (err) {
+            console.error(err);
+            const errMsg =
+                err instanceof Error && err.message.includes("Failed to fetch")
+                    ? "Network error"
+                    : err instanceof Error
+                      ? err.message
+                      : "Unknown error occurred";
+            setSubmitError(errMsg);
+        }
+    };
+
+    const errorMessage =
+        submitCount > 0 && Object.keys(errors).length > 0
+            ? "Please fix the highlighted fields."
+            : submitError
+              ? `Form submission failed: ${submitError}`
+              : null;
+
     return (
         <Box
             component="form"
             display="flex"
             flexDirection="column"
-            gap={3}
-            onSubmit={handleSubmit(sendEmail)}
+            gap={1}
+            onSubmit={handleSubmit(onSubmit)}
         >
-            {submitCount > 0 && Object.keys(errors).length > 0 && (
-                <Typography variant="body1" color="error">
-                    Please fix the highlighted fields.
+            <ErrorBox message={errorMessage} />
+
+            {success && (
+                <Typography variant="body1" color="success.main" align="center">
+                    Form submitted successfully.
                 </Typography>
             )}
 
@@ -61,8 +128,9 @@ export const ContactForm = () => {
                         placeholder="John Doe"
                         variant="outlined"
                         fullWidth
+                        disabled={isSubmitting}
                         error={!!errors.name}
-                        helperText={errors.name?.message}
+                        helperText={errors.name?.message ?? " "}
                     />
                 )}
             />
@@ -78,8 +146,9 @@ export const ContactForm = () => {
                         placeholder="john@example.com"
                         variant="outlined"
                         fullWidth
+                        disabled={isSubmitting}
                         error={!!errors.email}
-                        helperText={errors.email?.message}
+                        helperText={errors.email?.message ?? " "}
                     />
                 )}
             />
@@ -97,8 +166,9 @@ export const ContactForm = () => {
                         fullWidth
                         multiline
                         minRows={4}
+                        disabled={isSubmitting}
                         error={!!errors.message}
-                        helperText={errors.message?.message}
+                        helperText={errors.message?.message ?? " "}
                     />
                 )}
             />
@@ -109,6 +179,7 @@ export const ContactForm = () => {
                 color="primary"
                 size="large"
                 fullWidth
+                disabled={isSubmitting}
                 sx={{
                     py: 1.5,
                     fontSize: "1rem",
@@ -123,7 +194,11 @@ export const ContactForm = () => {
                     },
                 }}
             >
-                Send Message
+                {isSubmitting ? (
+                    <CircularProgress size={24} sx={{ color: "white" }} />
+                ) : (
+                    "Send Message"
+                )}
             </Button>
         </Box>
     );
