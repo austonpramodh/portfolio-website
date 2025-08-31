@@ -1,0 +1,367 @@
+---
+title: "Why Layout Shift is Irritating (and How to See It in Action)"
+date: 2025-08-31T14:00:00Z
+heroImage:
+description: "Understanding layout shift in web pages, why it frustrates users, and a quick example to visualize it."
+hashTags:
+    - webdev
+    - ux
+    - frontend
+author: Auston Barboza
+readTime: 4 min read
+disableHeader: true
+textImageBackground: "linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)"
+textImageTitleColor: "#ffffff"
+textImageDescriptionColor: "#ffeecc"
+--- 
+
+import Caption from "../../../../components/TypographyExtras/Caption"
+import { Box } from "@mui/material";
+
+## Issue
+
+*Have you ever tried clicking a button on a website, only for the button to suddenly move at the last second — and you end up clicking something completely different? That’s **layout shift**, and it’s one of the most irritating experiences in modern web browsing.*
+
+*Layout shift happens when elements on a page unexpectedly move around while the page is loading or updating. Even small shifts can cause major frustration, especially when users are about to interact with the page.*
+
+##### ⚠️ Why It’s Annoying
+
+* **Breaks trust** – Users feel the website is unstable or “jumpy.”  
+* **Interrupts focus** – When text or buttons move, the user loses their reading position.  
+* **Causes misclicks** – Clicking the wrong element (e.g., “Buy Now” instead of “Learn More”) can have serious consequences.  
+* **Feels unprofessional** – Smooth, stable pages make your site feel polished and reliable.  
+
+<br/>
+
+##### Example of Layout Shift
+
+Here’s a simple HTML/CSS example that demonstrates layout shift.  
+When the image finishes loading, it pushes the button down — frustrating the user.
+
+```html frame="terminal" title="Layout Shift Example"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form – With Layout Shift</title>
+<style>
+  body {font-family:Arial,Helvetica,sans-serif;margin:2rem;}
+  .error {color:#d00;display:none; margin-top:0.5rem;}  /* <-- no space reserved */
+</style>
+</head>
+<body>
+
+<form id="form">
+  <label for="name">Name:</label><br>
+  <input id="name" type="text" required><br>
+  <div id="nameError" class="error"></div>
+  <button type="submit">Submit</button>
+</form>
+
+<p id="info">Some content below the form.</p>
+
+<script>
+const form = document.getElementById('form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = form.name.value.trim();
+  const err = document.getElementById('nameError');
+  if (!name) {
+    err.textContent = 'Name is required.';
+    err.style.display = 'block';   // pushes the button & paragraph down
+  } else {
+    err.textContent = '';
+    err.style.display = 'none';
+    alert('✅ Submitted!');
+  }
+});
+</script>
+</body>
+</html>
+```
+
+👉 If you click the submit button, you’ll see the button jumps down once the error pops up. That’s layout shift in its most annoying form.
+
+
+<Box 
+sx={{
+    justifyContent:"center",
+    alignItems:"center",
+    display:"flex",
+    my: 2
+}}
+>
+  <iframe
+    srcDoc={`
+     <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>Form – With Layout Shift</title>
+    <style>
+        /* Light mode (default) */
+        body {
+        margin: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f9f9f9;
+        color: #222;
+        font-size: 0.9rem;
+        }
+        /* Dark mode fallback */
+        @media (prefers-color-scheme: dark) {
+        body { background-color: #1e1e1e; color: #e0e0e0; }
+        }
+
+        input, button {
+        padding: 0.3rem 0.5rem;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        font: inherit;
+        background: #fff;
+        color: inherit;
+        }
+        @media (prefers-color-scheme: dark) {
+        input, button { background: #333; border-color: #555; color: #e0e0e0; }
+        }
+
+        /* ERROR – no reserved space: just hidden until shown */
+        .form-error {
+        color: #d00;
+        display: none;      /* initially hidden – no space taken */
+        margin-top: 0.5rem;
+        }
+    </style>
+    </head>
+    <body>
+
+    <form id="form" novalidate>
+    <label for="name">Name:</label><br>
+    <input id="name" type="text"><br>
+    <div id="nameError" class="form-error"></div>
+    <button type="submit">Submit</button>
+    </form>
+
+    <p id="info">Some content below the form.</p>
+
+    <script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const err  = document.getElementById('nameError');
+        if (!name) {
+        err.textContent = 'Name is required.';
+        err.style.display = 'block';   // pushes the button & paragraph down
+        } else {
+        err.textContent = '';
+        err.style.display = 'none';
+        alert('✅ Submitted!');
+        }
+    });
+    </script>
+
+    </body>
+    </html>
+    `}
+    width="100%"
+    height="180"
+    style={{border:"1px solid #e0e0e0", maxWidth:"380px"}}
+    title="Form demo – no layout shift"
+  />
+
+</Box>
+
+<br/>
+
+##### Example Without Layout Shift
+
+You can avoid the jump by giving the error container a minimum height (or otherwise reserving space) so the layout never changes.
+
+```html frame="terminal" title="No Layout Shift Example"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form – No Layout Shift</title>
+<style>
+    /* Light mode (default) */
+    body {
+    margin: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+    font-size: 0.9rem;
+    }
+
+    /* Dark mode fallback */
+    @media (prefers-color-scheme: dark) {
+    body { background-color: #1e1e1e; color: #e0e0e0; }
+    }
+
+    input, button {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font: inherit;
+    background: #fff;
+    color: inherit;
+    }
+    @media (prefers-color-scheme: dark) {
+    input, button { background: #333; border-color: #555; color: #e0e0e0; }
+    }
+
+    .form-error {
+    color:#d00;
+    min-height:1.2rem;
+    margin-top:0.5rem;
+    }
+</style>
+</head>
+<body>
+<form id="form" novalidate>
+    <label for="name">Name:</label><br>
+    <input id="name" type="text"><br>
+    <div id="nameError" class="form-error"></div>
+    <button type="submit">Submit</button>
+</form>
+<p id="info">Some content below the form.</p>
+
+<script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const err  = document.getElementById('nameError');
+    if (!name) {
+        err.textContent = 'Name is required.';
+    } else {
+        err.textContent = '';
+        alert('✅ Submitted!');
+    }
+    });
+</script>
+</body>
+</html>
+```
+
+<Box 
+sx={{
+    justifyContent:"center",
+    alignItems:"center",
+    display:"flex",
+    my: 2
+}}
+>
+  <iframe
+    srcDoc={`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Form – No Layout Shift</title>
+        <style>
+          /* Light mode (default) */
+          body {
+            margin: 1rem;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f9f9f9;
+            color: #222;
+            font-size: 0.9rem;
+          }
+
+          /* Dark mode fallback */
+          @media (prefers-color-scheme: dark) {
+            body { background-color: #1e1e1e; color: #e0e0e0; }
+          }
+
+          input, button {
+            padding: 0.3rem 0.5rem;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font: inherit;
+            background: #fff;
+            color: inherit;
+          }
+          @media (prefers-color-scheme: dark) {
+            input, button { background: #333; border-color: #555; color: #e0e0e0; }
+          }
+          
+          /* ERROR – reserved space: just empty until shown */
+          .form-error {
+            color:#d00;
+            min-height:1.2rem;
+            margin-top:0.5rem;
+          }
+        </style>
+      </head>
+      <body>
+        <form id="form" novalidate>
+          <label for="name">Name:</label><br>
+          <input id="name" type="text"><br>
+          <div id="nameError" class="form-error"></div>
+          <button type="submit">Submit</button>
+        </form>
+        <p id="info">Some content below the form.</p>
+
+        <script>
+          const form = document.getElementById('form');
+          form.addEventListener('submit', e => {
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const err  = document.getElementById('nameError');
+            if (!name) {
+              err.textContent = 'Name is required.';
+            } else {
+              err.textContent = '';
+              alert('✅ Submitted!');
+            }
+          });
+        </script>
+      </body>
+      </html>
+    `}
+    width="100%"
+    height="180"
+    style={{border:"1px solid #e0e0e0", maxWidth:"380px"}}
+    title="Form demo – no layout shift"
+  />
+
+</Box>
+
+In this version the error text can appear, but the layout stays exactly where it was – no CLS.
+
+#### How to Fix Layout Shift
+
+The root cause is usually unreserved space. Browsers don’t know how much room an element will take until it’s rendered, so everything below it shifts when that element appears.
+
+Here’s how you fix it using a form as the example
+
+#### ✅ Reserve space for form validation messages
+
+When a form shows an error after a user submits, the error block can push the rest of the page down.
+Give the error container a fixed minimum height (or otherwise reserve space) so the layout never changes.
+
+```css
+.form-error {
+  /* 1.2rem is enough for a short message – adjust as needed */
+  min-height: 1.2rem;
+  color: #d00;
+  margin-top: 0.5rem;     /* space between the field and the error */
+}
+```
+
+With the min-height in place, the button and any content below it stay where they are, even when the error text appears.
+
+#### Conclusion
+
+Layout shift is irritating because it interrupts the most important thing on the web: user flow.
+Whether someone is reading, scrolling, or clicking, a sudden jump breaks their concentration and makes your site feel untrustworthy.
+
+By reserving space for form validation errors, async fields, and any dynamic content, you can stop layout shifts before they happen. Pair that with font preloading and skeleton loaders, and your pages will feel smoother and more professional.
+
+👉 A stable layout = a happy user.
+
+
+And happy users stay longer, click more, and trust your site.
+
+<Caption>This text was generated using AI, carefully reviewed.</Caption>

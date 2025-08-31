@@ -118,7 +118,11 @@ const defaults: (options: MuiMdxComponentsOptions) => MDXComponents = ({
         <Divider
             {...props}
             component="hr"
-            sx={{ height: (theme) => theme.spacing(1) }}
+            sx={{
+                height: 2,
+                my: 2,
+                // (theme) => theme.spacing(1)
+            }}
             {...propOverrides?.hr}
         />
     ),
