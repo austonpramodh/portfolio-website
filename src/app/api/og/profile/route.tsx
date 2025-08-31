@@ -8,8 +8,6 @@ import * as z from "zod";
 export const runtime = "nodejs";
 
 const schema = z.object({
-    // height: z.coerce.number().default(630),
-    // width: z.coerce.number().default(1200),
     size: z.coerce.number().default(1),
 });
 
@@ -38,89 +36,69 @@ export async function GET(request: NextRequest) {
                         width: "100%",
                         height: "100%",
                         display: "flex",
-                        flexDirection: "row",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
                         background: "linear-gradient(135deg, #1f2937, #3b82f6)",
                         fontFamily: "sans-serif",
                         color: "white",
+                        textAlign: "center",
+                        padding: `${40 * parsedData.size}px`,
                     }}
                 >
-                    {/* LEFT: Profile image section */}
-                    <div
+                    {/* Profile image in center */}
+                    <img
+                        src={base64Image}
+                        alt="Profile"
                         style={{
-                            width: "40%",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            background: "rgba(255,255,255,0.05)",
-                            borderRight: "2px solid rgba(255,255,255,0.1)",
+                            width: 360 * parsedData.size,
+                            height: 360 * parsedData.size,
+                            borderRadius: "50%",
+                            border: "10px solid rgba(255,255,255,0.9)",
+                            boxShadow: "0 0 60px rgba(59,130,246,0.6)",
+                            objectFit: "cover",
+                            marginBottom: `${40 * parsedData.size}px`,
                         }}
-                    >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            src={base64Image}
-                            alt="Profile"
-                            style={{
-                                width: 280 * parsedData.size,
-                                height: 280 * parsedData.size,
-                                maxWidth: "100%",
-                                maxHeight: "100%",
-                                borderRadius: "50%",
-                                border: "8px solid rgba(255,255,255,0.9)",
-                                boxShadow: "0 0 40px rgba(59,130,246,0.5)",
-                                objectFit: "cover", // prevents squishing
-                            }}
-                        />
-                    </div>
+                    />
 
-                    {/* RIGHT: Text section */}
-                    <div
+                    {/* Name / Heading */}
+                    <h1
                         style={{
-                            width: "60%",
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            padding: `${60 * parsedData.size}px`,
-                            gap: `${20 * parsedData.size}px`,
+                            fontSize: 72 * parsedData.size,
+                            fontWeight: "bold",
+                            margin: 0,
+                            lineHeight: 1.2,
+                            textShadow: "0 6px 24px rgba(0,0,0,0.5)",
                         }}
                     >
-                        <h1
-                            style={{
-                                fontSize: 68 * parsedData.size,
-                                fontWeight: "bold",
-                                margin: 0,
-                                lineHeight: 1.1,
-                                textShadow: "0 4px 20px rgba(0,0,0,0.4)",
-                            }}
-                        >
-                            👋 Hey, I’m Auston!
-                        </h1>
-                        <p
-                            style={{
-                                fontSize: 36 * parsedData.size,
-                                margin: 0,
-                                maxWidth: "90%",
-                                lineHeight: 1.4,
-                                color: "rgba(255,255,255,0.85)",
-                                textShadow: "0 2px 8px rgba(0,0,0,0.3)",
-                            }}
-                        >
-                            Crafting code & ideas into something beautiful 🚀
-                        </p>
-                    </div>
+                        👋 Hey, I’m Auston!
+                    </h1>
+
+                    {/* Tagline */}
+                    <p
+                        style={{
+                            fontSize: 40 * parsedData.size,
+                            margin: 0,
+                            maxWidth: "90%",
+                            lineHeight: 1.4,
+                            color: "rgba(255,255,255,0.9)",
+                            textShadow: "0 3px 10px rgba(0,0,0,0.4)",
+                            marginTop: `${20 * parsedData.size}px`,
+                        }}
+                    >
+                        Crafting code & ideas into something beautiful 🚀
+                    </p>
                 </div>
             ),
             {
                 width: 1200 * parsedData.size,
                 height: 630 * parsedData.size,
-                // height: parsedData.height,
-                // width: parsedData.width,
             }
         );
     } catch (e) {
         console.log(`${e}`);
 
         if (e instanceof z.ZodError) {
-            // Validation error: return 400
             return Response.json(
                 {
                     error: "Invalid query parameters",
