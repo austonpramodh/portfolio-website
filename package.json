@@ -1,0 +1,52 @@
+{
+  "name": "auston.dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.848.0",
+    "@aws-sdk/client-sts": "^3.848.0",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@hookform/resolvers": "^5.1.1",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "@mui/material-nextjs": "^7.2.0",
+    "@next/mdx": "^15.4.3",
+    "@types/mdx": "^2.0.13",
+    "aws-sdk": "^2.1692.0",
+    "mime-types": "^3.0.1",
+    "next": "15.4.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.61.0",
+    "react-pdf": "^9.2.1",
+    "rehype-expressive-code": "^0.41.3",
+    "rehype-mdx-import-media": "^1.2.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "shiki": "^3.8.1",
+    "zod": "^4.0.8"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/mime-types": "^3.0.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,58 @@
+:root {
+  /* --background: var(--mui-palette-background-paper);
+  --foreground: var(--mui-palette-background-paper); */
+  --background: var(----mui-theme-palette-background-paper);
+  --foreground: var(----mui-theme-palette-background-paper);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --background: var(--mui-palette-background-paper);
+    --foreground: var(--mui-palette-background-paper); */
+    --background: var(----mui-theme-palette-background-paper);
+    --foreground: var(----mui-theme-palette-background-paper);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* --background: var(--mui-palette-background-default); */
+    --background: var(----mui-theme-palette-background-paper);
+    --foreground: var(----mui-theme-palette-background-paper);
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  /* background-color: var(--mui-palette-background-default); */
+  /* background-color: var(----mui-theme-palette-background-default); */
+  background-color: var(----mui-theme-palette-background-paper);
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+code {
+  color: var(--ec-codeFg);
+  font-family: var(--ec-codeFontFml);
+  font-size: var(--ec-codeFontSize);
+  font-weight: var(--ec-codeFontWg);
+  line-height: var(--ec-codeLineHt);
+}

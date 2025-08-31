@@ -1,0 +1,169 @@
+---
+title: "Getting IPv6 RA working on LXC with docker installed."
+date: 2025-05-14T14:00:00Z
+heroImage:
+description: "A quick guide to solving the IPv6 gateway issue in Proxmox LXC with Docker by forcing Router Advertisement (RA) acceptance."
+hashTags:
+    - proxmox
+author: Auston Barboza
+readTime: 5 min read
+disableHeader: true
+textImageBackground: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)"
+textImageTitleColor: "#ffffff"
+textImageDescriptionColor: "#cce2ff"
+--- 
+
+import Caption from "../../../../components/TypographyExtras/Caption"
+
+## Issue
+
+*Proxmox interprets your selection of "DHCP" as a request for a stateful IPv6 configuration only. It makes the incorrect assumption that if you are using DHCPv6 to get an IP address, you do not need or want Router Advertisements (RA).*
+
+*However, many environments — especially those using Docker — still rely on RA for more than just an address. Router Advertisements are often what provide the default IPv6 gateway. When Docker is installed, it can modify the routing table and remove the existing default gateway. Without RA enabled, the container will not relearn the gateway, breaking outbound IPv6 connectivity.*
+
+##### ⚠️ Pre-requisites
+
+* A running Proxmox VE host v8.4
+* An existing LXC container
+* Root access on both host and container
+* Docker installed
+
+<br/>
+
+##### Step 1: Create a hook script for lxc `/var/lib/vz/snippets/ipv6_accept_ra_fix.pl`
+
+```sh frame="terminal" title="/var/lib/vz/snippets/ipv6_accept_ra_fix.pl"
+#!/usr/bin/perl
+
+
+# Ref: https://pve.proxmox.com/pve-docs/chapter-pct.html#_hookscripts
+# Ref: Example: /usr/share/pve-docs/examples/guest-example-hookscript.pl
+# Ref: https://forum.proxmox.com/threads/change-remove-hookscript-from-lxc-container.97567/#post-422023
+# Ref: https://forum.proxmox.com/threads/post-start-script-for-lxc.36289/#post-504847
+# Example hook script for PVE guests (hookscript config option)
+# You can set this via pct/qm with
+# pct set <vmid> -hookscript <volume-id>
+# qm set <vmid> -hookscript <volume-id>
+# where <volume-id> has to be an executable file in the snippets folder
+# of any storage with directories e.g.:
+# qm set 100 -hookscript local:snippets/hookscript.pl
+
+use strict;
+use warnings;
+
+print "IPv6 Accept_RA=2 lxc fix: " . join(' ', @ARGV). "\n";
+
+# First argument is the vmid
+
+my $vmid = shift;
+
+# Second argument is the phase
+
+my $phase = shift;
+
+if ($phase eq 'pre-start') {
+
+    # First phase 'pre-start' will be executed before the guest
+    # is started. Exiting with a code != 0 will abort the start
+
+    print "$vmid is starting, doing preparations.\n";
+
+    # print "preparations failed, aborting."
+    # exit(1);
+
+} elsif ($phase eq 'post-start') {
+
+    # Second phase 'post-start' will be executed after the guest
+    # successfully started.
+
+    print "$vmid started successfully.\n";
+
+    #system("pct exec $vmid -- sysctl -w net.ipv6.conf.eth0.accept_ra=2");
+    system("pct exec $vmid -- sh -c 'sleep 2 && sysctl -w net.ipv6.conf.eth0.accept_ra=2'");
+} elsif ($phase eq 'pre-stop') {
+
+    # Third phase 'pre-stop' will be executed before stopping the guest
+    # via the API. Will not be executed if the guest is stopped from
+    # within e.g., with a 'poweroff'
+
+    print "$vmid will be stopped.\n";
+
+} elsif ($phase eq 'post-stop') {
+
+    # Last phase 'post-stop' will be executed after the guest stopped.
+    # This should even be executed in case the guest crashes or stopped
+    # unexpectedly.
+
+    print "$vmid stopped. Doing cleanup.\n";
+
+} else {
+    die "got unknown phase '$phase'\n";
+}
+
+exit(0);
+```
+
+##### Step 2: Add the hookscript to the lxc container
+
+```sh frame="terminal" title="Terminal"
+pct set <CTID> --hookscript local:snippets/ipv6_accept_ra_fix.pl
+```
+
+##### Step 3: Start the Container
+Now start/restart your container from the Proxmox web UI or run:
+
+```sh frame="terminal" title="Terminal"
+pct start <CTID>
+```
+
+or 
+
+```sh frame="terminal" title="Terminal"
+pct restart <CTID>
+```
+
+Replace `<CTID>` with your actual container ID.
+
+<br/>
+
+##### Step 4: Test the RA flag
+Enter the container shell:
+
+```sh frame="terminal" title="Terminal"
+pct exec <CTID> -- bash
+```
+
+Inside the container:
+
+```sh frame="terminal" title="Terminal"
+sysctl net.ipv6.conf.eth0.accept_ra
+```
+
+##### Step 4: What's Next?
+You can now use start using docker without loosing ipv6 connectivity.
+
+<br/>
+
+###### Caveats and Tips
+* This method sets accept_ra=2 only for eth0. If you have multiple interfaces, you’ll need to adjust the hook script.
+* Some base images reset network settings on boot — if that happens, confirm your hook script runs after each container start.
+* A short delay (sleep 2) in the post-start phase helps ensure the interface is up before applying accept_ra=2. Without it, the sysctl call might fail.
+* If Docker modifies IPv6 routing inside the container later, you may still need to trigger a manual RA refresh (rdisc6 eth0) or restart networking.
+* Proxmox’s default behavior around RA can change in future versions — always re-check release notes after upgrades.
+
+<br/>
+
+Actual Issue: [https://forum.proxmox.com/threads/accepting-ra-on-lxc.73579/post-771054](https://forum.proxmox.com/threads/accepting-ra-on-lxc.73579/post-771054)
+
+<br/>
+
+###### Conclusion
+
+By using a simple Proxmox LXC hook script to set `net.ipv6.conf.eth0.accept_ra=2` after the container starts, you restore the ability for your container to learn its default IPv6 gateway via Router Advertisements — even with Docker installed.
+This ensures that when Docker resets routes, your container can still recover IPv6 connectivity automatically without manual intervention.
+It’s a lightweight, repeatable fix that integrates cleanly with Proxmox’s lifecycle management, letting you keep the convenience of LXC and Docker without sacrificing IPv6 reliability.
+
+Happy hacking! 🧪
+
+
+<Caption>This text was generated using AI, carefully reviewed.</Caption>

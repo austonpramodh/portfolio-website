@@ -1,0 +1,121 @@
+---
+title: "Enabling TAP Devices in Proxmox LXC Containers"
+date: 2025-03-15T14:00:00Z
+heroImage:
+description: "Unlock advanced networking in Proxmox LXC. This guide provides the essential steps to enable TUN/TAP devices for VPNs (like Tailscale) and custom routing, ensuring the changes are persistent across reboots."
+hashTags:
+    - proxmox
+author: Auston Barboza
+readTime: 5 min read
+disableHeader: true
+textImageBackground: "linear-gradient(135deg, #1e3c72, #2a5298, #4e8bd5)"
+textImageTitleColor: "#ffffff"
+textImageDescriptionColor: "#d0d8ff"
+--- 
+
+import Caption from "../../../../components/TypographyExtras/Caption"
+
+## Enabling TAP Devices in Proxmox LXC Containers
+
+In some advanced networking scenarios, such as VPNs or custom virtual network setups, you may need to create TAP or TUN devices within an LXC container. While this is straightforward in full VMs or bare metal, it's a bit trickier in LXC due to its containerized and more isolated nature.
+
+This post walks you through the steps to enable TAP device creation in a Proxmox LXC container.
+
+#### ⚠️ Pre-requisites
+
+* A running Proxmox VE host
+* An existing LXC container
+* Root access on both host and container
+
+<br/>
+
+#### Step 1: Allow the Device Node in the Container
+
+    Edit the container's configuration file located at `/etc/pve/lxc/<CTID>.conf`:
+
+```sh
+nano /etc/pve/lxc/<CTID>.conf
+```
+
+Add the following line:
+
+```ini
+lxc.cgroup2.devices.allow: c 10:200 rwm
+lxc.mount.entry: /dev/net dev/net none bind,create=dir
+```
+
+This grants the container access to the TUN/TAP character device (major 10, minor 200).
+
+Note: Do not edit the config in /var/lib/lxc/`<CTID>`/config, as it will be overwritten when the container restarts.
+
+<br/>
+
+#### Step 2: Start the Container
+Now restart your container from the Proxmox web UI or run:
+
+```sh
+pct start <CTID>
+```
+
+Replace `<CTID>` with your actual container ID.
+
+<br/>
+
+#### Step 3: Create the TAP Device Inside the Container
+Enter the container shell:
+
+```sh
+pct exec <CTID> -- bash
+```
+
+Inside the container:
+
+```sh showLineNumbers=false frame="none"
+mkdir -p /dev/net
+mknod /dev/net/tun c 10 200
+chmod 600 /dev/net/tun
+```
+
+Now you can create a TAP device:
+
+```sh
+ip tuntap add dev tap0 mode tap
+```
+
+Verify it was created:
+
+```sh
+ip link show tap0
+```
+
+You should see tap0 listed among the network interfaces.
+
+<br/>
+
+#### Step 4: What's Next?
+You can now use tap0 in various networking setups:
+
+Bridge it to your container’s main network
+
+Use it with OpenVPN, WireGuard, or custom software
+
+<br/>
+
+###### Caveats and Tips
+
+Containers have limited kernel access. If you run into permissions issues, make sure the container is privileged, or configure proper security profiles for unprivileged containers.
+
+Use `cap_add` in `lxc.apparmor.profile` or `lxc.cap.drop` to manage capabilities if needed.
+
+Always test network devices carefully, especially in production environments.
+
+<br/>
+
+###### Conclusion
+
+Enabling TAP devices in Proxmox LXC containers allows you to simulate real networking interfaces for VPNs and advanced routing. 
+With just a few config changes and device node setups, your container can gain powerful networking abilities.
+
+Happy hacking! 🧪
+
+<Caption>This text was generated using AI, carefully reviewed.</Caption>
