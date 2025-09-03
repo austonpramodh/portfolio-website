@@ -106,17 +106,17 @@ export default function Home() {
                             color="text.secondary"
                         >
                             {`From racking servers and tinkering with Proxmox
-                            clusters to deploying AI-powered web apps and
-                            scalable microservices, I bridge the worlds of
-                            hardware and software. With a strong foundation in
-                            systems engineering and a passion for building
-                            cutting-edge AI solutions, I specialize in crafting
-                            performant, scalable, and intelligent
-                            applications—end-to-end. Whether it's optimizing
-                            backend APIs, managing containers in Kubernetes, or
-                            fine-tuning machine learning models, I bring a
-                            hands-on, full-stack approach rooted in both
-                            low-level infrastructure and high-level development.`}
+                             clusters to deploying AI-powered web apps and 
+                             scalable microservices, I bridge the worlds of 
+                             hardware and software. With a strong foundation in 
+                             systems engineering and a passion for building cutting-edge AI solutions, 
+                             I specialize in crafting performant, scalable, and intelligent 
+                             applications—end-to-end. Whether it's designing intuitive 
+                             React frontends, optimizing backend APIs, 
+                             managing containers in Kubernetes, or 
+                             fine-tuning machine learning models, 
+                             I bring a hands-on, full-stack approach rooted in both low-level 
+                             infrastructure and high-level development.`}
                         </Typography>
                         <Box>
                             <Navigator />
