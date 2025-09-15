@@ -13,8 +13,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { JSX } from "react";
-import { PostFrontmatterData } from "../utils";
-import { getImageInfo } from "./page";
+import { getImageInfo, PostFrontmatterData } from "../utils";
 
 export default function PostLayout({
     children,

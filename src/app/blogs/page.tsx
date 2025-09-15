@@ -13,8 +13,12 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getImageInfo } from "./[slug]/page";
-import { getAllPostsSlug, getPost, PostFrontmatterData } from "./utils";
+import {
+    getAllPostsSlug,
+    getImageInfo,
+    getPost,
+    PostFrontmatterData,
+} from "./utils";
 
 export const metadata: Metadata = {
     title: "Blogs",

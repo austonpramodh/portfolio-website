@@ -83,3 +83,15 @@ export const getPost = async (
         return null;
     }
 };
+
+/*
+Forms Image Info using frontmatter
+*/
+export const getImageInfo = (frontmatter: PostFrontmatterData) => ({
+    title: frontmatter.textImageTitle ?? frontmatter.title,
+    description: frontmatter.textImageDescription ?? frontmatter.description,
+    background: frontmatter.textImageBackground,
+    primaryTextColor: frontmatter.textImageTitleColor,
+    secondaryTextColor: frontmatter.textImageDescriptionColor,
+    subDescription: frontmatter.author,
+});

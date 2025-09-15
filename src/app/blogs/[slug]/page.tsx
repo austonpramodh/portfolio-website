@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPostsSlug, getPost, PostFrontmatterData } from "../utils";
+import { getAllPostsSlug, getImageInfo, getPost } from "../utils";
 import PostLayout from "./post-layout";
 
 export default async function Page({
@@ -36,18 +36,6 @@ export default async function Page({
         return notFound();
     }
 }
-
-/*
-Forms Image Info using frontmatter
-*/
-export const getImageInfo = (frontmatter: PostFrontmatterData) => ({
-    title: frontmatter.textImageTitle ?? frontmatter.title,
-    description: frontmatter.textImageDescription ?? frontmatter.description,
-    background: frontmatter.textImageBackground,
-    primaryTextColor: frontmatter.textImageTitleColor,
-    secondaryTextColor: frontmatter.textImageDescriptionColor,
-    subDescription: frontmatter.author,
-});
 
 export async function generateMetadata({
     params,
