@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     metadataBase: process.env.NEXT_PUBLIC_URL
         ? new URL(process.env.NEXT_PUBLIC_URL)
         : undefined,
-    // metadataBase: new URL("https://willing-daily-perch.ngrok-free.app/"),
     title: {
         template: "%s | Auston Barboza",
         default: "Auston Barboza | Building Intelligent Infrastructure",
@@ -45,7 +44,7 @@ export default function RootLayout({
                     <CssBaseline />
                     <ThemeProvider
                         theme={theme}
-                        defaultMode="dark"
+                        defaultMode="system"
                         modeStorageKey="mui-mode"
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
