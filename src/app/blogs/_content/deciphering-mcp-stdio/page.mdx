@@ -1,0 +1,146 @@
+---
+title: "MCP's Stdio Handshake: An AI 'Hello World'"
+date: 2025-09-15T15:00:00Z
+heroImage:
+description: "Diving into the Model Context Protocol (MCP) by building a simple 'add' tool, and seeing how it communicates using the fundamental power of stdio."
+hashTags:
+  - MCP
+  - Stdio
+  - JSON-RPC
+  - AI
+  - SDK
+  - Node.js
+author: Auston Barboza
+readTime: 6 min
+disableHeader: true
+textImageBackground: "linear-gradient(135deg, #3a6186, #89253e)"
+textImageTitleColor: "#ffffff"
+textImageDescriptionColor: "#d0d8ff"
+---
+
+import Caption from "../../../../components/TypographyExtras/Caption"
+import Box from "@mui/material/Box"
+
+## MCP's Stdio Handshake: An AI 'Hello World'
+
+The world of AI is buzzing with agentic workflows, but how do these AI models actually *talk* to the tools we build for them? The Model Context Protocol (MCP) offers a clean, open standard for this communication. [3, 5] Intrigued, I decided to bypass the complex examples and start with the most basic "Hello World" I could create: a tool that simply adds two numbers.
+
+This journey is about peeling back the layers of abstraction to witness the raw conversation between an AI client and a local tool. The medium for this conversation is one of computing's oldest and most reliable channels: **stdio** (standard input/output). [1, 8]
+
+---
+
+### The "Hello World" Tool: A Simple Adder
+
+Instead of a complex application, I wrote a minimal MCP server in JavaScript using the official SDK. Its only job is to add two numbers.
+
+```javascript
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+// Create an MCP server
+const server = new McpServer({
+  name: "demo-server",
+  version: "1.0.0"
+});
+
+// Add an addition tool
+server.registerTool("add",
+  {
+    title: "Addition Tool",
+    description: "Add two numbers",
+    inputSchema: { a: z.number(), b: z.number() }
+  },
+  async ({ a, b }) => ({
+    content: [{ type: "text", text: String(a + b) }]
+  })
+);
+
+// Start receiving messages on stdin and sending messages on stdout
+const transport = new new StdioServerTransport();
+await server.connect(transport);
+ // Error is used to avoid jq from complaining while execution
+console.error("MCP demo-server running on stdio");
+```
+
+Running this code (`node main.js`) results in a blinking cursor. The server is alive and waiting for instructions.
+
+---
+
+### The Conversation: Speaking JSON-RPC
+
+MCP uses JSON-RPC 2.0 as its language, a simple text-based protocol. [4, 7, 9] A real interaction isn't just a single command; it's a two-step dance of discovery and execution.
+
+#### Step 1: Discovery (`tools/list`)
+
+Before an AI can use a tool, it needs to know what tools are available and how to use them. MCP handles this with the `tools/list` method.
+
+I can send this request to my running server:
+```json
+{"jsonrpc":"2.0","method":"tools/list","id":1}
+```
+
+The server immediately responds with a manifest of its capabilities:
+```json
+{
+  "result": {
+    "tools": [
+      {
+        "name": "add",
+        "title": "Addition Tool",
+        "description": "Add two numbers",
+        "inputSchema": {
+          "type": "object",
+          "properties": { "a": { "type": "number" }, "b": { "type": "number" } },
+          "required": ["a", "b"]
+        }
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": 1
+}
+```
+This response is incredibly informative. It tells the client: "I have a tool named 'add'. It's for adding two numbers, and to use it, you must provide me with two numbers named 'a' and 'b'."
+
+#### Step 2: Execution (`tools/call`)
+
+Armed with this knowledge, the AI client can now correctly format a request to execute the tool. Let's ask it to add 1 and 2.
+
+The request looks like this:
+```json
+{"jsonrpc":"2.0","method":"tools/call","params":{"name":"add","arguments":{"a":1, "b": 2}},"id":2}
+```
+Notice how the `name` and `arguments` perfectly match the schema provided in the `tools/list` response.
+
+The server processes this and returns the result:
+```json
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3"
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": 2
+}
+```
+The handshake is complete. We discovered the tool and then used it successfully.
+
+---
+
+### Reflections: The Power of Simplicity
+
+This simple experiment reveals the elegance of MCP's design, especially for local tools:
+
+*   **Zero Configuration**: By using stdio, there are no ports to open, no network configuration, and no complex authentication needed. [10, 15] It's the simplest form of inter-process communication (IPC). [22]
+*   **Security by Default**: The communication is confined between the parent process (the AI client) and the child process (our tool). [18] This isolation is inherently more secure than exposing a network endpoint.
+*   **Self-Describing**: The `tools/list` method makes the server self-describing. Clients don't need prior knowledge of a tool's specifics; they can discover its capabilities at runtime.
+*   **Developer-Friendly**: The SDK abstracts away the low-level protocol details, letting developers focus on the tool's logic. Defining a new tool is as simple as writing a single function.
+
+Seeing the raw JSON messages pass back and forth demystifies the entire process. It shows that powerful AI agentic systems can be built on foundational, time-tested computing principles. This simple "add" tool, communicating over stdio, is a perfect first step into the expansive world of building custom tools for AI.
+
+<Caption>This blog post is based on my personal experimentation with the Model Context Protocol SDK.</Caption>
