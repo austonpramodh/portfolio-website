@@ -6,6 +6,7 @@ import * as z from "zod";
 const schema = z.object({
     title: z.string(),
     description: z.string().nullable().optional(),
+    subDescription: z.string().nullable().optional(),
     height: z.coerce.number().default(630),
     width: z.coerce.number().default(1200),
     background: z.string().default("white"),
@@ -52,6 +53,8 @@ export async function GET(request: NextRequest) {
             );
         }
 
+        console.log(parsedData);
+
         return new ImageResponse(
             (
                 <div
@@ -86,6 +89,19 @@ export async function GET(request: NextRequest) {
                             }}
                         >
                             {parsedData.description}
+                        </div>
+                    )}
+
+                    {parsedData.secondaryTextColor && (
+                        <div
+                            style={{
+                                fontSize: 20,
+                                color: parsedData.secondaryTextColor,
+                                marginTop: "20px",
+                                textAlign: "center",
+                            }}
+                        >
+                            {parsedData.subDescription}
                         </div>
                     )}
                 </div>

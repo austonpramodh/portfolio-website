@@ -13,6 +13,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getImageInfo } from "./[slug]/page";
 import { getAllPostsSlug, getPost, PostFrontmatterData } from "./utils";
 
 export const metadata: Metadata = {
@@ -122,6 +123,8 @@ function BlogCard({
         { year: "numeric", month: "long", day: "numeric" }
     );
 
+    const imageInfo = getImageInfo(frontmatter);
+
     const image = frontmatter.heroImageExploded ? (
         <Image
             src={frontmatter.heroImageExploded.src}
@@ -138,13 +141,11 @@ function BlogCard({
         />
     ) : (
         <ThemeAwareImageCreator
-            title={frontmatter.textImageTitle ?? frontmatter.title}
-            description={
-                frontmatter.textImageDescription ?? frontmatter.description
-            }
-            background={frontmatter.textImageBackground}
-            primaryTxtColor={frontmatter.textImageTitleColor}
-            secondaryTxtColor={frontmatter.textImageDescriptionColor}
+            title={imageInfo.title}
+            description={imageInfo.description}
+            background={imageInfo.background}
+            primaryTextColor={imageInfo.primaryTextColor}
+            secondaryTextColor={imageInfo.secondaryTextColor}
         />
     );
 

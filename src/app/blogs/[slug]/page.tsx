@@ -46,6 +46,7 @@ export const getImageInfo = (frontmatter: PostFrontmatterData) => ({
     background: frontmatter.textImageBackground,
     primaryTextColor: frontmatter.textImageTitleColor,
     secondaryTextColor: frontmatter.textImageDescriptionColor,
+    subDescription: frontmatter.author,
 });
 
 export async function generateMetadata({
@@ -77,7 +78,7 @@ export async function generateMetadata({
                         imageInfo.title +
                         "&description=" +
                         imageInfo.description +
-                        "&backgroundColor=" +
+                        "&background=" +
                         encodeURIComponent(imageInfo.background) +
                         "&primaryTextColor=" +
                         encodeURIComponent(imageInfo.primaryTextColor) +
@@ -86,7 +87,9 @@ export async function generateMetadata({
                         "&height=" +
                         encodeURIComponent(imageHeight) +
                         "&width=" +
-                        encodeURIComponent(imageWidth),
+                        encodeURIComponent(imageWidth) +
+                        "&subDescription=" +
+                        encodeURIComponent(imageInfo.subDescription),
                     width: 800,
                     height: 600,
                     alt: frontmatter.title,
