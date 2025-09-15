@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import { JSX } from "react";
 import { PostFrontmatterData } from "../utils";
+import { getImageInfo } from "./page";
 
 export default function PostLayout({
     children,
@@ -138,22 +139,21 @@ export default function PostLayout({
                                     />
                                 ) : (
                                     <ThemeAwareImageCreator
-                                        title={
-                                            frontmatter.textImageTitle ??
-                                            frontmatter.title
-                                        }
+                                        title={getImageInfo(frontmatter).title}
                                         description={
-                                            frontmatter.textImageDescription ??
-                                            frontmatter.description
+                                            getImageInfo(frontmatter)
+                                                .description
                                         }
                                         background={
-                                            frontmatter.textImageBackground
+                                            getImageInfo(frontmatter).background
                                         }
-                                        primaryTxtColor={
-                                            frontmatter.textImageTitleColor
+                                        primaryTextColor={
+                                            getImageInfo(frontmatter)
+                                                .primaryTextColor
                                         }
-                                        secondaryTxtColor={
-                                            frontmatter.textImageDescriptionColor
+                                        secondaryTextColor={
+                                            getImageInfo(frontmatter)
+                                                .secondaryTextColor
                                         }
                                     />
                                 )}

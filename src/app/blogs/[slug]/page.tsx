@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPostsSlug, getPost } from "../utils";
+import { getAllPostsSlug, getPost, PostFrontmatterData } from "../utils";
 import PostLayout from "./post-layout";
 
 export default async function Page({
@@ -37,6 +37,17 @@ export default async function Page({
     }
 }
 
+/*
+Forms Image Info using frontmatter
+*/
+export const getImageInfo = (frontmatter: PostFrontmatterData) => ({
+    title: frontmatter.textImageTitle ?? frontmatter.title,
+    description: frontmatter.textImageDescription ?? frontmatter.description,
+    background: frontmatter.textImageBackground,
+    primaryTextColor: frontmatter.textImageTitleColor,
+    secondaryTextColor: frontmatter.textImageDescriptionColor,
+});
+
 export async function generateMetadata({
     params,
 }: {
@@ -52,16 +63,9 @@ export async function generateMetadata({
 
     const { frontmatter } = content;
     const [imageHeight, imageWidth] = [600, 800];
-    const {
-        title,
-        description,
-        textImageBackground,
-        textImageTitle,
-        textImageDescription,
-        textImageTitleColor,
-        textImageDescriptionColor,
-    } = frontmatter;
+    const { title, description } = frontmatter;
 
+    const imageInfo = getImageInfo(frontmatter);
     return {
         title: title,
         description: description,
@@ -70,15 +74,15 @@ export async function generateMetadata({
                 {
                     url:
                         "/api/og?title=" +
-                        textImageTitle +
+                        imageInfo.title +
                         "&description=" +
-                        textImageDescription +
+                        imageInfo.description +
                         "&backgroundColor=" +
-                        encodeURIComponent(textImageBackground) +
+                        encodeURIComponent(imageInfo.background) +
                         "&primaryTextColor=" +
-                        encodeURIComponent(textImageTitleColor) +
+                        encodeURIComponent(imageInfo.primaryTextColor) +
                         "&secondaryTextColor=" +
-                        encodeURIComponent(textImageDescriptionColor) +
+                        encodeURIComponent(imageInfo.secondaryTextColor) +
                         "&height=" +
                         encodeURIComponent(imageHeight) +
                         "&width=" +

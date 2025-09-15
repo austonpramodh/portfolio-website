@@ -8,14 +8,14 @@ export const ThemeAwareImageCreator: React.FC<{
     title: string;
     description: string;
     background?: string;
-    primaryTxtColor?: string;
-    secondaryTxtColor?: string;
+    primaryTextColor?: string;
+    secondaryTextColor?: string;
 }> = ({
     title,
     description,
     background,
-    primaryTxtColor,
-    secondaryTxtColor,
+    primaryTextColor,
+    secondaryTextColor,
 }) => {
     const theme = useTheme();
 
@@ -31,9 +31,9 @@ export const ThemeAwareImageCreator: React.FC<{
 
     const selectedBgColor = background ?? theme.palette.background.default;
     const selectedPrimaryTxtColor =
-        primaryTxtColor ?? theme.palette.text.primary;
+        primaryTextColor ?? theme.palette.text.primary;
     const selectedSecondaryTxtColor =
-        secondaryTxtColor ?? theme.palette.text.secondary;
+        secondaryTextColor ?? theme.palette.text.secondary;
 
     return (
         <Image
