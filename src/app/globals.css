@@ -43,16 +43,10 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 code {
-  color: var(--ec-codeFg);
-  font-family: var(--ec-codeFontFml);
-  font-size: var(--ec-codeFontSize);
-  font-weight: var(--ec-codeFontWg);
-  line-height: var(--ec-codeLineHt);
+  color: var(--ec-codeFg) !important;
+  font-family: var(--ec-codeFontFml) !important;
+  font-size: var(--ec-codeFontSize) !important;
+  font-weight: var(--ec-codeFontWg) !important;
+  line-height: var(--ec-codeLineHt) !important;
 }

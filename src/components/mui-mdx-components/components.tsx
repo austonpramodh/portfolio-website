@@ -1,5 +1,6 @@
 import { Divider, Link, Paper, Typography } from "@mui/material";
 import { MDXComponents } from "mdx/types.js";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { MuiMdxComponentsOptions } from "./types";
 
 const defaults: (options: MuiMdxComponentsOptions) => MDXComponents = ({
@@ -143,11 +144,26 @@ const defaults: (options: MuiMdxComponentsOptions) => MDXComponents = ({
             {...propOverrides?.blockquote}
         />
     ),
-    pre: (props: any) => {
+    pre: (
+        props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>
+    ) => {
         return <pre {...props} {...propOverrides?.code} />;
     },
-    code: (props: any) => {
-        return <code {...props} {...propOverrides?.code} />;
+    code: (
+        props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>
+    ) => {
+        // Handled by expressive-code library
+        if (Array.isArray(props.children)) {
+            return <code {...props} {...propOverrides?.code} />;
+        }
+
+        return (
+            <code
+                {...props}
+                {...propOverrides?.code}
+                className="expressive-code"
+            />
+        );
     },
     wrapper: (props: any) => (
         <div {...props} className="markdown-body" {...propOverrides?.wrapper} />
