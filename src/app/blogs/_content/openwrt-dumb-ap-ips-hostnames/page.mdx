@@ -1,0 +1,135 @@
+---
+title: "Making OpenWRT a Smarter Dumb AP: Displaying Client IPs and Hostnames"
+date: 2025-09-16T10:00:00Z
+heroImage:
+description: "A comprehensive guide to making your OpenWRT 'dumb AP' display client IPs and hostnames by actively scanning the network and using a simple DNS trick."
+hashTags:
+    - openwrt
+    - networking
+    - dumb ap
+author: Auston Barboza
+readTime: 3 min read
+disableHeader: true
+textImageBackground: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)"
+textImageTitleColor: "#ffffff"
+textImageDescriptionColor: "#a8dadc"
+---
+import Caption from "../../../../components/TypographyExtras/Caption"
+
+## The Issue
+
+OpenWRT is a powerful, versatile firmware that can breathe new life into routers, both old and new. Its primary design is to be the central hub of a network, managing routing, wireless traffic, DHCP, and DNS. However, a common use case is to configure it as a simple wireless access point (often called a "dumb AP"), effectively turning it into a bridge between your wired network and wireless devices.
+
+In this mode, OpenWRT no longer handles DHCP or DNS; that's the job of your main router. This creates a problem: because the AP doesn't issue IP addresses, it has no inherent knowledge of the clients connected to it. The result is a LuCI web interface that shows only MAC addresses, with a frustrating question mark where the IP and hostname should be. While several guides exist to fix this, many assume your main router also runs OpenWRT or that you only have one simple network. This guide covers a robust solution for any setup and includes a simple trick that makes hostname resolution a breeze.
+
+##### ⚠️ Pre-requisites
+*   An OpenWRT device configured as a "dumb AP".
+*   Root access to the OpenWRT device (via SSH).
+*   Your main router acting as the DHCP and DNS server for your network.
+*   Knowledge of your main router's IP address (e.g., `192.168.1.1`).
+
+<br/>
+
+##### Step 1: Install Network Scanning Tools
+To find the clients, we need to actively probe the network. We'll use `arp-scan` to discover devices and `fping` to ensure they are populated in the AP's ARP (Address Resolution Protocol) table, which maps IP addresses to MAC addresses.
+
+```sh frame="terminal" title="Terminal"
+opkg update
+opkg install fping arp-scan
+```
+
+<br/>
+
+##### Step 2: Create a Client Discovery Script
+This script will scan the network interfaces you specify, get a list of all live IP addresses, and then ping each one. This action forces an entry into the AP's ARP table, which is the first step to making clients visible in the web interface.
+
+Create the following script at `/root/arp-refresh.sh`:
+```sh frame="terminal" title="/root/arp-refresh.sh"
+#!/bin/sh
+# Space-separated list of networks to be scanned
+# br-lan is the default, add other bridges if you have multiple VLANs
+INTERFACES="br-lan"
+
+# Run arp-scan and pipe the discovered IPs to fping to populate the ARP table
+for interface in $INTERFACES; do
+    arp-scan -qxlN -F '${IP}' -I "$interface" | xargs fping -q -c1
+done
+```
+Make the script executable so it can be run.
+```sh frame="terminal" title="Terminal"
+chmod +x /root/arp-refresh.sh
+```
+<br/>
+
+##### Step 3: Automate the Scan with a Cron Job
+To keep the client list up-to-date, we'll schedule the script to run automatically every five minutes using a cron job.
+
+Add the following line to the end of `/etc/crontabs/root`:
+```sh frame="terminal" title="/etc/crontabs/root"
+*/5 * * * * /root/arp-refresh.sh
+```
+Then, restart the cron daemon to apply the new schedule.
+```sh frame="terminal" title="Terminal"
+/etc/init.d/cron restart
+```
+
+At this point, your OpenWRT interface should start showing the IP addresses of connected clients. The next step is to resolve their hostnames.
+
+<br/>
+
+##### Step 4: The Hostname Resolution Trick (Reverse DNS Forwarding)
+This is the key to getting hostnames to appear. OpenWRT will attempt a reverse DNS (rDNS) lookup to find the hostname for an IP address. In a dumb AP setup, it asks itself, but it has no information. The solution is to tell OpenWRT's internal DNS server (`dnsmasq`) to forward these specific requests to your main router, which *does* know the hostnames.
+
+We use a `uci` command to create a forwarding rule for `in-addr.arpa` domains, which are used for reverse IPv4 lookups. **Remember to replace `192.168.1.1` with the actual IP address of your main router.**
+
+```sh frame="terminal" title="Terminal"
+uci add_list dhcp.@dnsmasq[0].server="/.168.192.in-addr.arpa/192.168.1.1"
+uci commit dhcp
+service dnsmasq restart
+```
+This command tells `dnsmasq`: "For any request to find the hostname for an IP address in the `192.168.x.x` range, forward the query to the server at `192.168.1.1`." Your main router will then reply with the correct hostname, and it will appear in the OpenWRT interface.
+<br/>
+
+##### Step 5: What's Next?
+That's it! After a few minutes, your OpenWRT's "Associated Stations" page should be fully populated with the IP addresses and hostnames of your wireless clients, making your dumb AP a lot more intelligent.
+
+<br/>
+
+#### Automated Script
+
+```sh
+DHCP_SERVER_ADDR='192.168.1.1'
+opkg update
+opkg install fping arp-scan
+
+cat <<'EOF' > /root/arp-refresh.sh
+#!/bin/sh
+# Space‑separated list of networks to be scanned
+INTERFACES="br-lan"
+# Run fping against all live hosts in all networks
+for interface in $INTERFACES; do
+    arp-scan -qxlN -F '${IP}' -I "$interface" | xargs fping -q -c1
+done
+EOF
+
+chmod +x /root/arp-refresh.sh
+
+echo '*/5 * * * * root /root/arp-refresh.sh' >> /etc/crontabs/root
+/etc/init.d/cron restart
+
+uci add_list dhcp.@dnsmasq[0].server="/*.168.192.in-addr.arpa/$DHCP_SERVER_ADDR"
+uci commit dhcp
+service dnsmasq restart
+```
+
+###### Caveats and Tips
+*   **Customize Your Router IP:** The most critical step is ensuring the IP address in the `uci` command points to your main network router.
+*   **Multiple VLANs:** If your AP serves multiple VLANs with different subnets, you can add more bridge interfaces to the `INTERFACES` variable in the `/root/arp-refresh.sh` script (e.g., `INTERFACES="br-lan br-iot br-guest"`).
+*   **DNS Reliability:** This method assumes your main router correctly registers DHCP clients in its DNS service. Most modern routers do this by default.
+<br/>
+
+###### Conclusion
+By combining two straightforward techniques—proactively populating the ARP table with `arp-scan` and `fping`, and then cleverly forwarding reverse DNS lookups to the main router—you can overcome a common limitation of OpenWRT in a "dumb AP" setup. This automated, lightweight solution restores the visibility of client IPs and hostnames to the web interface, making network management significantly easier.
+
+Happy networking! 🚀
+<Caption>This text was generated using AI, carefully reviewed.</Caption>
