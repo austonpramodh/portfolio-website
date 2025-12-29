@@ -23,6 +23,12 @@ export const Navigator = () => {
             clickable: true,
             url: "/contact",
         },
+        {
+            label: "LinkedIn",
+            variant: "outlined",
+            clickable: true,
+            url: "https://linkedin.com/in/austonpramodh",
+        },
     ];
     return (
         <>
